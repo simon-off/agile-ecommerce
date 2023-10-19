@@ -1,5 +1,3 @@
-// using MinimalAPI.Models.Dtos;
-
 using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI.Models.Dtos;
@@ -12,7 +10,8 @@ public record ProductDto(
     string Category,
     List<string> Tags,
     List<string> ImagePaths,
-    List<string> AvailableSize)
+    List<string> AvailableSizes
+)
 {
     public ProductDto(ProductEntity entity) : this(
         entity.Id,
@@ -23,6 +22,6 @@ public record ProductDto(
         entity.Tags.Select(x => x.Name).ToList(),
         entity.Images.Select(x => x.Path).ToList(),
         entity.AvailableSizes.Select(x => x.Name).ToList()
-    )
+        )
     { }
 }

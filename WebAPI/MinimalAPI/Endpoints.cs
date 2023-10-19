@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Data;
@@ -12,37 +11,47 @@ public static class Endpoints
     public static void Map(WebApplication app)
     {
         var products = app.MapGroup("/products");
-
-        products.MapGet("/", async (DataContext context) =>
-        {
-            var stuff = await context.Products.FirstAsync(x => x.Id == 1);
-            var dto = new ProductDto(stuff);
-            return dto;
-        });
-        // products.MapGet("/{id}", ProductsHandler.GetById);
-        // products.MapGet("/", async (DataContext context) => await context.Tags.Select(x => x.Name).ToListAsync());
+        products.MapGet("/", ProductsHandler.GetAll);
+        products.MapGet("/{id}", ProductsHandler.GetById);
     }
 }
 
-public static class ProductsHandler
+static class ProductsHandler
 {
+    public static async Task<IResult> GetById(DataContext db, int id) =>
+        await db.Products.OneInclusive(id)
+        is ProductDto product
+        ? TypedResults.Ok(product)
+        : TypedResults.NotFound();
 
-    public static async Task<List<ProductDto>> AllWithEverythingIncluded(this DbSet<ProductEntity> products)
-    {
-        var productEntities = await products
-                .Include(x => x.Tags)
-                .Include(x => x.AvailableSizes)
-                .Include(x => x.Images)
-                .ToListAsync();
+    public static async Task<IResult> GetAll(DataContext db, [FromQuery] string? category, [FromQuery] string? tag) =>
+        await db.Products.AllInclusive(category, tag)
+        is List<ProductDto> products && products.Count > 0
+        ? TypedResults.Ok(products)
+        : TypedResults.NotFound();
+}
 
-        var dtos = new List<ProductDto>();
+static class DbSetExtensions
+{
+    public static async Task<ProductDto?> OneInclusive(this DbSet<ProductEntity> products, int id) =>
+        await products
+            .Include(x => x.Tags)
+            .Include(x => x.AvailableSizes)
+            .Include(x => x.Images)
+            .Include(x => x.Category)
+            .FirstOrDefaultAsync(x => x.Id == id)
+            is ProductEntity entity
+            ? new ProductDto(entity)
+            : null;
 
-        foreach (var entity in productEntities)
-        {
-            if (entity is not null)
-                dtos.Add(new ProductDto(entity));
-        }
-
-        return dtos;
-    }
+    public static async Task<List<ProductDto>> AllInclusive(this DbSet<ProductEntity> products, string? category, string? tag) =>
+        await products
+            .Include(x => x.Tags)
+            .Include(x => x.AvailableSizes)
+            .Include(x => x.Images)
+            .Include(x => x.Category)
+            .Where(x => category == null || x.Category.Name.ToLower() == category.ToLower())
+            .Where(x => tag == null || x.Tags.Any(t => t.Name.ToLower() == tag.ToLower()))
+            .Select(x => new ProductDto(x))
+            .ToListAsync();
 }
