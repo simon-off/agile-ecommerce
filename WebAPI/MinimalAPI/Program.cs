@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Data;
+using MinimalAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,5 +20,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Endpoints
+Endpoints.Map(app);
 
 app.Run();
