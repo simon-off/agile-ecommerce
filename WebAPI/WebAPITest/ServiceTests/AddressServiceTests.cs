@@ -1,6 +1,4 @@
-﻿
-
-using WebAPI.Data;
+﻿using WebAPI.Data;
 using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
 using WebAPI.Models.Schemas;
@@ -11,7 +9,6 @@ namespace WebAPITest.ServiceTests;
 [Collection("Database collection")]
 public class AddressServiceTests
 {
-    private readonly DatabaseFixture _fixture;
     private readonly DataContext _context;
     private readonly CustomerRepo _customerRepo;
     private readonly CustomerService _customerService;
@@ -19,7 +16,6 @@ public class AddressServiceTests
     private readonly AddressService _addressService;
     public AddressServiceTests(DatabaseFixture fixture)
     {
-        _fixture = fixture;
         _context = fixture.CreateContext();
         _customerRepo = new CustomerRepo(_context);
         _customerService = new CustomerService(_customerRepo);
@@ -30,7 +26,7 @@ public class AddressServiceTests
     [Fact]
     public async Task CreateCustomerAddress_ShouldCreateAddress()
     {
-        // Arrange fake user data
+        // Arrange fake customer data
         var customerSchema = new CustomerCreateSchema
         {
             FirstName = "Address",
@@ -38,16 +34,13 @@ public class AddressServiceTests
             Email = "address.customer@sdomain.com",
             PhoneNumber = "1745885599",
         };
-
-
-
-        var customerEntity = await _customerService.CreateCustomerAsync(customerSchema);
         var addressSchema = new AddressCreateSchema
         {
             StreetAddress = "Kungsgatan 12",
             City = "Gothenburg",
             PostalCode = "12345",
         };
+        var customerEntity = await _customerService.CreateCustomerAsync(customerSchema);
 
         // Act
         await _addressService.CreateCustomerAddressAsync(addressSchema, customerEntity.Id);

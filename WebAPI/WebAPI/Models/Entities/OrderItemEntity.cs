@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Models.Dtos;
 

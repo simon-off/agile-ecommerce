@@ -2,16 +2,11 @@ import { ShoppingBag } from "lucide-react";
 import PageIconCircle from "../components/PageIconCircle";
 import { useContext } from "react";
 import { CartContext } from "../App";
-import useFetch from "../hooks/useFetch";
-import { apiDomain } from "../helpers/api-domain";
 import { CartProductCard } from "../components/CartProductCard";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const [cart, setCart] = useContext(CartContext);
-
-  // TODO: Fetch products and adding to cart for testing purposes
-  const products = useFetch(`${apiDomain.https}/api/products`);
-
+  const [cart] = useContext(CartContext);
   // Page if cart is empty
   if (cart.length == 0)
     return (
@@ -21,7 +16,9 @@ export default function Cart() {
           <h2>Your cart is empty!</h2>
           <p>Looks like you haven{"'"}t added any products yet.</p>
         </div>
-        <button onClick={() => setCart(products.data)}>hämta produkter för att testa</button>
+        <Link to="/products" className="button button-black">
+          Shop now
+        </Link>
       </div>
     );
 
@@ -36,7 +33,7 @@ export default function Cart() {
       <div className="total">
         <div>
           <p>Total</p>
-          <span>${cart.reduce((a, b) => a + b.price, 0).toFixed(2)}</span>
+          <span>${cart.reduce((a, b) => a + b.price * b.amount, 0).toFixed(2)}</span>
         </div>
       </div>
     </div>

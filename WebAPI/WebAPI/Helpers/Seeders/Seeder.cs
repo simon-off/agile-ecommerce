@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using WebAPI.Models.Entities;
-using static WebAPI.Helpers.Seeders.Seeder;
 
 namespace WebAPI.Helpers.Seeders;
 
@@ -60,6 +59,7 @@ public static class Seeder
 
     private static void SeedProducts(ModelBuilder builder)
     {
+        // Parse products from JSON to avoid making file to long
         var seedData = JArray.Parse(File.ReadAllText(@"Helpers/Seeders/product-data.json"));
         var products = new List<ProductEntity>();
 
@@ -79,7 +79,7 @@ public static class Seeder
         var productImages = new List<ProductImageEntity>();
         int productImageIndex = 1;
 
-        // adds three identical pictures to all seeded products
+        // Adds three identical pictures to all seeded products
         for (int i = 1; i <= 8; i++)
         {
             for (int j = 1; j <= 3; j++)

@@ -12,10 +12,13 @@
 @use "components/contact-sidebar";
 @use "components/page-icon-circle";
 @use "components/discount-card";
-@use "components/product-card";
 @use "components/product-grid";
+@use "components/product-list-card";
+@use "components/product-grid-card";
+@use "components/product-list";
 
 // Pages
 @use "pages/home";
 @use "pages/search";
 @use "pages/cart";
+@use "pages/product-details";

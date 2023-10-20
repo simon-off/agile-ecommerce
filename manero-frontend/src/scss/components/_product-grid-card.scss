@@ -1,8 +1,10 @@
-.product-card {
+.product-grid-card {
   .product-card-image-wrapper {
     position: relative;
-
     .product-card-icons {
+      button {
+        all: unset;
+      }
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -21,9 +23,7 @@
         padding-left: 0.25rem;
       }
     }
-    p {
-      padding-top: 0.5rem;
-    }
+
     .product-name {
       color: var(--color-text-light);
     }

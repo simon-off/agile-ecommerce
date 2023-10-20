@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebAPI.Data;
-using WebAPI.Helpers.Repositories;
+﻿using WebAPI.Helpers.Repositories;
 using WebAPI.Models.Dtos;
 
 namespace WebAPI.Helpers.Services;

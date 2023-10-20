@@ -1,10 +1,12 @@
 .tags-container {
+  width: fit-content;
+  max-width: 100%;
   display: flex;
   margin-inline: auto;
-  width: fit-content;
   padding: 0;
   list-style: none;
   overflow-x: scroll;
+  overflow-y: scroll;
   padding-block: 1.5rem;
   // Hide scrollbar for Chrome, Safari and Opera
   &::-webkit-scrollbar {
@@ -39,7 +41,18 @@
 }
 
 .featured-products {
+  border-bottom: 2px solid var(--color-blue);
   .featured-header {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1.5rem;
+    padding-top: 3rem;
+  }
+}
+
+.best-sellers {
+  text-decoration: none;
+  .best-seller-header {
     display: flex;
     justify-content: space-between;
     padding-inline: 1.5rem;

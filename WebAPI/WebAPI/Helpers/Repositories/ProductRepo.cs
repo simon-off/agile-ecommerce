@@ -53,6 +53,7 @@ public class ProductRepo : GenericRepo<ProductEntity>
             .Include(x => x.AvailableSizes)
             .AsQueryable();
             
+        // Loops through all filters to make it possible to use multiple predicates in one method
         foreach (var predicate in predicates)
             query = query.Where(predicate);
 

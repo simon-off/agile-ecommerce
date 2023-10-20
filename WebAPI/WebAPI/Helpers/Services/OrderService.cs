@@ -27,9 +27,7 @@ public class OrderService
         var customer = await _customerService.CreateCustomerAsync(schema.Customer);
         // We don't need to display the address anywhere so it isn't saved
         await _addressService.CreateCustomerAddressAsync(schema.Address, customer.Id);
-
         var orderEntity = await CreateOrderWithCustomerAsync(schema, customer);
-
         var orderItemEntities = await CreateOrderItemsAsync(schema.Products, orderEntity.Id);
 
         // Add all the newly created order items to the order so they can be seen in the DTO
@@ -47,10 +45,8 @@ public class OrderService
         };
 
         orderEntity.TotalPrice = await CalculateTotalPriceAsync(schema.Products);
-
         // Add to database here since all the required information has been calculated
         orderEntity = await _orderRepo.CreateAsync(orderEntity);
-
         // Order gets fetched again to get all includes so it can be converted into DTO
         orderEntity = await _orderRepo.GetAsync(x => x.Id == orderEntity.Id);
 

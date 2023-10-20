@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebAPI.Data;
+﻿using WebAPI.Data;
 using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
 using WebAPI.Models.Schemas;
@@ -10,14 +9,12 @@ namespace WebAPITest.ServiceTests;
 [Collection("Database collection")]
 public class OrderServiceTests
 {
-    private readonly DatabaseFixture _fixture;
     private readonly DataContext _context;
     private readonly OrderRepo _orderRepo;
     private readonly OrderService _orderService;
 
     public OrderServiceTests(DatabaseFixture fixture)
     {
-        _fixture = fixture;
         _context = fixture.CreateContext();
         _orderRepo = new OrderRepo(_context);
         _orderService = new OrderService(
@@ -25,9 +22,8 @@ public class OrderServiceTests
             new CustomerService(new CustomerRepo(_context)),
             new OrderItemRepo(_context), new ProductRepo(_context),
             new AddressService(new AddressRepo(_context)));
-
-
     }
+
     [Fact]
     public async Task CalculateTotalPriceAsync_ShouldCalculateTotalPrice()
     {
@@ -54,7 +50,6 @@ public class OrderServiceTests
         // Assert
         var expectedPrice = 419.93m;
         Assert.Equal(expectedPrice, actualValue);
-
     }
 }
 

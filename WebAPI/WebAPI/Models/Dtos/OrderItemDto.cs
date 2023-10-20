@@ -1,6 +1,4 @@
-﻿using WebAPI.Models.Entities;
-
-namespace WebAPI.Models.Dtos;
+﻿namespace WebAPI.Models.Dtos;
 
 public class OrderItemDto
 {

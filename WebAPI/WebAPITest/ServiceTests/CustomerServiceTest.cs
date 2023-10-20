@@ -9,14 +9,12 @@ namespace WebAPITest.ServiceTests;
 [Collection("Database collection")]
 public class CustomerServiceTest
 {
-    private readonly DatabaseFixture _fixture;
     private readonly DataContext _context;
     private readonly CustomerRepo _customerRepo;
     private readonly CustomerService _customerService;
 
     public CustomerServiceTest(DatabaseFixture fixture)
     {
-        _fixture = fixture;
         _context = fixture.CreateContext();
         _customerRepo = new CustomerRepo(_context);
         _customerService = new CustomerService(_customerRepo);
