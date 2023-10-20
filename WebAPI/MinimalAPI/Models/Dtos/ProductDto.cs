@@ -7,7 +7,7 @@ public record ProductDto(
     string Name,
     string Description,
     decimal Price,
-    string Category,
+    string? Category,
     List<string> Tags,
     List<string> ImagePaths,
     List<string> AvailableSizes
@@ -18,7 +18,7 @@ public record ProductDto(
         entity.Name,
         entity.Description,
         entity.Price,
-        entity.Category.Name,
+        entity.Category?.Name,
         entity.Tags.Select(x => x.Name).ToList(),
         entity.Images.Select(x => x.Path).ToList(),
         entity.AvailableSizes.Select(x => x.Name).ToList()
