@@ -13,7 +13,7 @@ public abstract class GenericRepo<T> where T : class
         _context = context;
     }
 
-    public virtual async Task<T?> CreateAsync(T entity)
+    public virtual async Task<T> CreateAsync(T entity)
     {
         _context.Set<T>().Add(entity);
         await _context.SaveChangesAsync();

@@ -2,8 +2,9 @@
 using WebAPI.Data;
 using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
+using WebAPITest.Helpers;
 
-namespace WebAPITest;
+namespace WebAPITest.ServiceTests;
 
 [Collection("Database collection")]
 public class CategoryServiceTests

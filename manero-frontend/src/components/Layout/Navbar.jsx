@@ -12,15 +12,15 @@ function Navbar() {
         <Search />
         <span className="nav-link-text">Search</span>
       </NavLink>
-      <NavLink>
+      <NavLink to="/cart">
         <ShoppingBag />
         <span className="nav-link-text">Cart</span>
       </NavLink>
-      <NavLink>
+      <NavLink to="/wishlist">
         <Heart />
         <span className="nav-link-text">Wishlist</span>
       </NavLink>
-      <NavLink>
+      <NavLink to="/profile">
         <User />
         <span className="nav-link-text">Profile</span>
       </NavLink>

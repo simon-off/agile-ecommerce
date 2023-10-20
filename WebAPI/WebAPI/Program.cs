@@ -18,11 +18,20 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlite(builder.Configuratio
 builder.Services.AddScoped<ProductRepo>();
 builder.Services.AddScoped<CategoryRepo>();
 builder.Services.AddScoped<TagRepo>();
+builder.Services.AddScoped<AddressRepo>();
+builder.Services.AddScoped<CustomerRepo>();
+builder.Services.AddScoped<OrderItemRepo>();
+builder.Services.AddScoped<OrderRepo>();
+builder.Services.AddScoped<StatusRepo>();
+builder.Services.AddScoped<SizeRepo>();
 
 // Add custom services
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TagService>();
+builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<OrderService>();
+builder.Services.AddScoped<AddressService>();
 
 var app = builder.Build();
 

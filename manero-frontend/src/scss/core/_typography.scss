@@ -1,4 +1,9 @@
 // Text-related default styling & text-classes
 body {
   font-family: "Mulish Variable", sans-serif;
+  font-size: var(--font-size-m);
+}
+
+h2 {
+  font-size: var(--font-size-l);
 }

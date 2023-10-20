@@ -1,0 +1,22 @@
+.discount-card {
+  background-color: var(--color-blue);
+  margin: 0 1.5rem;
+  height: 11rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  .content {
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+      padding-bottom: 1rem;
+      font-size: 1.5rem;
+      color: var(--color-bg);
+    }
+  }
+}

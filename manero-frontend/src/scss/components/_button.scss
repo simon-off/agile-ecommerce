@@ -1,3 +1,22 @@
 button {
   cursor: pointer;
 }
+
+.button-black {
+}
+
+.button-white {
+  all: unset;
+  background-color: var(--color-bg);
+  border-radius: 2rem;
+  width: 9rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: var(--color-bg-grey);
+    color: var(--color-bg);
+  }
+}

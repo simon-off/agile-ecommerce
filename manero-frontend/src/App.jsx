@@ -2,15 +2,17 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./scss/main.scss";
 import "@fontsource-variable/mulish";
 import useWindowResize from "./hooks/useWindowResize";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import LayoutMobile from "./components/Layout/LayoutMobile";
 import LayoutDesktop from "./components/Layout/LayoutDesktop";
 import routes from "./routes";
 
-// Added a global state for mobile/desktop
+export const CartContext = createContext(null);
 
 function App() {
+  // Added state for mobile/desktop
   const [isMobile, setIsMobile] = useState(false);
+  const cartState = useState([]);
 
   useWindowResize(() => {
     if (window.innerWidth < 800) {
@@ -21,15 +23,17 @@ function App() {
   }, true);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={isMobile ? <LayoutMobile /> : <LayoutDesktop />}>
-          {routes.map((route) => (
-            <Route key={route.path} path={route.path} element={route.element} />
-          ))}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CartContext.Provider value={cartState}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={isMobile ? <LayoutMobile /> : <LayoutDesktop />}>
+            {routes.map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CartContext.Provider>
   );
 }
 

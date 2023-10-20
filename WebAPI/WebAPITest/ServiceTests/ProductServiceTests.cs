@@ -3,8 +3,9 @@ using WebAPI.Data;
 using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
 using WebAPI.Models.Entities;
+using WebAPITest.Helpers;
 
-namespace WebAPITest;
+namespace WebAPITest.ServiceTests;
 
 [Collection("Database collection")]
 public class ProductServiceTests

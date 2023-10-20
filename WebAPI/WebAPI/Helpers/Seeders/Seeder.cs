@@ -16,6 +16,7 @@ public static class Seeder
         SeedImages(builder);
         SeedProductTags(builder);
         SeedProductSizes(builder);
+        SeedStatuses(builder);
     }
 
     private static void SeedCategories(ModelBuilder builder)
@@ -81,7 +82,7 @@ public static class Seeder
         // adds three identical pictures to all seeded products
         for (int i = 1; i <= 8; i++)
         {
-            for (int j = 1 ; j <= 3; j++)
+            for (int j = 1; j <= 3; j++)
             {
                 productImages.Add(new ProductImageEntity { Id = productImageIndex, Path = "/images/products/product-template-image.png", ProductId = i });
                 productImageIndex++;
@@ -130,5 +131,14 @@ public static class Seeder
         }
 
         builder.Entity("ProductEntitySizeEntity").HasData(productSizes);
+    }
+
+    private static void SeedStatuses(ModelBuilder builder)
+    {
+        builder.Entity<StatusEntity>().HasData(
+            new StatusEntity { Id = 1, Name = "Processing" },
+            new StatusEntity { Id = 2, Name = "Shipped" },
+            new StatusEntity { Id = 3, Name = "Done" }
+        );
     }
 }

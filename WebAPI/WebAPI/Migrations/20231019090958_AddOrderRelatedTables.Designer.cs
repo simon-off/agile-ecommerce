@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAPI.Data;
 
@@ -10,9 +11,11 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231019090958_AddOrderRelatedTables")]
+    partial class AddOrderRelatedTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
@@ -221,7 +224,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("ProductEntitySizeEntity", (string)null);
+                    b.ToTable("ProductEntitySizeEntity");
 
                     b.HasData(
                         new
@@ -478,7 +481,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("TagsId");
 
-                    b.ToTable("ProductEntityTagEntity", (string)null);
+                    b.ToTable("ProductEntityTagEntity");
 
                     b.HasData(
                         new
@@ -643,7 +646,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Address", (string)null);
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Entities.CategoryEntity", b =>
@@ -661,7 +664,7 @@ namespace WebAPI.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -735,7 +738,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customer", (string)null);
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Entities.OrderEntity", b =>
@@ -745,6 +748,9 @@ namespace WebAPI.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("CustomerId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MyProperty")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OrderDate")
@@ -762,7 +768,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("StatusId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Entities.OrderItemEntity", b =>
@@ -785,7 +791,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("OrderItems", (string)null);
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Entities.ProductEntity", b =>
@@ -812,7 +818,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
 
                     b.HasData(
                         new
@@ -898,7 +904,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages", (string)null);
+                    b.ToTable("ProductImages");
 
                     b.HasData(
                         new
@@ -1062,7 +1068,7 @@ namespace WebAPI.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Sizes", (string)null);
+                    b.ToTable("Sizes");
 
                     b.HasData(
                         new
@@ -1109,24 +1115,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Processing"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Shipped"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Done"
-                        });
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("WebAPI.Models.Entities.TagEntity", b =>
@@ -1144,7 +1133,7 @@ namespace WebAPI.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Tags", (string)null);
+                    b.ToTable("Tags");
 
                     b.HasData(
                         new

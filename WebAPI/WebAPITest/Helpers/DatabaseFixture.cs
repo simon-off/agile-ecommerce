@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using WebAPI.Data;
 using WebAPI.Models.Entities;
 
-namespace WebAPITest;
+namespace WebAPITest.Helpers;
 
 
 [CollectionDefinition("Database collection")]

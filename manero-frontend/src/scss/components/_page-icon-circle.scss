@@ -1,0 +1,28 @@
+.page-icon-circle {
+  --outline-width: 4px;
+
+  padding: var(--outline-width);
+  .circle {
+    --diameter: 200px;
+    --icon-size: 50px;
+    --color: var(--color-blue);
+    --icon-color: var(--color-text);
+
+    background-image: url("/images/manero-icon-bg.svg");
+    margin-inline: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: min(var(--diameter), 180px);
+    height: min(var(--diameter), 180px);
+    display: grid;
+    place-items: center;
+    border-radius: 100px;
+    border: var(--outline-width) solid var(--color-bg);
+    outline: var(--outline-width) solid var(--color);
+    svg {
+      color: var(--icon-color);
+      width: var(--icon-size);
+      height: var(--icon-size);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.tags-container {
+  display: flex;
+  margin-inline: auto;
+  width: fit-content;
+  padding: 0;
+  list-style: none;
+  overflow-x: scroll;
+  padding-block: 1.5rem;
+  // Hide scrollbar for Chrome, Safari and Opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  // Hide scrollbar for IE, Edge and Firefox
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .tag-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p {
+      padding-top: 0.5rem;
+    }
+  }
+
+  .tag-circle {
+    background-color: var(--color-blue);
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+  }
+}
+
+.featured-products {
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1.5rem;
+    padding-top: 3rem;
+  }
+}
