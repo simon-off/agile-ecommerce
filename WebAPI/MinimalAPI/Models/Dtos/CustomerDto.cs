@@ -9,11 +9,10 @@ public record CustomerDto(
     string PhoneNumber
 )
 {
-    public CustomerDto(CustomerEntity entity) : this(
-        FirstName: entity.FirstName,
-        LastName: entity.LastName,
-        Email: entity.Email,
-        PhoneNumber: entity.PhoneNumber
-    )
-    { }
+    public static CustomerDto Create(CustomerEntity entity) => new(
+        entity.FirstName,
+        entity.LastName,
+        entity.Email,
+        entity.PhoneNumber
+    );
 }

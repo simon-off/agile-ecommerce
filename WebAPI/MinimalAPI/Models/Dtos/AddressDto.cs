@@ -8,10 +8,9 @@ public record AddressDto(
     string PostalCode
 )
 {
-    public AddressDto(AddressEntity entity) : this(
+    public static AddressDto Create(AddressEntity entity) => new(
         entity.StreetAddress,
         entity.City,
         entity.PostalCode
-    )
-    { }
+    );
 }

@@ -13,5 +13,5 @@ public class AddressEntity
     [Column(TypeName = "nvarchar(20)")]
     public required string PostalCode { get; set; }
 
-    public static implicit operator AddressDto(AddressEntity entity) => new(entity);
+    public static implicit operator AddressDto(AddressEntity entity) => AddressDto.Create(entity);
 }

@@ -18,5 +18,5 @@ public class OrderEntity
     public AddressEntity? Address { get; set; }
     public List<OrderItemEntity> Items { get; set; } = new();
 
-    public static implicit operator OrderDto(OrderEntity entity) => new(entity);
+    public static implicit operator OrderDto(OrderEntity entity) => OrderDto.Create(entity);
 }

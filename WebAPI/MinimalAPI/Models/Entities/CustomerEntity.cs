@@ -17,5 +17,5 @@ public class CustomerEntity
     public AddressEntity? Address;
     public List<OrderEntity> Orders = new();
 
-    public static implicit operator CustomerDto(CustomerEntity entity) => new(entity);
+    public static implicit operator CustomerDto(CustomerEntity entity) => CustomerDto.Create(entity);
 }

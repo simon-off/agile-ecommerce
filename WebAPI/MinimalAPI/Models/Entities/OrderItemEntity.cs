@@ -14,5 +14,5 @@ public class OrderItemEntity
     public SizeEntity? Size { get; set; }
     public required int Quantity { get; set; }
 
-    public static implicit operator OrderItemDto(OrderItemEntity entity) => new(entity);
+    public static implicit operator OrderItemDto(OrderItemEntity entity) => OrderItemDto.Create(entity);
 }

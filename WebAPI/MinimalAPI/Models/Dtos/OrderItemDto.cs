@@ -8,10 +8,9 @@ public record OrderItemDto(
     int Quantity
 )
 {
-    public OrderItemDto(OrderItemEntity entity) : this(
+    public static OrderItemDto Create(OrderItemEntity entity) => new(
         entity.ProductId,
         entity.SizeId,
         entity.Quantity
-    )
-    { }
+    );
 }

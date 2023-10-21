@@ -13,7 +13,7 @@ public record ProductDto(
     List<string> AvailableSizes
 )
 {
-    public ProductDto(ProductEntity entity) : this(
+    public static ProductDto Create(ProductEntity entity) => new(
         entity.Id,
         entity.Name,
         entity.Description,
@@ -22,6 +22,5 @@ public record ProductDto(
         entity.Tags.Select(x => x.Name).ToList(),
         entity.Images.Select(x => x.Path).ToList(),
         entity.AvailableSizes.Select(x => x.Name).ToList()
-        )
-    { }
+        );
 }

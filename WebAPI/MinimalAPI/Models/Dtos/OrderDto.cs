@@ -11,13 +11,12 @@ public record OrderDto(
     List<OrderItemDto> Items
 )
 {
-    public OrderDto(OrderEntity entity) : this(
+    public static OrderDto Create(OrderEntity entity) => new(
         entity.OrderDate,
         entity.Status?.Name,
         entity.TotalPrice,
-        entity.Customer == null ? null : new CustomerDto(entity.Customer),
-        entity.Customer == null || entity.Customer.Address == null ? null : new AddressDto(entity.Customer.Address),
-        entity.Items.Select(x => new OrderItemDto(x)).ToList()
-        )
-    { }
+        entity.Customer == null ? null : CustomerDto.Create(entity.Customer),
+        entity.Address == null ? null : AddressDto.Create(entity.Address),
+        entity.Items.Select(x => OrderItemDto.Create(x)).ToList()
+    );
 }

@@ -17,5 +17,5 @@ public class ProductEntity
     public List<ProductImageEntity> Images { get; set; } = new();
     public List<SizeEntity> AvailableSizes { get; set; } = new();
 
-    public static implicit operator ProductDto(ProductEntity entity) => new(entity);
+    public static implicit operator ProductDto(ProductEntity entity) => ProductDto.Create(entity);
 }
