@@ -14,3 +14,14 @@ public record OrderItemDto(
         entity.Quantity
     );
 }
+
+public static class OrderItemExtensions
+{
+    public static OrderItemEntity CreateEntity(this OrderItemDto dto, int orderId) => new()
+    {
+        OrderId = orderId,
+        ProductId = dto.ProductId,
+        SizeId = dto.SizeId,
+        Quantity = dto.Quantity
+    };
+}

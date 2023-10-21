@@ -14,3 +14,13 @@ public record AddressDto(
         entity.PostalCode
     );
 }
+
+public static class AddressExtensions
+{
+    public static AddressEntity CreateEntity(this AddressDto dto) => new()
+    {
+        StreetAddress = dto.StreetAddress,
+        City = dto.City,
+        PostalCode = dto.PostalCode
+    };
+}

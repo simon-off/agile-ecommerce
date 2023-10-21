@@ -81,42 +81,20 @@ static class OrdersHandler
             totalPrice = productEntity.Price * item.Quantity;
         }
 
-        var newAddressEntity = new AddressEntity
-        {
-            StreetAddress = newOrderDto.Address.StreetAddress,
-            City = newOrderDto.Address.City,
-            PostalCode = newOrderDto.Address.PostalCode
-        };
+        var newAddressEntity = newOrderDto.Address.CreateEntity();
         await db.Addresses.AddAsync(newAddressEntity);
 
-        var newCustomerEntity = new CustomerEntity
-        {
-            FirstName = newOrderDto.Customer.FirstName,
-            LastName = newOrderDto.Customer.LastName,
-            Email = newOrderDto.Customer.Email,
-            PhoneNumber = newOrderDto.Customer.PhoneNumber,
-        };
+        var newCustomerEntity = newOrderDto.Customer.CreateEntity();
         await db.Customers.AddAsync(newCustomerEntity);
         await db.SaveChangesAsync();
 
-        var newOrderEntity = new OrderEntity
-        {
-            TotalPrice = totalPrice,
-            CustomerId = newCustomerEntity.Id,
-            AddressId = newAddressEntity.Id,
-        };
+        var newOrderEntity = newOrderDto.CreateEntity(totalPrice, newCustomerEntity.Id, newAddressEntity.Id);
         await db.Orders.AddAsync(newOrderEntity);
         await db.SaveChangesAsync();
 
         foreach (var item in newOrderDto.Items)
         {
-            await db.OrderItems.AddAsync(new OrderItemEntity
-            {
-                OrderId = newOrderEntity.Id,
-                ProductId = item.ProductId,
-                SizeId = item.SizeId,
-                Quantity = item.Quantity
-            });
+            await db.OrderItems.AddAsync(item.CreateEntity(newOrderEntity.Id));
         }
         await db.SaveChangesAsync();
 

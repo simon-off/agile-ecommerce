@@ -16,3 +16,14 @@ public record CustomerDto(
         entity.PhoneNumber
     );
 }
+
+public static class CustomerExtensions
+{
+    public static CustomerEntity CreateEntity(this CustomerDto dto) => new()
+    {
+        FirstName = dto.FirstName,
+        LastName = dto.LastName,
+        Email = dto.Email,
+        PhoneNumber = dto.PhoneNumber
+    };
+}
