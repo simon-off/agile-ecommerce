@@ -63,7 +63,7 @@ static class OrdersHandler
             ? TypedResults.Ok(orders)
             : TypedResults.NotFound("Could not find any orders");
 
-    public static async Task<Results<Created, ValidationProblem, NotFound<string>>> Create(DataContext db, NewOrderDto newOrderDto)
+    public static async Task<Results<Created<OrderDto>, ValidationProblem, NotFound<string>>> Create(DataContext db, NewOrderDto newOrderDto)
     {
         decimal totalPrice = 0;
 
@@ -75,7 +75,7 @@ static class OrdersHandler
 
             if (productEntity is null)
             {
-                return TypedResults.NotFound("One of the products in the chosen size could not be found in the database");
+                return TypedResults.NotFound($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
             }
 
             totalPrice = productEntity.Price * item.Quantity;
@@ -97,6 +97,7 @@ static class OrdersHandler
             PhoneNumber = newOrderDto.Customer.PhoneNumber,
         };
         await db.Customers.AddAsync(newCustomerEntity);
+        await db.SaveChangesAsync();
 
         var newOrderEntity = new OrderEntity
         {
@@ -105,26 +106,23 @@ static class OrdersHandler
             AddressId = newAddressEntity.Id,
         };
         await db.Orders.AddAsync(newOrderEntity);
+        await db.SaveChangesAsync();
 
         foreach (var item in newOrderDto.Items)
         {
-            var newOrderItemEntity = new OrderItemEntity
+            await db.OrderItems.AddAsync(new OrderItemEntity
             {
                 OrderId = newOrderEntity.Id,
                 ProductId = item.ProductId,
                 SizeId = item.SizeId,
                 Quantity = item.Quantity
-            };
-            await db.OrderItems.AddAsync(newOrderItemEntity);
-            newOrderEntity.Items.Add(newOrderItemEntity);
+            });
         }
         await db.SaveChangesAsync();
 
-        // return TypedResults.Created($"/api/orders/{newOrderEntity.Id}", new OrderDto(newOrderEntity));
-        return TypedResults.Created($"/api/orders/{newOrderEntity.Id}");
+        return TypedResults.Created($"/api/orders/{newOrderEntity.Id}", OrderDto.Create(newOrderEntity));
     }
 }
-
 
 static class DbSetExtensions
 {
@@ -136,7 +134,7 @@ static class DbSetExtensions
             .Include(x => x.Category)
             .FirstOrDefaultAsync(x => x.Id == id)
             is ProductEntity entity
-            ? new ProductDto(entity)
+            ? ProductDto.Create(entity)
             : null;
 
     public static async Task<ProductDto[]> AllAsDtos(this DbSet<ProductEntity> products, string? category, string? tag) =>
@@ -147,14 +145,15 @@ static class DbSetExtensions
             .Include(x => x.Category)
             .Where(x => category == null || x.Category == null || x.Category.Name.ToLower() == category.ToLower())
             .Where(x => tag == null || x.Tags.Any(t => t.Name.ToLower() == tag.ToLower()))
-            .Select(x => new ProductDto(x))
+            .Select(x => ProductDto.Create(x))
             .ToArrayAsync();
 
     public static async Task<OrderDto[]> AllAsDtos(this DbSet<OrderEntity> orders) =>
-        await orders.Include(x => x.Customer)
+        await orders
+            .Include(x => x.Customer)
             .Include(x => x.Address)
             .Include(x => x.Status)
             .Include(x => x.Items)
-            .Select(x => new OrderDto(x))
+            .Select(x => OrderDto.Create(x))
             .ToArrayAsync();
 }
