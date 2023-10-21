@@ -16,6 +16,7 @@ public static class Seeder
         SeedImages(builder, numberOfProducts);
         SeedProductTags(builder, numberOfProducts);
         SeedProductSizes(builder, numberOfProducts);
+        SeedOrderStatuses(builder);
     }
 
     private static void SeedCategories(ModelBuilder builder)
@@ -136,5 +137,14 @@ public static class Seeder
         }
 
         builder.Entity("ProductSizes").HasData(productSizes);
+    }
+
+    private static void SeedOrderStatuses(ModelBuilder builder)
+    {
+        builder.Entity<OrderStatusEntity>().HasData(
+            new OrderStatusEntity { Id = 1, Name = "Processing" },
+            new OrderStatusEntity { Id = 2, Name = "Shipped" },
+            new OrderStatusEntity { Id = 3, Name = "Done" }
+        );
     }
 }

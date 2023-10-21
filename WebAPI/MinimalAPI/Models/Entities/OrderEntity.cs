@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using MinimalAPI.Models.Dtos;
 
 namespace MinimalAPI.Models.Entities;
 
@@ -8,22 +9,14 @@ public class OrderEntity
     public DateTime OrderDate { get; set; } = DateTime.Now;
 
     [Column(TypeName = "money")]
-    public decimal TotalPrice { get; set; }
-    public int StatusId { get; set; }
-    public StatusEntity? Status { get; set; }
-    public int? CustomerId { get; set; }
+    public required decimal TotalPrice { get; set; }
+    public int StatusId { get; set; } = 1;
+    public OrderStatusEntity? Status { get; set; }
+    public required int? CustomerId { get; set; }
     public CustomerEntity? Customer { get; set; }
+    public required int AddressId { get; set; }
+    public AddressEntity? Address { get; set; }
     public List<OrderItemEntity> Items { get; set; } = new();
-}
 
-public class OrderItemEntity
-{
-}
-
-public class CustomerEntity
-{
-}
-
-public class StatusEntity
-{
+    public static implicit operator OrderDto(OrderEntity entity) => new(entity);
 }

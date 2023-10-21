@@ -16,6 +16,11 @@ public class DataContext : IdentityDbContext<IdentityUser>
     public DbSet<ProductImageEntity> ProductImages => Set<ProductImageEntity>();
     public DbSet<SizeEntity> Sizes => Set<SizeEntity>();
     public DbSet<TagEntity> Tags => Set<TagEntity>();
+    public DbSet<AddressEntity> Addresses => Set<AddressEntity>();
+    public DbSet<CustomerEntity> Customers => Set<CustomerEntity>();
+    public DbSet<OrderItemEntity> OrderItems => Set<OrderItemEntity>();
+    public DbSet<OrderStatusEntity> OrderStatuses => Set<OrderStatusEntity>();
+    public DbSet<OrderEntity> Orders => Set<OrderEntity>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
