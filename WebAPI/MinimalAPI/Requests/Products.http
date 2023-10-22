@@ -1,0 +1,10 @@
+### Get all
+GET {{host}}/api/products
+
+### Get all filtered by category and tag
+GET {{host}}/api/products
+    ?category=shirt
+    &tag=kids
+
+### Get by id
+GET {{host}}/api/products/{{$randomInt 1 8}}

@@ -1,3 +1,4 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ public static class Endpoints
     }
 }
 
+// TODO: Updated return types for arrays from NotFound to OK or NoContent when query params are correct
+
 static class ProductsHandler
 {
     public static async Task<Results<Ok<ProductDto>, NotFound<string>>> GetById(DataContext db, int id) =>
@@ -29,12 +32,12 @@ static class ProductsHandler
         ? TypedResults.Ok(product)
         : TypedResults.NotFound($"Could not find product with id {id}");
 
-    public static async Task<Results<Ok<ProductDto[]>, NotFound<string>>> GetAll(DataContext db, [FromQuery] string? category, [FromQuery] string? tag) =>
-        await db.Products.AllAsDtos(category, tag)
-        is ProductDto[] products && products.Length > 0
-        ? TypedResults.Ok(products)
-        : TypedResults.NotFound(
-            $"Could not find any products{(category != null || tag != null ? " with that category and/or tag" : "")}");
+    public static async Task<Results<Ok<ProductDto[]>, NotFound<string>>> GetAll(DataContext db, string? category, string? tag) =>
+            await db.Products.AllAsDtos(category, tag)
+            is ProductDto[] products && products.Length > 0
+            ? TypedResults.Ok(products)
+            : TypedResults.NotFound(
+                $"Could not find any products{(category != null || tag != null ? " with that category and/or tag" : "")}");
 }
 
 static class CategoriesHandler
@@ -63,8 +66,17 @@ static class OrdersHandler
             ? TypedResults.Ok(orders)
             : TypedResults.NotFound("Could not find any orders");
 
-    public static async Task<Results<Created<OrderDto>, ValidationProblem, NotFound<string>>> Create(DataContext db, NewOrderDto newOrderDto)
+    public static async Task<Results<Created<OrderDto>, ValidationProblem, NotFound<string>>> Create(
+        DataContext db,
+        IValidator<NewOrderDto> validator,
+        NewOrderDto newOrderDto)
     {
+        var validation = await validator.ValidateAsync(newOrderDto);
+        if (!validation.IsValid)
+        {
+            return TypedResults.ValidationProblem(validation.ToDictionary());
+        }
+
         decimal totalPrice = 0;
 
         foreach (var item in newOrderDto.Items)

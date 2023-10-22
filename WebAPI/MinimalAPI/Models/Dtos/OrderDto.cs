@@ -3,6 +3,7 @@ using MinimalAPI.Models.Entities;
 namespace MinimalAPI.Models.Dtos;
 
 public record OrderDto(
+    int Id,
     DateTime OrderDate,
     string? OrderStatus,
     decimal TotalPrice,
@@ -12,6 +13,7 @@ public record OrderDto(
 )
 {
     public static OrderDto Create(OrderEntity entity) => new(
+        entity.Id,
         entity.OrderDate,
         entity.Status?.Name,
         entity.TotalPrice,
