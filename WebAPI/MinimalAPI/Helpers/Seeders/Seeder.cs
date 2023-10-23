@@ -60,7 +60,7 @@ public static class Seeder
 
     private static int SeedProducts(ModelBuilder builder)
     {
-        var seedData = JArray.Parse(File.ReadAllText(@"Helpers/Seeders/product-data.json"));
+        var seedData = JArray.Parse(File.ReadAllText(@"Data/product-data.json"));
         var products = new List<ProductEntity>();
 
         foreach (var item in seedData)

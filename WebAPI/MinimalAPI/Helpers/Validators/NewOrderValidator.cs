@@ -1,7 +1,7 @@
 using FluentValidation;
 using MinimalAPI.Models.Dtos;
 
-namespace MinimalAPI.Validators;
+namespace MinimalAPI.Helpers.Validators;
 
 public class NewOrderValidator : AbstractValidator<NewOrderDto>
 {

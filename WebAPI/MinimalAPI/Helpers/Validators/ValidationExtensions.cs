@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace MinimalAPI.Validators;
+namespace MinimalAPI.Helpers.Validators;
 
 public static class ValidationExtensions
 {

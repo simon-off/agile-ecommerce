@@ -1,10 +1,9 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Data;
+using MinimalAPI.Helpers.Extensions;
 using MinimalAPI.Models.Dtos;
-using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI;
 
@@ -12,8 +11,10 @@ public static class Endpoints
 {
     public static void Map(WebApplication app)
     {
+        app.MapGet("/error", ErrorHandler.Error);
+
         var api = app.MapGroup("/api");
-        api.MapGet("/products/", ProductsHandler.GetAll);
+        api.MapGet("/products", ProductsHandler.GetAll);
         api.MapGet("/products/{id}", ProductsHandler.GetById);
         api.MapGet("/categories", CategoriesHandler.GetAll);
         api.MapGet("/tags", TagsHandler.GetAll);
@@ -23,6 +24,11 @@ public static class Endpoints
 }
 
 // TODO: Updated return types for arrays from NotFound to OK or NoContent when query params are correct
+
+static class ErrorHandler
+{
+    public static IResult Error() => TypedResults.Problem();
+}
 
 static class ProductsHandler
 {
@@ -72,6 +78,7 @@ static class OrdersHandler
         NewOrderDto newOrderDto)
     {
         var validation = await validator.ValidateAsync(newOrderDto);
+
         if (!validation.IsValid)
         {
             return TypedResults.ValidationProblem(validation.ToDictionary());
@@ -112,38 +119,4 @@ static class OrdersHandler
 
         return TypedResults.Created($"/api/orders/{newOrderEntity.Id}", OrderDto.Create(newOrderEntity));
     }
-}
-
-static class DbSetExtensions
-{
-    public static async Task<ProductDto?> OneAsDto(this DbSet<ProductEntity> products, int id) =>
-        await products
-            .Include(x => x.Tags)
-            .Include(x => x.AvailableSizes)
-            .Include(x => x.Images)
-            .Include(x => x.Category)
-            .FirstOrDefaultAsync(x => x.Id == id)
-            is ProductEntity entity
-            ? ProductDto.Create(entity)
-            : null;
-
-    public static async Task<ProductDto[]> AllAsDtos(this DbSet<ProductEntity> products, string? category, string? tag) =>
-        await products
-            .Include(x => x.Tags)
-            .Include(x => x.AvailableSizes)
-            .Include(x => x.Images)
-            .Include(x => x.Category)
-            .Where(x => category == null || x.Category == null || x.Category.Name.ToLower() == category.ToLower())
-            .Where(x => tag == null || x.Tags.Any(t => t.Name.ToLower() == tag.ToLower()))
-            .Select(x => ProductDto.Create(x))
-            .ToArrayAsync();
-
-    public static async Task<OrderDto[]> AllAsDtos(this DbSet<OrderEntity> orders) =>
-        await orders
-            .Include(x => x.Customer)
-            .Include(x => x.Address)
-            .Include(x => x.Status)
-            .Include(x => x.Items)
-            .Select(x => OrderDto.Create(x))
-            .ToArrayAsync();
 }
