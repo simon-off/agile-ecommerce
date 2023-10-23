@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function Search() {
   const categories = useFetch(`${apiDomain.https}/api/categories`);
   const tags = useFetch(`${apiDomain.https}/api/tags`);
-  
+
   return (
     <div className="search-page">
       <ul className="tags-container">

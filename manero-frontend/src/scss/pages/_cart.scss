@@ -1,6 +1,10 @@
+@use "../core/breakpoints" as *;
+
 .cart-page {
   padding-block: 2rem;
   &.empty {
+    max-width: 400px;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -32,12 +36,27 @@
       justify-content: space-between;
     }
   }
+  .checkout-button-wrapper {
+    padding-inline: 1rem;
+    padding-top: 2rem;
+    @include sm {
+      .button {
+        width: fit-content;
+        margin-left: auto;
+      }
+    }
+  }
 }
 
 .cart-product-card {
   display: grid;
-  grid-template-columns: 100px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
+  & > a {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 1rem;
+  }
   .info {
     display: flex;
     flex-direction: column;

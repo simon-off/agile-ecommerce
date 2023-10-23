@@ -1,11 +1,12 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import ContactBurgerMenu from "./ContactBurgerMenu";
-import { ChevronLeft, ShoppingBag } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Navbar from "./Navbar";
+import CartPreviewButton from "../CartPreviewButton";
 
 const navbarRoutes = ["/", "/search", "/cart", "/wishlist", "/profile"];
 
-function LayoutMobile() {
+function LayoutMobile({ sidebarOpenState }) {
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -13,7 +14,7 @@ function LayoutMobile() {
       <header className="header mobile-header">
         {navbarRoutes.includes(location.pathname) ? (
           <>
-            <ContactBurgerMenu />
+            <ContactBurgerMenu sidebarOpenState={sidebarOpenState} />
             <Link to="/">
               <img className="logo" src="/images/manero-logo-mobile.svg" alt="" />
             </Link>
@@ -26,14 +27,12 @@ function LayoutMobile() {
             <h1>{location.pathname}</h1>
           </>
         )}
-        <Link to="/cart">
-          <ShoppingBag />
-        </Link>
+        <CartPreviewButton />
       </header>
       <main className="container">
         <Outlet />
       </main>
-      <footer>
+      <footer className="footer">
         <Navbar />
       </footer>
     </div>

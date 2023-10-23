@@ -2,9 +2,6 @@
   .product-card-image-wrapper {
     position: relative;
     .product-card-icons {
-      button {
-        all: unset;
-      }
       position: absolute;
       top: 1rem;
       right: 1rem;
@@ -12,6 +9,11 @@
       flex-direction: column;
       gap: 1rem;
       color: var(--color-text-light);
+
+      button {
+        all: unset;
+        cursor: pointer;
+      }
     }
   }
 

@@ -25,7 +25,7 @@ public class ProductEntity
             Name = entity.Name,
             Description = entity.Description,
             Price = entity.Price,
-            Category = entity.Category.Name,
+            Category = entity.Category?.Name,
             Tags = entity.Tags.Select(x => x.Name).ToList(),
             ImagePaths = entity.Images.Select(x => x.Path).ToList(),
             AvailableSizes = entity.AvailableSizes.Select(x => x.Name).ToList(),

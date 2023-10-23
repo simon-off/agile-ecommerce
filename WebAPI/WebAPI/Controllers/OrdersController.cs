@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
+using WebAPI.Interface.Repositories;
+using WebAPI.Interface.Services;
 using WebAPI.Models.Schemas;
 
 namespace WebAPI.Controllers;
@@ -9,11 +10,11 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class OrdersController : ControllerBase
 {
-    private readonly OrderService _orderService;
-    private readonly ProductRepo _productRepo;
-    private readonly SizeRepo _sizeRepo;
+    private readonly IOrderService _orderService;
+    private readonly IProductRepo _productRepo;
+    private readonly ISizeRepo _sizeRepo;
 
-    public OrdersController(OrderService orderService, ProductService productService, SizeRepo sizeRepo, ProductRepo productRepo)
+    public OrdersController(IOrderService orderService, ProductService productService, ISizeRepo sizeRepo, IProductRepo productRepo)
     {
         _orderService = orderService;
         _sizeRepo = sizeRepo;

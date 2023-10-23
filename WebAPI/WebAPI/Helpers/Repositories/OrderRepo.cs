@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using WebAPI.Data;
+using WebAPI.Interface.Repositories;
 using WebAPI.Models.Entities;
 
 namespace WebAPI.Helpers.Repositories;
 
-public class OrderRepo : GenericRepo<OrderEntity>
+public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
 {
     private readonly DataContext _context;
     public OrderRepo(DataContext context) : base(context)

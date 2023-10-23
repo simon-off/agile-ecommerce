@@ -1,4 +1,11 @@
+@use "../core/breakpoints" as *;
+
 .product-details-page {
+  @include md {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
   h3 {
     font-weight: 400;
     padding-bottom: 0.5rem;

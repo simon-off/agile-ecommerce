@@ -1,8 +1,20 @@
 import { Heart, ShoppingBag, Star } from "lucide-react";
 import { apiDomain } from "../helpers/api-domain";
 import { Link } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 export default function ProductGridCard({ product }) {
+  const { addToCart, isInCart, removeProductFromCart } = useCart();
+
+  const handleShoppingBagClick = (e) => {
+    e.preventDefault();
+    if (isInCart(product.id)) {
+      removeProductFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
+
   return (
     <Link to={`/products/${product.id}`}>
       <div className="product-grid-card">
@@ -12,8 +24,10 @@ export default function ProductGridCard({ product }) {
             <button>
               <Heart />
             </button>
-            <button>
-              <ShoppingBag />
+            <button onClick={handleShoppingBagClick}>
+              <ShoppingBag
+                style={{ color: isInCart(product.id) ? "green" : "var(--color-succes)" }}
+              />
             </button>
           </div>
         </div>

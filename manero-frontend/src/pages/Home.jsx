@@ -5,13 +5,26 @@ import useFetch from "../hooks/useFetch";
 import DiscountCard from "../components/DiscountCard";
 import ProductGridCard from "../components/ProductGridCard";
 import ProductListCard from "../components/ProductListCard";
+import useWindowResize from "../hooks/useWindowResize";
 
 export default function Home() {
-  const products = useFetch(`${apiDomain.https}/api/products`);
+  // const products = useFetch(`${apiDomain.https}/api`);
+  const productsFeatured = useFetch(`${apiDomain.https}/api/products?tagName=featured`);
+  const productsBestSeller = useFetch(`${apiDomain.https}/api/products`);
   const tags = useFetch(`${apiDomain.https}/api/tags`);
 
-  const productsToDisplayGrid = products.data?.slice(0, 4);
-  // const productsToDisplayList = products.data?.slice(0, 7);
+  const productsToDisplayGrid = productsFeatured.data?.slice(0, 4);
+  let productsToDisplayList = productsBestSeller.data;
+  // Use for testing, to apply different styling depending on screen size
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      productsToDisplayList = productsBestSeller.data?.slice(0, 3);
+    } else {
+      productsToDisplayList = productsBestSeller.data;
+    }
+  };
+
+  useWindowResize(handleResize, true);
 
   return (
     <>
@@ -47,15 +60,11 @@ export default function Home() {
           <Link to={"/products?tagName=bestseller"}>view all</Link>
         </div>
         <div className="product-list">
-          {products?.data?.map((product) => (
+          {productsToDisplayList?.map((product) => (
             <ProductListCard key={product.id} product={product} />
           ))}
         </div>
       </section>
-
-      {/* {products.isLoading && <h2>Loading</h2>}
-      {products.error && <h2>Error</h2>}
-       */}
     </>
   );
 }

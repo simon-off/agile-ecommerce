@@ -1,11 +1,11 @@
-button,
 .button {
   background-color: transparent;
   border: none;
   box-sizing: border-box;
+  text-decoration: none;
   cursor: pointer;
   border-radius: 2rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   width: 100%;
   display: flex;
   gap: 0.5rem;

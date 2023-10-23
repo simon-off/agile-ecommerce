@@ -1,19 +1,20 @@
-﻿using WebAPI.Helpers.Repositories;
+﻿using WebAPI.Interface.Repositories;
+using WebAPI.Interface.Services;
 using WebAPI.Models.Dtos;
 using WebAPI.Models.Entities;
 using WebAPI.Models.Schemas;
 
 namespace WebAPI.Helpers.Services;
 
-public class OrderService
+public class OrderService : IOrderService
 {
-    private readonly OrderRepo _orderRepo;
-    private readonly CustomerService _customerService;
-    private readonly OrderItemRepo _orderItemRepo;
-    private readonly ProductRepo _productRepo;
-    private readonly AddressService _addressService;
+    private readonly IOrderRepo _orderRepo;
+    private readonly ICustomerService _customerService;
+    private readonly IOrderItemRepo _orderItemRepo;
+    private readonly IProductRepo _productRepo;
+    private readonly IAddressService _addressService;
 
-    public OrderService(OrderRepo orderRepo, CustomerService customerService, OrderItemRepo orderItemRepo, ProductRepo productRepo, AddressService addressService)
+    public OrderService(IOrderRepo orderRepo, ICustomerService customerService, IOrderItemRepo orderItemRepo, IProductRepo productRepo, IAddressService addressService)
     {
         _orderRepo = orderRepo;
         _customerService = customerService;
@@ -36,7 +37,7 @@ public class OrderService
         return orderEntity;
     }
 
-    private async Task<OrderEntity> CreateOrderWithCustomerAsync(OrderCustomerCreateSchema schema, CustomerEntity customer)
+    public async Task<OrderEntity> CreateOrderWithCustomerAsync(OrderCustomerCreateSchema schema, CustomerEntity customer)
     {
         var orderEntity = new OrderEntity
         {
@@ -71,7 +72,7 @@ public class OrderService
         return totalPrice;
     }
 
-    private async Task<List<OrderItemEntity>> CreateOrderItemsAsync(List<OrderItemSchema> orderItemSchemas, int orderId)
+    public async Task<List<OrderItemEntity>> CreateOrderItemsAsync(List<OrderItemSchema> orderItemSchemas, int orderId)
     {
         List<OrderItemEntity> orderItems = new();
 

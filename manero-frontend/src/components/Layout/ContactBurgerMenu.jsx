@@ -1,17 +1,16 @@
 import { ArrowRight, Mail, MapPin, Menu, PhoneCall } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function ContactBurgerMenu() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+function ContactBurgerMenu({ sidebarOpenState }) {
+  const [sidebarOpen, setSidebarOpen] = sidebarOpenState;
   const handleBurgerClick = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   const handleBackgroundClick = (e) => {
-    if (e.target.classList.contains("open")) setSidebarOpen();
+    if (e.target.classList.contains("open")) setSidebarOpen(false);
   };
+
   return (
     <>
       <button onClick={handleBurgerClick} className="contact-burger-button">

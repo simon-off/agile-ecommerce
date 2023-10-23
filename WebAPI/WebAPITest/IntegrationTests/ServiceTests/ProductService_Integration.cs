@@ -5,16 +5,16 @@ using WebAPI.Helpers.Services;
 using WebAPI.Models.Entities;
 using WebAPITest.Helpers;
 
-namespace WebAPITest.ServiceTests;
+namespace WebAPITest.IntegrationTests.ServiceTests;
 
 [Collection("Database collection")]
-public class ProductServiceTests
+public class ProductService_Integration
 {
     private readonly DataContext _context;
     private readonly ProductRepo _productRepo;
     private readonly ProductService _productService;
 
-    public ProductServiceTests(DatabaseFixture fixture)
+    public ProductService_Integration(DatabaseFixture fixture)
     {
         _context = fixture.CreateContext();
         _productRepo = new ProductRepo(_context);

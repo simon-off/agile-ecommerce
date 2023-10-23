@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAPI.Helpers.Services;
+using WebAPI.Interface.Services;
 
 namespace WebAPI.Controllers;
 
@@ -7,9 +7,9 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class CategoriesController : ControllerBase
 {
-    private readonly CategoryService _categoryService;
+    private readonly ICategoryService _categoryService;
 
-    public CategoriesController(CategoryService categoryService)
+    public CategoriesController(ICategoryService categoryService)
     {
         _categoryService = categoryService;
     }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAPI.Helpers.Services;
+using WebAPI.Interface.Services;
 
 namespace WebAPI.Controllers;
 
@@ -7,9 +7,9 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class TagsController : ControllerBase
 {
-    private readonly TagService _tagService;
+    private readonly ITagService _tagService;
 
-    public TagsController(TagService tagService)
+    public TagsController(ITagService tagService)
     {
         _tagService = tagService;
     }

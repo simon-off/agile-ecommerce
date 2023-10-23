@@ -55,6 +55,12 @@
       aspect-ratio: 1/1;
     }
   }
+  @include md {
+    &:nth-child(5n) {
+      aspect-ratio: 2/1;
+      grid-column: span 2;
+    }
+  }
 
   h2 {
     padding: 1rem;

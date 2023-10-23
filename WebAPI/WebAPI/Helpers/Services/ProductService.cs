@@ -1,17 +1,27 @@
 ﻿using System.Linq.Expressions;
-using WebAPI.Helpers.Repositories;
+using WebAPI.Interface.Repositories;
+using WebAPI.Interface.Services;
 using WebAPI.Models.Dtos;
 using WebAPI.Models.Entities;
 
 namespace WebAPI.Helpers.Services;
 
-public class ProductService
+public class ProductService : IProductService
 {
-    private readonly ProductRepo _productRepo;
+    private readonly IProductRepo _productRepo;
 
-    public ProductService(ProductRepo productRepo)
+    public ProductService(IProductRepo productRepo)
     {
         _productRepo = productRepo;
+    }
+    public async Task<ProductDto?> GetById(int id)
+    {
+        var entity = await _productRepo.GetAsync(x => x.Id == id);
+
+        if (entity == null)
+            return null;
+
+        return entity;
     }
 
     public async Task<ProductDto?> GetById(int id)
