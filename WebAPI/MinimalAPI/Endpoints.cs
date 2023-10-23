@@ -30,18 +30,18 @@ public static class Endpoints
 
 static class ProductsHandler
 {
-    public static async Task<Results<Ok<ProductDto>, NotFound<string>>> GetById(DataContext db, int id) =>
+    public static async Task<IResult> GetById(DataContext db, int id) =>
         await db.Products.OneAsDto(id)
         is ProductDto product
         ? TypedResults.Ok(product)
         : TypedResults.NotFound($"Could not find product with id {id}");
 
-    public static async Task<Results<Ok<ProductDto[]>, NotFound<string>>> GetAll(DataContext db, string? category, string? tag) =>
-            await db.Products.AllAsDtos(category, tag)
-            is ProductDto[] products && products.Length > 0
-            ? TypedResults.Ok(products)
-            : TypedResults.NotFound(
-                $"Could not find any products{(category != null || tag != null ? " with that category and/or tag" : "")}");
+    public static async Task<IResult> GetAll(DataContext db, string? category, string? tag) =>
+        await db.Products.AllAsDtos(category, tag)
+        is ProductDto[] products && products.Length > 0
+        ? TypedResults.Ok(products)
+        : TypedResults.NotFound(
+            $"Could not find any products{(category != null || tag != null ? " with that category and/or tag" : "")}");
 }
 
 static class CategoriesHandler
@@ -64,15 +64,13 @@ static class TagsHandler
 
 static class OrdersHandler
 {
-    public static async Task<Results<Ok<OrderDto[]>, NotFound<string>>> GetAll(DataContext db) =>
+    public static async Task<IResult> GetAll(DataContext db) =>
         await db.Orders.AllAsDtos()
             is OrderDto[] orders && orders.Length > 0
             ? TypedResults.Ok(orders)
             : TypedResults.NotFound("Could not find any orders");
 
-    public static async Task<Results<Created<OrderDto>, ValidationProblem, NotFound<string>>> Create(
-        DataContext db,
-        NewOrderDto newOrderDto)
+    public static async Task<IResult> Create(DataContext db, NewOrderDto newOrderDto)
     {
         decimal totalPrice = 0;
 
@@ -86,7 +84,6 @@ static class OrdersHandler
             {
                 return TypedResults.NotFound($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
             }
-
             totalPrice = productEntity.Price * item.Quantity;
         }
 
