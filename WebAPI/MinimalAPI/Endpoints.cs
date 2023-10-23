@@ -1,33 +1,31 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Data;
 using MinimalAPI.Helpers.Extensions;
+using MinimalAPI.Helpers.Validators;
 using MinimalAPI.Models.Dtos;
 
 namespace MinimalAPI;
+
+
+// TODO: Updated return types for arrays from NotFound to OK or NoContent when query params are correct
+
 
 public static class Endpoints
 {
     public static void Map(WebApplication app)
     {
-        app.MapGet("/error", ErrorHandler.Error);
-
         var api = app.MapGroup("/api");
         api.MapGet("/products", ProductsHandler.GetAll);
         api.MapGet("/products/{id}", ProductsHandler.GetById);
         api.MapGet("/categories", CategoriesHandler.GetAll);
         api.MapGet("/tags", TagsHandler.GetAll);
         api.MapGet("/orders", OrdersHandler.GetAll);
-        api.MapPost("/orders", OrdersHandler.Create);
+        api.MapPost("/orders", OrdersHandler.Create).AddEndpointFilter<ValidationFilter<NewOrderDto>>();
     }
-}
-
-// TODO: Updated return types for arrays from NotFound to OK or NoContent when query params are correct
-
-static class ErrorHandler
-{
-    public static IResult Error() => TypedResults.Problem();
 }
 
 static class ProductsHandler
@@ -74,16 +72,8 @@ static class OrdersHandler
 
     public static async Task<Results<Created<OrderDto>, ValidationProblem, NotFound<string>>> Create(
         DataContext db,
-        IValidator<NewOrderDto> validator,
         NewOrderDto newOrderDto)
     {
-        var validation = await validator.ValidateAsync(newOrderDto);
-
-        if (!validation.IsValid)
-        {
-            return TypedResults.ValidationProblem(validation.ToDictionary());
-        }
-
         decimal totalPrice = 0;
 
         foreach (var item in newOrderDto.Items)
