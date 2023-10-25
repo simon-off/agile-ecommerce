@@ -3,7 +3,7 @@ GET {{host}}/api/products
 
 ### Get all filtered by category and tag
 GET {{host}}/api/products
-    ?category=shirt
+    ?category=shirts
     &tag=kids
 
 ### Get by id

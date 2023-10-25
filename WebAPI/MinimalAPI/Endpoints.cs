@@ -1,7 +1,4 @@
-using FluentValidation;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Data;
 using MinimalAPI.Helpers.Extensions;
@@ -9,10 +6,6 @@ using MinimalAPI.Helpers.Validators;
 using MinimalAPI.Models.Dtos;
 
 namespace MinimalAPI;
-
-
-// TODO: Updated return types for arrays from NotFound to OK or NoContent when query params are correct
-
 
 public static class Endpoints
 {
@@ -37,42 +30,29 @@ static class ProductsHandler
         : TypedResults.NotFound($"Could not find product with id {id}");
 
     public static async Task<IResult> GetAll(DataContext db, string? category, string? tag) =>
-        await db.Products.AllAsDtos(category, tag)
-        is ProductDto[] products && products.Length > 0
-        ? TypedResults.Ok(products)
-        : TypedResults.NotFound(
-            $"Could not find any products{(category != null || tag != null ? " with that category and/or tag" : "")}");
+        TypedResults.Ok(await db.Products.AllAsDtos(category, tag));
 }
 
 static class CategoriesHandler
 {
     public static async Task<Results<Ok<string[]>, NotFound<string>>> GetAll(DataContext db) =>
-        await db.Categories.Select(x => x.Name).ToArrayAsync()
-        is string[] categories
-        ? TypedResults.Ok(categories)
-        : TypedResults.NotFound("Could not find any categories");
+        TypedResults.Ok(await db.Categories.Select(x => x.Name).ToArrayAsync());
 }
 
 static class TagsHandler
 {
     public static async Task<Results<Ok<string[]>, NotFound<string>>> GetAll(DataContext db) =>
-        await db.Tags.Select(x => x.Name).ToArrayAsync()
-        is string[] tags
-        ? TypedResults.Ok(tags)
-        : TypedResults.NotFound("Could not find any tags");
+        TypedResults.Ok(await db.Tags.Select(x => x.Name).ToArrayAsync());
 }
 
 static class OrdersHandler
 {
     public static async Task<IResult> GetAll(DataContext db) =>
-        await db.Orders.AllAsDtos()
-            is OrderDto[] orders && orders.Length > 0
-            ? TypedResults.Ok(orders)
-            : TypedResults.NotFound("Could not find any orders");
+        TypedResults.Ok(await db.Orders.AllAsDtos());
 
     public static async Task<IResult> Create(DataContext db, NewOrderDto newOrderDto)
     {
-        decimal totalPrice = 0;
+        decimal totalPrice = 0m;
 
         foreach (var item in newOrderDto.Items)
         {
