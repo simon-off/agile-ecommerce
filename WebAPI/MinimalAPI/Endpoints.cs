@@ -35,13 +35,13 @@ static class ProductsHandler
 
 static class CategoriesHandler
 {
-    public static async Task<Results<Ok<string[]>, NotFound<string>>> GetAll(DataContext db) =>
+    public static async Task<IResult> GetAll(DataContext db) =>
         TypedResults.Ok(await db.Categories.Select(x => x.Name).ToArrayAsync());
 }
 
 static class TagsHandler
 {
-    public static async Task<Results<Ok<string[]>, NotFound<string>>> GetAll(DataContext db) =>
+    public static async Task<IResult> GetAll(DataContext db) =>
         TypedResults.Ok(await db.Tags.Select(x => x.Name).ToArrayAsync());
 }
 
