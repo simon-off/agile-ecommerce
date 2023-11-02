@@ -1,0 +1,21 @@
+.payment-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #864d7d;
+  color: var(--color-bg);
+  border-radius: 2rem;
+  padding: 1.5rem;
+  width: 18rem;
+
+  &:nth-child(even) {
+    background-color: #69864d;
+  }
+
+  .card-details {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    font-size: 10px;
+  }
+}

@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "../hooks/useCart";
+import ImageSlider from "../components/ImageSlider";
 
 export default function ProductDetails() {
   const [amount, setAmount] = useState(1);
@@ -26,18 +27,7 @@ export default function ProductDetails() {
 
   return (
     <div className="product-details-page">
-      <div className="image-slider">
-        <div className="image-slider-images">
-          {product.data.imagePaths.map((path, i) => (
-            <img key={i} src={apiDomain.https + path} alt="" />
-          ))}
-        </div>
-        <div className="image-slider-buttons">
-          {product.data.imagePaths.map((_, i) => (
-            <button key={i}>knapp!</button>
-          ))}
-        </div>
-      </div>
+      <ImageSlider imagePaths={product.data.imagePaths} altText={product.data.name} />
       <div className="product-details">
         <div className="product-name">
           <h2>{product.data.name}</h2>
@@ -48,7 +38,7 @@ export default function ProductDetails() {
             <button onClick={() => amount > 1 && setAmount(amount - 1)}>
               <Minus size={16} />
             </button>
-            {amount}
+            <span>{amount}</span>
             <button onClick={() => setAmount(amount + 1)}>
               <Plus size={16} />
             </button>

@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Helpers.Seeders;
 using WebAPI.Models.Entities;
+using WebAPI.Models.Identity;
 
 namespace WebAPI.Data;
 
-public class DataContext : IdentityDbContext<IdentityUser>
+public class DataContext : IdentityDbContext<AppUser>
 {
     public DataContext(DbContextOptions options) : base(options)
     {
@@ -22,6 +23,7 @@ public class DataContext : IdentityDbContext<IdentityUser>
     public DbSet<OrderEntity> Orders { get; set; }
     public DbSet<OrderItemEntity> OrderItems { get; set; }
     public DbSet<StatusEntity> Statuses { get; set; }
+    public DbSet<BankCardEntity> BankCards { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

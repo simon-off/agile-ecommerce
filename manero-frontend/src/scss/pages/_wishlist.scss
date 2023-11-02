@@ -1,0 +1,43 @@
+@use "../core/breakpoints" as *;
+.wishlist-page {
+  &.empty {
+    padding-top: 2rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 2rem;
+    padding-inline: 1rem;
+    h2 {
+      padding-bottom: 0.25rem;
+    }
+    p {
+      margin-inline: auto;
+      max-width: 240px;
+    }
+    @include sm {
+      .button {
+        width: fit-content;
+      }
+    }
+  }
+
+  .wishlist-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include xl {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    a {
+      border-bottom: 2px solid var(--color-blue);
+      padding-inline: var(--section-padding-inline);
+      padding-block: 2rem;
+    }
+  }
+}

@@ -1,7 +1,9 @@
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using WebAPI.Data;
 using WebAPI.Helpers.Repositories;
 using WebAPI.Helpers.Services;
+using WebAPI.Models.Dtos;
 using WebAPI.Models.Entities;
 using WebAPITest.Helpers;
 
@@ -45,25 +47,25 @@ public class ProductService_Integration
     [InlineData("Shirts", "Kids", 0)]
     [InlineData("Pants", "Unisex", 1)]
     [InlineData("Shirts", "Sport", 1)]
-    public async Task GetAllFilteredAsync_ShouldReturnAllRelevantProducts(string categoryName, string tagName, int expectedAmount)
+    public async Task GetAllAsync_ShouldReturnAllRelevantProducts(string categoryName, string tagName, int expectedAmount)
     {
-        // Assert
-        List<Expression<Func<ProductEntity, bool>>> filters = new();
-
-        // Add tag based filtering if query isn't empty
-        if (!string.IsNullOrWhiteSpace(tagName))
-            filters.Add(x =>
-                x.Tags.Any(tag => tag.Name.ToLower() == tagName.ToLower()));
-
-        // Add category based filtering if query isn't empty
-        if (!string.IsNullOrWhiteSpace(categoryName))
-            filters.Add(x =>
-                x.Category.Name.ToLower() == categoryName.ToLower());
-
         // Act
-        var result = await _productService.GetAllFilteredAsync(filters);
+        var result = await _productService.GetAllAsync(tagName, categoryName);
 
         // Assert
         Assert.Equal(expectedAmount, result.Count);
+    }
+
+    [Theory]
+    // Test orderBy
+    [InlineData("lowestprice", 2)]
+    [InlineData("highestprice", 3)]
+    public async Task GetAllAsync_ShouldReturnOrderedProducts(string orderBy, int expectedFirstProductId)
+    {
+        // Act
+        var result = await _productService.GetAllAsync(orderBy: orderBy);
+
+        // Assert
+        Assert.Equal(expectedFirstProductId, result.First().Id);
     }
 }

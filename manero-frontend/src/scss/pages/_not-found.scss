@@ -1,0 +1,16 @@
+@use "../core/breakpoints" as *;
+
+.not-found-page {
+  padding-block: 2rem;
+  padding-inline: var(--section-padding-inline);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  @include sm {
+    .button {
+      width: fit-content;
+    }
+  }
+}

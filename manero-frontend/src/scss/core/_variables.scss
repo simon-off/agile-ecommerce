@@ -1,3 +1,5 @@
+@use "breakpoints" as *;
+
 :root {
   // Status colors
   --color-danger: #f4303c;
@@ -12,12 +14,18 @@
   --color-blue-light: #f5f8fd;
   --color-olive: #69864d;
   --color-text-faded: #9da2af;
+  --color-text-facebook: #3b5998;
+  --color-text-twitter: #1da1f2;
   // Use when style needs red or yellow but it's NOT a warning or error.
   --color-red: var(--color-danger);
   --color-yellow: var(--color-warning);
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
   // Sizes
   --max-content-width: 1280px;
+  --section-padding-inline: 1.25rem;
+  @media (min-width: calc(1280px + 1.25rem)) {
+    --section-padding-inline: 0;
+  }
   // Font sizes
   --font-size-xs: 0.75rem; // 12px
   --font-size-s: 0.875rem; // 14px

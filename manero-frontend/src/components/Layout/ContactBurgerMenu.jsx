@@ -21,10 +21,9 @@ function ContactBurgerMenu({ sidebarOpenState }) {
         className={`${sidebarOpen ? "open" : "closed"} contact-bg`}
       ></div>
       <div className={`${sidebarOpen ? "open" : "closed"} contact-sidebar`}>
-        <div className="container">
+        <div className="contact-container">
           <div className="content-top">
             <h2>Contact us</h2>
-
             <Link>
               <div className="sidebar-icon">
                 <MapPin className="icon" />

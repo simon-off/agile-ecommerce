@@ -47,7 +47,7 @@ public class SeederTestDatabase
                 Name = "Blue Pants",
                 Description = "A pair of blue pants.",
                 CategoryId = 1,
-                Price = 59.99m
+                Price = 19.99m
             },
             new ProductEntity
             {
@@ -55,7 +55,7 @@ public class SeederTestDatabase
                 Name = "Blue shirt",
                 Description = "A blue shirt.",
                 CategoryId = 2,
-                Price = 59.99m
+                Price = 69.99m
             },
             new ProductEntity
             {

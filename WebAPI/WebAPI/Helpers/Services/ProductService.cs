@@ -14,7 +14,8 @@ public class ProductService : IProductService
     {
         _productRepo = productRepo;
     }
-    public async Task<ProductDto?> GetById(int id)
+
+    public async Task<ProductDto?> GetByIdAsync(int id)
     {
         var entity = await _productRepo.GetAsync(x => x.Id == id);
 
@@ -24,31 +25,13 @@ public class ProductService : IProductService
         return entity;
     }
 
-    public async Task<ProductDto?> GetById(int id)
-    {
-        var entity = await _productRepo.GetAsync(x => x.Id == id);
-
-        if (entity == null)
-            return null;
-
-        return entity;
-    }
-
-    public async Task<List<ProductDto>> GetAllAsync()
+    public async Task<List<ProductDto>> GetAllAsync(
+        string? tagName = null,
+        string? categoryName = null,
+        string? orderBy = null)
     {
         var dtos = new List<ProductDto>();
-        var entities = await _productRepo.GetAllAsync();
-
-        foreach (var entity in entities)
-            dtos.Add(entity);
-
-        return dtos;
-    }
-
-    public async Task<List<ProductDto>> GetAllFilteredAsync(List<Expression<Func<ProductEntity, bool>>> predicates)
-    {
-        var dtos = new List<ProductDto>();
-        var entities = await _productRepo.GetAllAsync(predicates);
+        var entities = await _productRepo.GetAllAsync(tagName, categoryName, orderBy);
 
         foreach (var entity in entities)
             dtos.Add(entity);

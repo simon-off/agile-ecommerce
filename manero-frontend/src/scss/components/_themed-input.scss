@@ -1,0 +1,41 @@
+.themed-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  input {
+    width: 100%;
+    border-radius: 4rem;
+    border: 2px solid var(--color-blue);
+    padding: 0.75rem 1.5rem;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 10px var(--color-blue);
+    }
+  }
+  .label {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    position: absolute;
+    top: -0.75em;
+    left: 1rem;
+    background-color: var(--color-bg);
+    padding-inline: 0.5rem;
+    color: var(--color-text-light);
+  }
+  .icon {
+    position: absolute;
+    right: 1rem;
+    background-color: var(--color-bg);
+  }
+  button {
+    background-color: transparent;
+    border: none;
+    border-radius: 5rem;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}

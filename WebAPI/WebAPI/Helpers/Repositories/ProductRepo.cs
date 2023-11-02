@@ -25,38 +25,23 @@ public class ProductRepo : GenericRepo<ProductEntity>, IProductRepo
             .FirstOrDefaultAsync(predicate);
     }
 
-    public override async Task<List<ProductEntity>> GetAllAsync()
-    {
-        return await _context.Products
-            .Include(x => x.Tags)
-            .Include(x => x.Category)
-            .Include(x => x.Images)
-            .Include(x => x.AvailableSizes)
-            .ToListAsync();
-    }
-
-    public override async Task<List<ProductEntity>> GetAllAsync(Expression<Func<ProductEntity, bool>> predicate)
-    {
-        return await _context.Products
-            .Include(x => x.Tags)
-            .Include(x => x.Category)
-            .Include(x => x.Images)
-            .Include(x => x.AvailableSizes)
-            .Where(predicate)
-            .ToListAsync();
-    }
-    public async Task<List<ProductEntity>> GetAllAsync(List<Expression<Func<ProductEntity, bool>>> predicates)
+    public async Task<List<ProductEntity>> GetAllAsync(string? tagName, string? categoryName, string? orderBy)
     {
         var query = _context.Products
             .Include(x => x.Tags)
             .Include(x => x.Category)
             .Include(x => x.Images)
             .Include(x => x.AvailableSizes)
+            .Where(x => string.IsNullOrWhiteSpace(tagName) || x.Tags.Any(t => t.Name.ToLower() == tagName.ToLower()))
+            .Where(x => string.IsNullOrWhiteSpace(categoryName) || x.Category.Name.ToLower() == categoryName.ToLower())
             .AsQueryable();
-            
-        // Loops through all filters to make it possible to use multiple predicates in one method
-        foreach (var predicate in predicates)
-            query = query.Where(predicate);
+
+        query = orderBy?.ToLower() switch
+        {
+            "lowestprice" => query.OrderBy(x => (double)x.Price),
+            "highestprice" => query.OrderByDescending(x => (double)x.Price),
+            _ => query.Select(x => x)
+        };
 
         return await query.ToListAsync();
     }

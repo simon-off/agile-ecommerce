@@ -21,9 +21,6 @@ public class TagsController : ControllerBase
         {
             var tags = await _tagService.GetAllAsync();
 
-            if (tags == null || !tags.Any())
-                return NotFound("Could not find any categories.");
-
             return Ok(tags);
         }
         catch

@@ -1,6 +1,7 @@
 .discount-card {
   background-color: var(--color-blue);
-  margin: 0 1.5rem;
+
+  margin-inline: var(--section-padding-inline);
   height: 11rem;
   display: flex;
   justify-content: center;

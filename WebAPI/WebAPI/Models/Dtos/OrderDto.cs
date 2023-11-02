@@ -9,4 +9,8 @@ public class OrderDto
     public string? LastName { get; set; }
     public string? Email { get; set; }
     public List<OrderItemDto> Items { get; set; } = new();
+    public required string StreetName { get; set; }
+    public required string City { get; set; }
+    public required string PostalCode { get; set; }
+    public string? OrderComment { get; set; }
 }

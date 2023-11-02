@@ -27,7 +27,7 @@ export default function Cart() {
     <div className="cart-page not-empty">
       <div className="cart">
         {cart.map((cartItem) => (
-          <CartProductCard key={cartItem.id + cartItem.size} cartItem={cartItem} />
+          <CartProductCard key={cartItem.id} cartItem={cartItem} />
         ))}
       </div>
       <div className="total">

@@ -1,0 +1,101 @@
+@use "../core/breakpoints" as *;
+
+.checkout-page {
+  h2 {
+    font-weight: 400;
+  }
+  p {
+    color: var(--color-text-light);
+  }
+
+  .container-top {
+    .heading {
+      padding: var();
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: var(--section-padding-inline);
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem;
+
+      span {
+        font-size: var(--font-size-l);
+        font-weight: 400;
+        color: var(--color-text);
+      }
+    }
+
+    .specification {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-blue-light);
+      padding-inline: var(--section-padding-inline);
+      padding-block: 1rem;
+      border-top: 4px solid var(--color-blue);
+      border-bottom: 4px solid var(--color-blue);
+
+      .checkout-product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 0.25rem;
+        color: var(--color-text-light);
+      }
+    }
+    a {
+      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid var(--color-blue);
+      padding-inline: var(--section-padding-inline);
+      padding-block: 1rem;
+      &.error {
+        color: var(--color-danger);
+      }
+    }
+  }
+
+  .container-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-inline: var(--section-padding-inline);
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+
+    .comment-field {
+      position: relative;
+      width: 100%;
+      border-radius: 1rem;
+      border: 2px solid var(--color-blue);
+      min-height: 10rem;
+
+      input {
+        all: unset;
+        padding: 1.5rem 1rem 0rem 2.3rem;
+        color: var(--color-text-light);
+        font-weight: 600;
+      }
+
+      label {
+        background-color: white;
+        margin: 100;
+        position: absolute;
+        top: -14px;
+        left: 1rem;
+        padding-inline: 20px;
+        color: var(--color-bg-grey);
+      }
+    }
+    .order-button {
+      @include sm {
+        .button {
+          width: fit-content;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

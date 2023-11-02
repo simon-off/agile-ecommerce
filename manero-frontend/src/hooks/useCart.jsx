@@ -1,10 +1,12 @@
 import { createContext, useContext, useState } from "react";
 import CartItem from "../models/CartItem";
+import { useToast } from "./useToast";
 
 const CartContext = createContext(null);
 
 export function CartContextProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const toast = useToast();
 
   const findCartItem = (itemId) => cart.find((item) => item.itemId === itemId);
 
@@ -22,6 +24,7 @@ export function CartContextProvider({ children }) {
     } else {
       setCart([...cart, newCartItem]);
     }
+    toast.add(`Added ${incomingProduct.name} to cart!`);
   };
 
   const removeFromCart = (itemId) => {

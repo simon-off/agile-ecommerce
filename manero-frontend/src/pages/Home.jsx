@@ -10,7 +10,7 @@ import useWindowResize from "../hooks/useWindowResize";
 export default function Home() {
   // const products = useFetch(`${apiDomain.https}/api`);
   const productsFeatured = useFetch(`${apiDomain.https}/api/products?tagName=featured`);
-  const productsBestSeller = useFetch(`${apiDomain.https}/api/products`);
+  const productsBestSeller = useFetch(`${apiDomain.https}/api/products?tagName=popular`);
   const tags = useFetch(`${apiDomain.https}/api/tags`);
 
   const productsToDisplayGrid = productsFeatured.data?.slice(0, 4);
@@ -57,11 +57,12 @@ export default function Home() {
       <section className="best-sellers">
         <div className="best-seller-header">
           <h2>Best sellers </h2>
-          <Link to={"/products?tagName=bestseller"}>view all</Link>
+          <Link to={"/products?tagName=popular"}>view all</Link>
         </div>
         <div className="product-list">
           {productsToDisplayList?.map((product) => (
             <ProductListCard key={product.id} product={product} />
+              
           ))}
         </div>
       </section>

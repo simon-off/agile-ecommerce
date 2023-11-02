@@ -38,7 +38,7 @@ public class ProductService_Unit
                 CategoryId = 1,
             }
         };
-        _mockProductRepo.Setup(x => x.GetAllAsync()).ReturnsAsync(response);
+        _mockProductRepo.Setup(x => x.GetAllAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(response);
 
         // Act 
         var result = await _productService.GetAllAsync();
@@ -49,5 +49,31 @@ public class ProductService_Unit
         Assert.Equal(2, result[1].Id);
         Assert.Equal("Product 1", result[0].Name);
         Assert.Equal("Product 2", result[1].Name);
+    }
+
+    [Fact]
+    public async Task GetByIdAsync_ShouldReturnProductOrNull()
+    {
+        // Arrange
+        var response = new ProductEntity() 
+        {
+            Id = 1,
+            Name = "Product 1",
+            Description = "Description 1",
+            Price = 100m,
+            CategoryId = 1,
+        };
+
+        _mockProductRepo.Setup(x => x.GetAsync(x => x.Id == 1)).ReturnsAsync(response);
+
+        // Act
+        var result = await _productService.GetByIdAsync(1);
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Equal(1, result.Id);
+        Assert.Equal("Product 1", result.Name);
+        Assert.Equal("Description 1", result.Description);
+        Assert.Equal(100m, result.Price);
     }
 }

@@ -21,9 +21,6 @@ public class CategoriesController : ControllerBase
         {
             var categories = await _categoryService.GetAllAsync();
 
-            if (categories == null || !categories.Any()) 
-                return NotFound("Could not find any categories.");
-
             return Ok(categories);
         }
         catch

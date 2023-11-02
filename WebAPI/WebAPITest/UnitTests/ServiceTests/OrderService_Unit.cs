@@ -15,6 +15,7 @@ public class OrderService_Unit
     private readonly Mock<IOrderItemRepo> _mockorderItemRepo;
     private readonly Mock<IProductRepo> _mockProductRepo;
     private readonly Mock<IAddressService> _mockAddressService;
+    private readonly Mock<ISizeRepo> _mockSizeRepo;
     private readonly OrderService _orderService;
 
     public OrderService_Unit()
@@ -24,12 +25,14 @@ public class OrderService_Unit
         _mockorderItemRepo = new Mock<IOrderItemRepo>();
         _mockProductRepo = new Mock<IProductRepo>();
         _mockAddressService = new Mock<IAddressService>();
+        _mockSizeRepo = new Mock<ISizeRepo>();
         _orderService = new OrderService(
             _mockOrderRepo.Object,
             _mockCustomerService.Object,
             _mockorderItemRepo.Object,
             _mockProductRepo.Object,
-            _mockAddressService.Object
+            _mockAddressService.Object,
+            _mockSizeRepo.Object
             );
     }
 
@@ -42,13 +45,13 @@ public class OrderService_Unit
              new OrderItemSchema
              {
                  ProductId = 1,
-                 SizeId = 1,
+                 Size = "S",
                  Quantity = 2,
              },
              new OrderItemSchema
              {
                  ProductId = 4,
-                 SizeId = 3,
+                 Size = "XL",
                  Quantity = 5,
              }
         };

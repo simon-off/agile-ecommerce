@@ -7,13 +7,15 @@ function LayoutDesktop({ sidebarOpenState }) {
   return (
     <div className="layout layout-desktop">
       <header className="header desktop-header">
-        <Link>
-          <img className="logo" src="/images/manero-logo-desktop.svg" alt="" />
-        </Link>
-        <Navbar />
-        <div className="cart-and-burger-buttons">
-          <CartPreviewButton />
-          <ContactBurgerMenu sidebarOpenState={sidebarOpenState} />
+        <div className="container">
+          <Link to="/">
+            <img className="logo" src="/images/manero-logo-desktop.svg" alt="" />
+          </Link>
+          <Navbar />
+          <div className="cart-and-burger-buttons">
+            <CartPreviewButton />
+            <ContactBurgerMenu sidebarOpenState={sidebarOpenState} />
+          </div>
         </div>
       </header>
       <main className="container">

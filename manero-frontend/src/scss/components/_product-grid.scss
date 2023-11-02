@@ -1,6 +1,11 @@
+@use "../core/breakpoints" as *;
 .product-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin: 1.5rem;
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  gap: 1rem;
+  margin-block: 1.5rem;
+  padding-inline: var(--section-padding-inline);
 }

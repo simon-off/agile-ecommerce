@@ -20,8 +20,10 @@ public class OrderService_Integration
         _orderService = new OrderService(
             _orderRepo,
             new CustomerService(new CustomerRepo(_context)),
-            new OrderItemRepo(_context), new ProductRepo(_context),
-            new AddressService(new AddressRepo(_context)));
+            new OrderItemRepo(_context), 
+            new ProductRepo(_context),
+            new AddressService(new AddressRepo(_context)),
+            new SizeRepo(_context));
     }
 
     [Fact]
@@ -33,13 +35,13 @@ public class OrderService_Integration
              new OrderItemSchema
              {
                  ProductId = 1,
-                 SizeId = 1,
+                 Size = "M",
                  Quantity = 2,
              },
              new OrderItemSchema
              {
                  ProductId = 4,
-                 SizeId = 3,
+                 Size = "XL",
                  Quantity = 5,
              }
         };

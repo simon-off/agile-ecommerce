@@ -19,7 +19,8 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
         _context.Orders.Add(entity);
         await _context.SaveChangesAsync();
 
-        return entity;
+        // Refetch to get all includes
+        return (await GetAsync(x => x.Id == entity.Id))!;
     }
 
     public override async Task<OrderEntity?> GetAsync(Expression<Func<OrderEntity, bool>> predicate)
@@ -27,6 +28,8 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
         return await _context.Orders
             .Include(x => x.Status)
             .Include(x => x.Customer)
+            .Include(x => x.Address)
+            .Include(x => x.User)
             .Include(x => x.Items)
             .ThenInclude(x => x.Product)
             .Include(x => x.Items)
@@ -39,6 +42,9 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
         return await _context.Orders
             .Include(x => x.Status)
             .Include(x => x.Customer)
+            .Include(x => x.Address)
+            .Include(x => x.User)
+            .Include(x => x.User)
             .Include(x => x.Items)
             .ThenInclude(x => x.Product)
             .Include(x => x.Items)
@@ -50,7 +56,10 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
     {
         return await _context.Orders
             .Include(x => x.Status)
+            .Include(x => x.Address)
             .Include(x => x.Customer)
+            .Include(x => x.User)
+            .Include(x => x.User)
             .Include(x => x.Items)
             .ThenInclude(x => x.Product)
             .Include(x => x.Items)

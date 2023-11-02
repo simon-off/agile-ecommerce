@@ -4,7 +4,6 @@ namespace WebAPI.Models.Schemas;
 
 public class AddressCreateSchema
 {
-
     [Required]
     [MinLength(1)]
     [MaxLength(255)]

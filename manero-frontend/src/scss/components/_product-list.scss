@@ -11,5 +11,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
   gap: 1rem;
-  margin: 1.5rem;
+  margin-block: 1.5rem;
+  padding-inline: var(--section-padding-inline);
 }

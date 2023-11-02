@@ -2,9 +2,11 @@ import { Heart, ShoppingBag, Star } from "lucide-react";
 import { apiDomain } from "../helpers/api-domain";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
+import { useWishlist } from "../hooks/useWishlist";
 
 export default function ProductListCard({ product }) {
   const { addToCart, isInCart, removeProductFromCart } = useCart();
+  const { addToWishlist, isInWishlist, removeFromWishlist } = useWishlist();
 
   const handleShoppingBagClick = (e) => {
     e.preventDefault();
@@ -12,6 +14,15 @@ export default function ProductListCard({ product }) {
       removeProductFromCart(product.id);
     } else {
       addToCart(product);
+    }
+  };
+
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
     }
   };
 
@@ -26,7 +37,7 @@ export default function ProductListCard({ product }) {
             {product.name}
           </p>
           <p id="c" className="product-price">
-            {product.price}
+            $ {product.price}
           </p>
           <div id="a" className="product-card-rating">
             <Star color="orange" />
@@ -38,8 +49,8 @@ export default function ProductListCard({ product }) {
           </div>
         </div>
         <div className="product-card-icons">
-          <button>
-            <Heart />
+          <button onClick={handleWishlistClick}>
+            <Heart style={{ color: isInWishlist(product.id) ? "var(--color-red)" : "" }} />
           </button>
           <button onClick={handleShoppingBagClick}>
             <ShoppingBag

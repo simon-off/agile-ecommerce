@@ -7,6 +7,7 @@
   list-style: none;
   overflow-x: scroll;
   overflow-y: scroll;
+  padding-inline: var(--section-padding-inline);
   padding-block: 1.5rem;
   // Hide scrollbar for Chrome, Safari and Opera
   &::-webkit-scrollbar {
@@ -20,7 +21,7 @@
     text-decoration: none;
     display: inline-block;
     border-radius: 10rem;
-    padding: 0.5rem 0.75rem;
+    padding-right: 1rem;
   }
   .tag-wrapper {
     display: flex;
@@ -45,17 +46,18 @@
   .featured-header {
     display: flex;
     justify-content: space-between;
-    padding-inline: 1.5rem;
+    padding-inline: var(--section-padding-inline);
     padding-top: 3rem;
   }
 }
 
 .best-sellers {
   text-decoration: none;
+  padding-bottom: 3rem;
   .best-seller-header {
     display: flex;
     justify-content: space-between;
-    padding-inline: 1.5rem;
+    padding-inline: var(--section-padding-inline);
     padding-top: 3rem;
   }
 }

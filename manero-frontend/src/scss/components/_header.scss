@@ -1,10 +1,14 @@
 .header {
-  display: grid;
-  grid-template-columns: minmax(160px, 1fr) auto 1fr;
-  padding: 1rem;
-  align-items: center;
   border-bottom: 2px solid var(--color-blue);
-
+  h1 {
+    font-size: var(--font-size-l);
+    font-weight: 600;
+  }
+  .container {
+    display: grid;
+    padding: 1rem;
+    align-items: center;
+  }
   .logo {
     height: 2rem;
   }
@@ -15,9 +19,9 @@
   }
   .cart-button {
     position: relative;
-    transition: opacity 1s ease;
     // The little icon that shows how many items are in the cart
     span {
+      transition: opacity 500ms ease;
       position: absolute;
       display: block;
       background-color: var(--color-red);
@@ -33,22 +37,21 @@
       font-weight: 800;
       font-size: var(--font-size-s);
       color: var(--color-bg);
-    }
-    &.hidden {
-      visibility: hidden;
-      opacity: 0;
+      &.hidden {
+        opacity: 0;
+      }
     }
   }
 }
 
 .layout-desktop {
-  .header {
+  .container {
     grid-template-columns: minmax(160px, 1fr) auto 1fr;
   }
 }
 
 .layout-mobile {
-  .header {
+  .container {
     grid-template-columns: 1fr auto 1fr;
   }
   .cart-button {

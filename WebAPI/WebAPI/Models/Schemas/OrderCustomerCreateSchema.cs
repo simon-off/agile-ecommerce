@@ -6,4 +6,5 @@ public class OrderCustomerCreateSchema
     public List<OrderItemSchema> Products { get; set; } = new();
     public AddressCreateSchema Address { get; set; } = null!;
     public CustomerCreateSchema Customer { get; set; } = null!;
+    public string? OrderComment { get; set; }
 }

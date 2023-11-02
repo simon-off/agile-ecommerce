@@ -3,13 +3,14 @@
 @use "core/variables";
 @use "core/typography";
 @use "core/base";
-
 // Components
+@use "components/toast";
 @use "components/button";
 @use "components/layout";
 @use "components/header";
 @use "components/footer";
 @use "components/nav";
+@use "components/themed-input";
 @use "components/contact-sidebar";
 @use "components/page-icon-circle";
 @use "components/discount-card";
@@ -17,9 +18,22 @@
 @use "components/product-list-card";
 @use "components/product-grid-card";
 @use "components/product-list";
-
+@use "components/image-slider";
+@use "components/filter-sidebar";
+@use "components/payment-card";
 // Pages
+@use "pages/not-found";
 @use "pages/home";
 @use "pages/search";
 @use "pages/cart";
 @use "pages/product-details";
+@use "pages/products";
+@use "pages/checkout";
+@use "pages/order-confirmation";
+@use "pages/shipping-details";
+@use "pages/add-payment-card";
+@use "pages/sign-in";
+@use "pages/sign-up";
+@use "pages/wishlist";
+@use "pages/forgot-password";
+@use "pages/reset-password";
