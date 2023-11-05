@@ -1,0 +1,212 @@
+[
+    {
+        "Id": 1,
+        "Name": "Cozy Winter Sweater",
+        "Description": "Stay warm and stylish this winter with our cozy knit sweater. It's perfect for chilly days and features a classic design that goes well with any outfit.",
+        "CategoryId": 1,
+        "Price": 59.99
+    },
+    {
+        "Id": 2,
+        "Name": "Classic Denim Jeans",
+        "Description": "A wardrobe essential! Our classic denim jeans offer a timeless look and a comfortable fit. Whether you're dressing up or going casual, these jeans have you covered.",
+        "CategoryId": 3,
+        "Price": 39.99
+    },
+    {
+        "Id": 3,
+        "Name": "Elegant Evening Dress",
+        "Description": "Dazzle at your next special occasion with our elegant evening dress. This gown features intricate lace details and a flattering silhouette that's sure to turn heads.",
+        "CategoryId": 7,
+        "Price": 129.99
+    },
+    {
+        "Id": 4,
+        "Name": "Casual Weekend T-Shirt",
+        "Description": "Spend your weekends in comfort and style with our casual t-shirt. It's made from soft, breathable fabric and comes in various colors to suit your mood.",
+        "CategoryId": 1,
+        "Price": 19.99
+    },
+    {
+        "Id": 5,
+        "Name": "Sporty Jogging Pants",
+        "Description": "Get active in our sporty jogging pants. These pants are designed for maximum comfort during workouts and leisure activities. Stay on the move with confidence.",
+        "CategoryId": 3,
+        "Price": 29.99
+    },
+    {
+        "Id": 6,
+        "Name": "Chic Leather Jacket",
+        "Description": "Achieve a timeless, edgy look with our chic leather jacket. Crafted from high-quality leather, it's a versatile piece that adds an element of sophistication to any outfit.",
+        "CategoryId": 2,
+        "Price": 79.99
+    },
+    {
+        "Id": 7,
+        "Name": "Summer Beach Shorts",
+        "Description": "Ready for some fun in the sun? Our summer beach shorts are perfect for beach days and pool parties. They come in vibrant colors and are quick-drying for your comfort.",
+        "CategoryId": 3,
+        "Price": 24.99
+    },
+    {
+        "Id": 8,
+        "Name": "Formal Business Suit",
+        "Description": "Make a professional statement with our formal business suit. It's tailored to perfection, exuding confidence and style. Ideal for meetings and special events.",
+        "CategoryId": 9,
+        "Price": 199.99
+    },
+    {
+        "Id": 9,
+        "Name": "Stylish Dress Shirt",
+        "Description": "Elevate your style with our stylish dress shirt. Perfect for formal occasions or office wear, this shirt is designed for both comfort and fashion.",
+        "CategoryId": 1,
+        "Price": 49.99
+    },
+    {
+        "Id": 10,
+        "Name": "Warm Winter Jacket",
+        "Description": "Stay cozy and fashionable in our warm winter jacket. It's designed to keep you toasty in cold weather while making a style statement.",
+        "CategoryId": 2,
+        "Price": 89.99
+    },
+    {
+        "Id": 11,
+        "Name": "Casual Chino Pants",
+        "Description": "Go for a relaxed yet stylish look with our casual chino pants. These comfortable pants are versatile for various occasions.",
+        "CategoryId": 3,
+        "Price": 34.99
+    },
+    {
+        "Id": 12,
+        "Name": "Classic Leather Loafers",
+        "Description": "Step into timeless elegance with our classic leather loafers. These comfortable and stylish shoes are perfect for any formal event.",
+        "CategoryId": 4,
+        "Price": 69.99
+    },
+    {
+        "Id": 13,
+        "Name": "Trendy Baseball Cap",
+        "Description": "Complete your look with our trendy baseball cap. It's not only a practical accessory but also a fashionable addition to your outfit.",
+        "CategoryId": 5,
+        "Price": 19.99
+    },
+    {
+        "Id": 14,
+        "Name": "Fashionable Sunglasses",
+        "Description": "Protect your eyes in style with our fashionable sunglasses. These shades offer both UV protection and a trendy look.",
+        "CategoryId": 6,
+        "Price": 29.99
+    },
+    {
+        "Id": 15,
+        "Name": "Elegant Evening Gown",
+        "Description": "Make a grand entrance in our elegant evening gown. This gown is designed with sophistication in mind and is perfect for formal events.",
+        "CategoryId": 7,
+        "Price": 149.99
+    },
+    {
+        "Id": 16,
+        "Name": "Comfortable Boxer Briefs",
+        "Description": "Experience ultimate comfort with our boxer briefs. Made from soft, breathable fabric, they're perfect for everyday wear.",
+        "CategoryId": 8,
+        "Price": 14.99
+    },
+    {
+        "Id": 17,
+        "Name": "Modern Slim-fit Suit",
+        "Description": "Upgrade your wardrobe with our modern slim-fit suit. It's tailored to perfection, exuding confidence and style. Ideal for formal occasions.",
+        "CategoryId": 9,
+        "Price": 199.99
+    },
+    {
+        "Id": 18,
+        "Name": "Crisp White Dress Shirt",
+        "Description": "Achieve a classic look with our crisp white dress shirt. It's a versatile piece that pairs well with various suits and ties.",
+        "CategoryId": 1,
+        "Price": 39.99
+    },
+    {
+        "Id": 19,
+        "Name": "All-Weather Jacket",
+        "Description": "Stay prepared for changing weather with our all-weather jacket. It's designed to protect you from the elements without sacrificing style.",
+        "CategoryId": 2,
+        "Price": 79.99
+    },
+    {
+        "Id": 20,
+        "Name": "Stretchy Yoga Pants",
+        "Description": "Find flexibility and comfort in our stretchy yoga pants. They're perfect for yoga sessions or lounging at home.",
+        "CategoryId": 3,
+        "Price": 24.99
+    },
+    {
+        "Id": 21,
+        "Name": "Hiking Boots",
+        "Description": "Embark on outdoor adventures with confidence in our hiking boots. These sturdy boots are designed for traction and support on rugged terrain.",
+        "CategoryId": 4,
+        "Price": 79.99
+    },
+    {
+        "Id": 22,
+        "Name": "Cozy Beanie Hat",
+        "Description": "Stay warm and stylish with our cozy beanie hat. It's the perfect accessory to keep you snug during the colder months.",
+        "CategoryId": 5,
+        "Price": 14.99
+    },
+    {
+        "Id": 23,
+        "Name": "Leather Wallet",
+        "Description": "Organize your essentials in style with our leather wallet. It's a fashionable and functional accessory for everyday use.",
+        "CategoryId": 6,
+        "Price": 34.99
+    },
+    {
+        "Id": 24,
+        "Name": "Floral Maxi Dress",
+        "Description": "Embrace the beauty of floral patterns with our floral maxi dress. It's perfect for a stylish, feminine look on special occasions.",
+        "CategoryId": 7,
+        "Price": 59.99
+    },
+    {
+        "Id": 25,
+        "Name": "Silk Boxer Shorts",
+        "Description": "Indulge in luxury with our silk boxer shorts. They offer a premium feel and comfort for a touch of sophistication.",
+        "CategoryId": 8,
+        "Price": 24.99
+    },
+    {
+        "Id": 26,
+        "Name": "Three-Piece Suit Set",
+        "Description": "Make a statement with our three-piece suit set. It includes a jacket, vest, and pants, perfect for formal events and weddings.",
+        "CategoryId": 9,
+        "Price": 249.99
+    },
+    {
+        "Id": 27,
+        "Name": "Striped Button-Down Shirt",
+        "Description": "Add a touch of sophistication with our striped button-down shirt. It's a versatile piece that suits both casual and formal occasions.",
+        "CategoryId": 1,
+        "Price": 44.99
+    },
+    {
+        "Id": 28,
+        "Name": "Quilted Winter Coat",
+        "Description": "Stay warm in style with our quilted winter coat. It's designed for cold weather and features a flattering silhouette.",
+        "CategoryId": 2,
+        "Price": 99.99
+    },
+    {
+        "Id": 29,
+        "Name": "Cargo Pants",
+        "Description": "Get ready for adventure in our cargo pants. These functional and durable pants are perfect for outdoor activities.",
+        "CategoryId": 3,
+        "Price": 39.99
+    },
+    {
+        "Id": 30,
+        "Name": "Suede Chelsea Boots",
+        "Description": "Step out in elegance with our suede Chelsea boots. These stylish boots are ideal for both casual and semi-formal occasions.",
+        "CategoryId": 4,
+        "Price": 69.99
+    }
+]
