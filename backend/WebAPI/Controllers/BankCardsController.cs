@@ -27,7 +27,7 @@ public class BankCardsController : ControllerBase
     [HttpGet("{cardId}")]
     public async Task<IActionResult> GetCard(int cardId)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -45,7 +45,7 @@ public class BankCardsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllCards()
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -60,7 +60,7 @@ public class BankCardsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateCard(BankCardCreateSchema schema)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -75,7 +75,7 @@ public class BankCardsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateCard(BankCardUpdateSchema schema)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -93,7 +93,7 @@ public class BankCardsController : ControllerBase
     [HttpDelete("{cardId}")]
     public async Task<IActionResult> DeleteCard(int cardId)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)

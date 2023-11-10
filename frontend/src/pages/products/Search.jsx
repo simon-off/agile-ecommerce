@@ -1,5 +1,5 @@
 import SearchPageCategoryCard from "../../components/SearchPageCategoryCard";
-import { apiDomain } from "../../helpers/api-domain";
+import { apiDomain } from "../../helpers/apiDomain";
 import useFetch from "../../hooks/useFetch";
 import { Link } from "react-router-dom";
 

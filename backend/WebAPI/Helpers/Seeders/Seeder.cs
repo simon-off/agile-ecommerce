@@ -99,19 +99,33 @@ public static class Seeder
     {
         var productTags = new List<ProductTag>();
 
-        // Makes all seeded products have featured, popular and new tag.
-        for (var i = 1; i <= productCount - 10; i++)
+        // `third` equals 10 if productCount is 40
+        int third = (productCount - productCount / 4) / 3;
+
+        // Featured tag.
+        for (int i = 1; i <= third * 2; i++)
         {
-            for (var j = 1; j <= 3; j++)
-            {
-                productTags.Add(new ProductTag(i, j));
-            }
+            productTags.Add(new ProductTag(i, 1));
+        }
+        // Popular tag.
+        for (int i = third / 2; i <= third * 2.5; i++)
+        {
+            productTags.Add(new ProductTag(i, 2));
+        }
+        // Popular tag.
+        for (int i = third; i <= third * 3; i++)
+        {
+            productTags.Add(new ProductTag(i, 3));
         }
 
         // Add one product to the rest of the tags
         productTags.Add(new ProductTag(1, 4));
-        productTags.Add(new ProductTag(2, 5));
+        productTags.Add(new ProductTag(2, 4));
+        productTags.Add(new ProductTag(3, 5));
+        productTags.Add(new ProductTag(4, 5));
         productTags.Add(new ProductTag(5, 6));
+        productTags.Add(new ProductTag(6, 6));
+        productTags.Add(new ProductTag(7, 6));
 
         builder.Entity("ProductEntityTagEntity").HasData(productTags);
     }

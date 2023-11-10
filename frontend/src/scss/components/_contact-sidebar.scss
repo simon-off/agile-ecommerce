@@ -5,7 +5,7 @@
   bottom: 0;
   width: min(80%, 30rem);
   background: var(--color-text);
-  z-index: 2;
+  z-index: 3;
   transition: left 0.3s ease;
   color: var(--color-bg);
 
@@ -79,7 +79,7 @@
         button {
           position: absolute;
           top: 50%;
-          right: 2.4rem;
+          right: 2.25rem;
           transform: translateY(-50%);
           border: 0;
           padding: 0;
@@ -108,7 +108,7 @@
 .contact-bg {
   position: fixed;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   transition: opacity 0.3s ease;
   background-color: var(--color-bg-overlay);
   &.closed {

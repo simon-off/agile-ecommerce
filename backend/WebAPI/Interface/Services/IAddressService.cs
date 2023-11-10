@@ -8,8 +8,7 @@ namespace WebAPI.Interface.Services;
 public interface IAddressService
 {
     Task<AddressDto?> GetById(int id);
-    Task<AddressDto> CreateCustomerAddressAsync(AddressCreateSchema schema, int customerId);
-    Task<AddressDto> CreateUserAddressAsync(AddressCreateSchema schema, string userId);
+    Task<AddressDto> CreateAddressAsync(AddressCreateSchema schema, int? customerId, string? userId);
     Task<List<AddressDto>> GetAllAsync(Expression<Func<AddressEntity, bool>> predicate);
     Task<AddressDto> UpdateUserAddressAsync(AddressUpdateSchema schema, string userId);
     Task<bool> IsAddressOwnedByUserAsync(int addressId, string userId);

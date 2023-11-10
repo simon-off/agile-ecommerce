@@ -208,5 +208,75 @@
         "Description": "Step out in elegance with our suede Chelsea boots. These stylish boots are ideal for both casual and semi-formal occasions.",
         "CategoryId": 4,
         "Price": 69.99
-    }
+    },
+    {
+        "Id": 31,
+        "Name": "Patterned Polo Shirt",
+        "Description": "Add a pop of pattern to your wardrobe with our patterned polo shirt. It's a versatile choice for a stylish and comfortable casual look.",
+        "CategoryId": 1,
+        "Price": 34.99
+    },
+    {
+        "Id": 32,
+        "Name": "Lightweight Windbreaker",
+        "Description": "Stay protected from the wind in our lightweight windbreaker. It's the perfect companion for outdoor activities and unpredictable weather.",
+        "CategoryId": 2,
+        "Price": 49.99
+    },
+    {
+        "Id": 33,
+        "Name": "Slim-Fit Jeans",
+        "Description": "Get a sleek and modern look with our slim-fit jeans. These jeans are designed for a trendy style and comfortable fit.",
+        "CategoryId": 3,
+        "Price": 44.99
+    },
+    {
+        "Id": 34,
+        "Name": "Classic Oxford Shoes",
+        "Description": "Step up your footwear game with our classic Oxford shoes. These timeless shoes are suitable for formal events and office wear.",
+        "CategoryId": 4,
+        "Price": 79.99
+    },
+    {
+        "Id": 35,
+        "Name": "Wide-Brim Sun Hat",
+        "Description": "Stay shaded and stylish with our wide-brim sun hat. It's the perfect accessory for sunny days and outdoor adventures.",
+        "CategoryId": 5,
+        "Price": 19.99
+    },
+    {
+        "Id": 36,
+        "Name": "Leather Belt",
+        "Description": "Complete your outfit with our leather belt. It's a classic accessory that adds a touch of sophistication to your look.",
+        "CategoryId": 6,
+        "Price": 24.99
+    },
+    {
+        "Id": 37,
+        "Name": "Vintage Floral Dress",
+        "Description": "Channel retro vibes with our vintage floral dress. This dress features a timeless floral pattern and is perfect for a classic look.",
+        "CategoryId": 7,
+        "Price": 54.99
+    },
+    {
+        "Id": 38,
+        "Name": "Comfortable Boxer Briefs",
+        "Description": "Experience ultimate comfort with our boxer briefs. Made from soft, breathable fabric, they're perfect for everyday wear.",
+        "CategoryId": 8,
+        "Price": 14.99
+    },
+    {
+        "Id": 39,
+        "Name": "Modern Tuxedo",
+        "Description": "Make a bold statement with our modern tuxedo. It's tailored to perfection and is ideal for formal events and special occasions.",
+        "CategoryId": 9,
+        "Price": 299.99
+    },
+    {
+        "Id": 40,
+        "Name": "Striped V-Neck Sweater",
+        "Description": "Stay cozy and stylish with our striped V-neck sweater. It's a classic choice for a casual yet sophisticated look.",
+        "CategoryId": 1,
+        "Price": 39.99
+    }    
 ]

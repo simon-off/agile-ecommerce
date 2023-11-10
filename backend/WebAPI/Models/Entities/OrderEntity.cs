@@ -12,8 +12,8 @@ public class OrderEntity
     public decimal TotalPrice { get; set; }
     public int StatusId { get; set; }
     public StatusEntity Status { get; set; } = null!;
-    public int? CustomerId { get; set; }
-    public CustomerEntity? Customer { get; set; }
+    public int CustomerId { get; set; }
+    public CustomerEntity Customer { get; set; } = null!;
     public string? UserId { get; set; }
     public AppUser? User { get; set; }
     public List<OrderItemEntity> Items { get; set; } = new();
@@ -25,12 +25,13 @@ public class OrderEntity
     {
         var dto = new OrderDto
         {
+            Id = entity.Id,
             OrderDate = entity.OrderDate,
             TotalPrice = entity.TotalPrice,
             Status = entity.Status.Name,
-            FirstName = entity.Customer?.FirstName ?? entity.User?.FirstName,
-            LastName = entity.Customer?.LastName ?? entity.User?.LastName,
-            Email = entity.Customer?.Email ?? entity.User?.Email,
+            FirstName = entity.Customer.FirstName,
+            LastName = entity.Customer.LastName,
+            Email = entity.Customer.Email,
             StreetName = entity.Address.StreetName,
             City = entity.Address.City,
             PostalCode = entity.Address.PostalCode,

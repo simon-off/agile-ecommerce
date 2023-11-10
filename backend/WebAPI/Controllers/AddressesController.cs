@@ -23,13 +23,13 @@ public class AddressesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUserAddress(AddressCreateSchema schema)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
             return StatusCode(status.StatusCode, status.StatusMessage);
 
-        var result = await _addressService.CreateUserAddressAsync(schema, userId!);
+        var result = await _addressService.CreateAddressAsync(schema, null, userId);
 
         return Created("", result);
     }
@@ -38,7 +38,7 @@ public class AddressesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUserAddresses()
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -50,10 +50,28 @@ public class AddressesController : ControllerBase
     }
 
     [Authorize]
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetAddressById(int id)
+    {
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
+        var status = await _accountService.IsValidUserId(userId);
+
+        if (status.StatusCode != 200)
+            return StatusCode(status.StatusCode, status.StatusMessage);
+
+        if (!await _addressService.IsAddressOwnedByUserAsync(id, userId!))
+            return StatusCode(403, "You do not have permission to access this address.");
+
+        var address = await _addressService.GetById(id);
+
+        return Ok(address);
+    }
+
+    [Authorize]
     [HttpPut]
     public async Task<IActionResult> UpdateUserAddress(AddressUpdateSchema schema)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)
@@ -72,7 +90,7 @@ public class AddressesController : ControllerBase
     [HttpDelete]
     public async Task<IActionResult> DeleteUserAddress(int addressId)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
         var status = await _accountService.IsValidUserId(userId);
 
         if (status.StatusCode != 200)

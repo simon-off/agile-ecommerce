@@ -1,8 +1,6 @@
-﻿using Castle.Core.Resource;
-using Moq;
+﻿using Moq;
 using WebAPI.Helpers.Services;
 using WebAPI.Interface.Repositories;
-using WebAPI.Models.Dtos;
 using WebAPI.Models.Entities;
 using WebAPI.Models.Schemas;
 
@@ -42,7 +40,7 @@ public class AddressService_Unit
         _mockAddressRepo.Setup(x => x.CreateAsync(It.IsAny<AddressEntity>())).ReturnsAsync(response);
 
         //Act
-        var result = await _addressService.CreateCustomerAddressAsync(addressSchema, customerId);
+        var result = await _addressService.CreateAddressAsync(addressSchema, customerId, null);
 
         // Assert
         Assert.NotNull(result);

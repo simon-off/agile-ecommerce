@@ -16,6 +16,15 @@ public class CustomerService : ICustomerService
 
     public async Task<CustomerEntity> CreateCustomerAsync(CustomerCreateSchema schema)
     {
+        var existingCustomer = await _customerRepo.GetAsync(
+            x => x.Email == schema.Email
+              && x.PhoneNumber == schema.PhoneNumber
+              && x.FirstName == schema.FirstName
+              && x.LastName == schema.LastName);
+
+        if (existingCustomer != null)
+            return existingCustomer;
+
         var entity = await _customerRepo.CreateAsync(schema);
 
         return entity;

@@ -1059,6 +1059,306 @@ namespace WebAPI.Migrations
                         {
                             AvailableSizesId = 6,
                             ProductsId = 30
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 31
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 32
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 33
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 34
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 35
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 36
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 37
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 38
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 39
+                        },
+                        new
+                        {
+                            AvailableSizesId = 1,
+                            ProductsId = 40
+                        },
+                        new
+                        {
+                            AvailableSizesId = 2,
+                            ProductsId = 40
+                        },
+                        new
+                        {
+                            AvailableSizesId = 3,
+                            ProductsId = 40
+                        },
+                        new
+                        {
+                            AvailableSizesId = 4,
+                            ProductsId = 40
+                        },
+                        new
+                        {
+                            AvailableSizesId = 5,
+                            ProductsId = 40
+                        },
+                        new
+                        {
+                            AvailableSizesId = 6,
+                            ProductsId = 40
                         });
                 });
 
@@ -1084,28 +1384,8 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            ProductsId = 1,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 1,
-                            TagsId = 3
-                        },
-                        new
-                        {
                             ProductsId = 2,
                             TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 2,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 2,
-                            TagsId = 3
                         },
                         new
                         {
@@ -1114,28 +1394,8 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            ProductsId = 3,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 3,
-                            TagsId = 3
-                        },
-                        new
-                        {
                             ProductsId = 4,
                             TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 4,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 4,
-                            TagsId = 3
                         },
                         new
                         {
@@ -1144,28 +1404,8 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            ProductsId = 5,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 5,
-                            TagsId = 3
-                        },
-                        new
-                        {
                             ProductsId = 6,
                             TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 6,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 6,
-                            TagsId = 3
                         },
                         new
                         {
@@ -1174,43 +1414,13 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
-                            ProductsId = 7,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 7,
-                            TagsId = 3
-                        },
-                        new
-                        {
                             ProductsId = 8,
                             TagsId = 1
                         },
                         new
                         {
-                            ProductsId = 8,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 8,
-                            TagsId = 3
-                        },
-                        new
-                        {
                             ProductsId = 9,
                             TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 9,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 9,
-                            TagsId = 3
                         },
                         new
                         {
@@ -1219,7 +1429,157 @@ namespace WebAPI.Migrations
                         },
                         new
                         {
+                            ProductsId = 11,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 12,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 13,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 14,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 15,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 16,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 17,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 18,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 19,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 20,
+                            TagsId = 1
+                        },
+                        new
+                        {
+                            ProductsId = 5,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 6,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 7,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 8,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 9,
+                            TagsId = 2
+                        },
+                        new
+                        {
                             ProductsId = 10,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 11,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 12,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 13,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 14,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 15,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 16,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 17,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 18,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 19,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 20,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 21,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 22,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 23,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 24,
+                            TagsId = 2
+                        },
+                        new
+                        {
+                            ProductsId = 25,
                             TagsId = 2
                         },
                         new
@@ -1230,27 +1590,7 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 11,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 11,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 11,
                             TagsId = 3
-                        },
-                        new
-                        {
-                            ProductsId = 12,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 12,
-                            TagsId = 2
                         },
                         new
                         {
@@ -1260,27 +1600,7 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 13,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 13,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 13,
                             TagsId = 3
-                        },
-                        new
-                        {
-                            ProductsId = 14,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 14,
-                            TagsId = 2
                         },
                         new
                         {
@@ -1290,27 +1610,7 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 15,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 15,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 15,
                             TagsId = 3
-                        },
-                        new
-                        {
-                            ProductsId = 16,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 16,
-                            TagsId = 2
                         },
                         new
                         {
@@ -1320,27 +1620,7 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 17,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 17,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 17,
                             TagsId = 3
-                        },
-                        new
-                        {
-                            ProductsId = 18,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 18,
-                            TagsId = 2
                         },
                         new
                         {
@@ -1350,31 +1630,61 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 19,
-                            TagsId = 1
-                        },
-                        new
-                        {
-                            ProductsId = 19,
-                            TagsId = 2
-                        },
-                        new
-                        {
-                            ProductsId = 19,
                             TagsId = 3
                         },
                         new
                         {
                             ProductsId = 20,
-                            TagsId = 1
+                            TagsId = 3
                         },
                         new
                         {
-                            ProductsId = 20,
-                            TagsId = 2
+                            ProductsId = 21,
+                            TagsId = 3
                         },
                         new
                         {
-                            ProductsId = 20,
+                            ProductsId = 22,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 23,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 24,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 25,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 26,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 27,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 28,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 29,
+                            TagsId = 3
+                        },
+                        new
+                        {
+                            ProductsId = 30,
                             TagsId = 3
                         },
                         new
@@ -1385,11 +1695,31 @@ namespace WebAPI.Migrations
                         new
                         {
                             ProductsId = 2,
+                            TagsId = 4
+                        },
+                        new
+                        {
+                            ProductsId = 3,
+                            TagsId = 5
+                        },
+                        new
+                        {
+                            ProductsId = 4,
                             TagsId = 5
                         },
                         new
                         {
                             ProductsId = 5,
+                            TagsId = 6
+                        },
+                        new
+                        {
+                            ProductsId = 6,
+                            TagsId = 6
+                        },
+                        new
+                        {
+                            ProductsId = 7,
                             TagsId = 6
                         });
                 });
@@ -1883,6 +2213,86 @@ namespace WebAPI.Migrations
                             Description = "Step out in elegance with our suede Chelsea boots. These stylish boots are ideal for both casual and semi-formal occasions.",
                             Name = "Suede Chelsea Boots",
                             Price = 69.99m
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CategoryId = 1,
+                            Description = "Add a pop of pattern to your wardrobe with our patterned polo shirt. It's a versatile choice for a stylish and comfortable casual look.",
+                            Name = "Patterned Polo Shirt",
+                            Price = 34.99m
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CategoryId = 2,
+                            Description = "Stay protected from the wind in our lightweight windbreaker. It's the perfect companion for outdoor activities and unpredictable weather.",
+                            Name = "Lightweight Windbreaker",
+                            Price = 49.99m
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CategoryId = 3,
+                            Description = "Get a sleek and modern look with our slim-fit jeans. These jeans are designed for a trendy style and comfortable fit.",
+                            Name = "Slim-Fit Jeans",
+                            Price = 44.99m
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CategoryId = 4,
+                            Description = "Step up your footwear game with our classic Oxford shoes. These timeless shoes are suitable for formal events and office wear.",
+                            Name = "Classic Oxford Shoes",
+                            Price = 79.99m
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CategoryId = 5,
+                            Description = "Stay shaded and stylish with our wide-brim sun hat. It's the perfect accessory for sunny days and outdoor adventures.",
+                            Name = "Wide-Brim Sun Hat",
+                            Price = 19.99m
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CategoryId = 6,
+                            Description = "Complete your outfit with our leather belt. It's a classic accessory that adds a touch of sophistication to your look.",
+                            Name = "Leather Belt",
+                            Price = 24.99m
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CategoryId = 7,
+                            Description = "Channel retro vibes with our vintage floral dress. This dress features a timeless floral pattern and is perfect for a classic look.",
+                            Name = "Vintage Floral Dress",
+                            Price = 54.99m
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CategoryId = 8,
+                            Description = "Experience ultimate comfort with our boxer briefs. Made from soft, breathable fabric, they're perfect for everyday wear.",
+                            Name = "Comfortable Boxer Briefs",
+                            Price = 14.99m
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CategoryId = 9,
+                            Description = "Make a bold statement with our modern tuxedo. It's tailored to perfection and is ideal for formal events and special occasions.",
+                            Name = "Modern Tuxedo",
+                            Price = 299.99m
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CategoryId = 1,
+                            Description = "Stay cozy and stylish with our striped V-neck sweater. It's a classic choice for a casual yet sophisticated look.",
+                            Name = "Striped V-Neck Sweater",
+                            Price = 39.99m
                         });
                 });
 
@@ -2445,6 +2855,186 @@ namespace WebAPI.Migrations
                             Id = 90,
                             Path = "/images/products/product-template-image.png",
                             ProductId = 30
+                        },
+                        new
+                        {
+                            Id = 91,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 31
+                        },
+                        new
+                        {
+                            Id = 92,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 31
+                        },
+                        new
+                        {
+                            Id = 93,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 31
+                        },
+                        new
+                        {
+                            Id = 94,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 32
+                        },
+                        new
+                        {
+                            Id = 95,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 32
+                        },
+                        new
+                        {
+                            Id = 96,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 32
+                        },
+                        new
+                        {
+                            Id = 97,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 33
+                        },
+                        new
+                        {
+                            Id = 98,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 33
+                        },
+                        new
+                        {
+                            Id = 99,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 33
+                        },
+                        new
+                        {
+                            Id = 100,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 34
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 34
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 34
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 35
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 35
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 35
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 36
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 36
+                        },
+                        new
+                        {
+                            Id = 108,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 36
+                        },
+                        new
+                        {
+                            Id = 109,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 37
+                        },
+                        new
+                        {
+                            Id = 110,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 37
+                        },
+                        new
+                        {
+                            Id = 111,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 37
+                        },
+                        new
+                        {
+                            Id = 112,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 38
+                        },
+                        new
+                        {
+                            Id = 113,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 38
+                        },
+                        new
+                        {
+                            Id = 114,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 38
+                        },
+                        new
+                        {
+                            Id = 115,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 39
+                        },
+                        new
+                        {
+                            Id = 116,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 39
+                        },
+                        new
+                        {
+                            Id = 117,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 39
+                        },
+                        new
+                        {
+                            Id = 118,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 40
+                        },
+                        new
+                        {
+                            Id = 119,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 40
+                        },
+                        new
+                        {
+                            Id = 120,
+                            Path = "/images/products/product-template-image.png",
+                            ProductId = 40
                         });
                 });
 

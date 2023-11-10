@@ -30,10 +30,8 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
             .Include(x => x.Customer)
             .Include(x => x.Address)
             .Include(x => x.User)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Product)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Size)
+            .Include(x => x.Items).ThenInclude(x => x.Product)
+            .Include(x => x.Items).ThenInclude(x => x.Size)
             .FirstOrDefaultAsync(predicate);
     }
 
@@ -44,11 +42,8 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
             .Include(x => x.Customer)
             .Include(x => x.Address)
             .Include(x => x.User)
-            .Include(x => x.User)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Product)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Size)
+            .Include(x => x.Items).ThenInclude(x => x.Product)
+            .Include(x => x.Items).ThenInclude(x => x.Size)
             .ToListAsync();
     }
 
@@ -59,11 +54,8 @@ public class OrderRepo : GenericRepo<OrderEntity>, IOrderRepo
             .Include(x => x.Address)
             .Include(x => x.Customer)
             .Include(x => x.User)
-            .Include(x => x.User)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Product)
-            .Include(x => x.Items)
-            .ThenInclude(x => x.Size)
+            .Include(x => x.Items).ThenInclude(x => x.Product)
+            .Include(x => x.Items).ThenInclude(x => x.Size)
             .Where(predicate)
             .ToListAsync();
     }

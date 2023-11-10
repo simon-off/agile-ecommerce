@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { apiDomain } from "../../helpers/api-domain";
+import { apiDomain } from "../../helpers/apiDomain";
 import useFetch from "../../hooks/useFetch";
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";

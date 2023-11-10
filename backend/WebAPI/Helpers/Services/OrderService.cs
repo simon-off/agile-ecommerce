@@ -1,5 +1,4 @@
-﻿using WebAPI.Helpers.Repositories;
-using WebAPI.Interface.Repositories;
+﻿using WebAPI.Interface.Repositories;
 using WebAPI.Interface.Services;
 using WebAPI.Models.Dtos;
 using WebAPI.Models.Entities;
@@ -26,23 +25,11 @@ public class OrderService : IOrderService
         _sizeRepo = sizeRepo;
     }
 
-    public async Task<OrderDto> PlaceUserOrderAsync(OrderUserCreateSchema schema, string userId)
-    {
-        var orderEntity = await CreateOrderWithUsersAsync(schema, userId);
-        var orderItems = await CreateOrderItemsAsync(schema.Products, orderEntity.Id);
-
-        // Add all the newly created order items to the order so they can be seen in the DTO
-        orderEntity.Items = orderItems;
-
-        return orderEntity;
-    }
-
-    public async Task<OrderDto> PlaceCustomerOrderAsync(OrderCustomerCreateSchema schema)
+    public async Task<OrderDto> PlaceOrderAsync(OrderCreateSchema schema, string? userId)
     {
         var customer = await _customerService.CreateCustomerAsync(schema.Customer);
-        // We don't need to display the address anywhere so it isn't saved
-        var address = await _addressService.CreateCustomerAddressAsync(schema.Address, customer.Id);
-        var orderEntity = await CreateOrderWithCustomerAsync(schema, customer, address.Id);
+        var address = await _addressService.CreateAddressAsync(schema.Address, customer.Id, userId);
+        var orderEntity = await CreateOrderAsync(schema, customer.Id, address.Id, userId);
         var orderItemEntities = await CreateOrderItemsAsync(schema.Products, orderEntity.Id);
 
         // Add all the newly created order items to the order so they can be seen in the DTO
@@ -51,38 +38,19 @@ public class OrderService : IOrderService
         return orderEntity;
     }
 
-    public async Task<OrderEntity> CreateOrderWithCustomerAsync(OrderCustomerCreateSchema schema, CustomerEntity customer, int addressId)
+    public async Task<OrderEntity> CreateOrderAsync(OrderCreateSchema schema, int customerId, int addressId, string? userId)
     {
         var orderEntity = new OrderEntity
         {
             StatusId = 1,
-            CustomerId = customer.Id,
+            CustomerId = customerId,
             AddressId = addressId,
-            OrderComment = schema.OrderComment
-        };
-
-        orderEntity.TotalPrice = await CalculateTotalPriceAsync(schema.Products);
-        orderEntity = await _orderRepo.CreateAsync(orderEntity);
-        // Order gets fetched again to get all includes so it can be converted into DTO
-        orderEntity = await _orderRepo.GetAsync(x => x.Id == orderEntity.Id);
-
-        return orderEntity!;
-    }
-
-    public async Task<OrderEntity> CreateOrderWithUsersAsync(OrderUserCreateSchema schema, string userId)
-    {
-        var orderEntity = new OrderEntity
-        {
-            StatusId = 1,
             UserId = userId,
-            AddressId = schema.AddressId,
-            OrderComment = schema.OrderComment
+            OrderComment = schema.OrderComment,
+            TotalPrice = await CalculateTotalPriceAsync(schema.Products)
         };
 
-        orderEntity.TotalPrice = await CalculateTotalPriceAsync(schema.Products);
-        orderEntity = await _orderRepo.CreateAsync(orderEntity);
-
-        return orderEntity;
+        return await _orderRepo.CreateAsync(orderEntity);
     }
 
     public async Task<decimal> CalculateTotalPriceAsync(List<OrderItemSchema> orderItems)
@@ -97,7 +65,7 @@ public class OrderService : IOrderService
             if (product == null)
                 throw new Exception();
 
-            totalPrice += (product.Price * orderItem.Quantity);
+            totalPrice += product.Price * orderItem.Quantity;
         }
 
         return totalPrice;
@@ -113,11 +81,9 @@ public class OrderService : IOrderService
             {
                 OrderId = orderId,
                 ProductId = orderItemSchema.ProductId,
-                //SizeId = orderItemSchema.SizeId,
-                Quantity = orderItemSchema.Quantity
+                Quantity = orderItemSchema.Quantity,
+                SizeId = (await _sizeRepo.GetAsync(x => x.Name == orderItemSchema.Size.ToUpper()))!.Id
             };
-
-            entity.SizeId = (await _sizeRepo.GetAsync(x => x.Name == orderItemSchema.Size.ToUpper()))!.Id;
 
             entity = await _orderItemRepo.CreateAsync(entity);
 
@@ -133,7 +99,7 @@ public class OrderService : IOrderService
         {
             var isValidProduct = await _productRepo.AnyAsync(x => x.Id == item.ProductId);
             var isValidProductSize = await _productRepo.AnyAsync(x => x.Id == item.ProductId && x.AvailableSizes.Any(x => x.Name.ToLower() == item.Size.ToLower()));
-            
+
             if (!isValidProduct || !isValidProductSize)
                 return false;
         }

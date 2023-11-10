@@ -2,7 +2,7 @@
 
 .add-payment-card-page {
   padding-inline: var(--section-padding-inline);
-  padding-block: 4rem;
+  padding-block: 2rem;
   @include md {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -29,9 +29,31 @@
         flex: 1;
       }
     }
-    button {
-      margin-top: 2rem;
-      width: 100%;
+
+    .button-delete {
+      border: 1px solid var(--color-danger);
+      color: var(--color-danger);
+      &:hover {
+        background-color: var(--color-danger);
+        color: var(--color-bg);
+      }
     }
+  }
+  .themed-dropdown {
+    width: 100%;
+    .selected {
+      span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  .dropdown {
+    margin-top: 0.5rem;
+    position: relative;
   }
 }

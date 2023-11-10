@@ -1,0 +1,76 @@
+.order-history-page {
+  ul {
+    padding: 0;
+    list-style: none;
+
+    .order-details {
+      border-bottom: 3px solid var(--color-blue);
+      padding-inline: 1.25rem;
+      padding-block: 1rem;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      .left-container {
+        .date {
+          font-size: var(--font-size-s);
+          color: var(--color-text-light);
+        }
+      }
+
+      .right-container {
+        .total {
+          font-size: var(--font-size-s);
+          font-weight: 700;
+        }
+        .status {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+
+          svg {
+            margin-top: 2px;
+          }
+
+          &.Processing,
+          &.Shipped {
+            color: var(--color-warning);
+          }
+          &.Done {
+            color: var(--color-success);
+          }
+        }
+      }
+    }
+
+    .product-container {
+      pointer-events: none;
+      visibility: hidden;
+      transform: scaleY(0);
+      max-height: 0;
+      transform-origin: top;
+      transition:
+        padding-block 100ms ease-in-out,
+        transform 100ms ease-in-out,
+        max-height 100ms ease-in-out;
+      padding-block: 0;
+      background-color: var(--color-blue-light);
+
+      &.active {
+        max-height: 1000px;
+        padding-block: 1rem;
+        visibility: visible;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      .product {
+        padding-inline: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        color: var(--color-text-light);
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+}

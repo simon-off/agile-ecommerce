@@ -1,72 +1,141 @@
 @use "../../core/breakpoints" as *;
-
 .products-page {
   padding-inline: var(--section-padding-inline);
   padding-bottom: 2rem;
-
-  .filter-container {
+  display: grid;
+  .top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-block: 1.5rem;
     color: var(--color-text-light);
-
-    button,
-    select {
-      all: unset;
-      font-size: var(--font-size-l);
-      cursor: pointer;
-    }
-
     button {
+      color: var(--color-text-light);
+      font-size: var(--font-size-l);
+      background-color: transparent;
+      border: none;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.25rem;
     }
-
+    .filter-button {
+      svg:first-child {
+        margin-right: 0.75rem;
+      }
+      svg:last-child {
+        margin-top: 0.25rem;
+        transition: rotate 150ms ease-in-out;
+      }
+    }
     // Adds back arrow on select
     select {
       background-color: var(--color-bg);
       text-align: end;
-      -webkit-appearance: auto;
-      appearance: auto;
+      -webkit-appearance: none;
+      appearance: none;
       width: fit-content;
+      appearance: none;
+      background-image: url("icons/chevron-down-gray.svg");
+      background-repeat: no-repeat;
+      background-position: right 0 top 60%;
+      padding-right: 2rem;
+    }
+    .themed-dropdown {
+      align-items: end;
+      flex-basis: 200px;
+      .selected {
+        font-weight: 400;
+        padding: 0;
+      }
+      .dropdown {
+        background-color: var(--color-bg);
+        padding: 0 0.5rem;
+        top: calc(100% + 0.25rem);
+        border: 2px solid rgba(0 0 0 / 0);
+        border-radius: 0.25rem;
+        &.expanded {
+          border: 2px solid var(--color-blue);
+          padding: 0.5rem;
+        }
+        button {
+          font-size: 1.125rem;
+          color: var(--color-text);
+          padding: 0.25rem 1rem;
+          border-radius: 0.25rem;
+          &:hover {
+            background-color: var(--color-blue);
+          }
+        }
+      }
     }
   }
-
   .no-products-container {
     padding-block: 1rem;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    h1 {
-      width: 100%;
-      text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    h2 {
+      padding-bottom: 0.25rem;
     }
-
     p {
-      font-size: 18px;
-      font-weight: 700;
       color: var(--color-text-light);
     }
+    @include sm {
+      .button {
+        width: fit-content;
+      }
+    }
   }
-
   .product-card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-
     @include sm {
       grid-template-columns: repeat(3, 1fr);
     }
-
     @include lg {
       grid-template-columns: repeat(4, 1fr);
     }
-
     @include lg {
       grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  .page-buttons {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    @include sm {
+      gap: 1rem;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.25rem;
+    }
+    .chevrons {
+      display: flex;
+      gap: 0;
+      @include sm {
+        gap: 0.25rem;
+      }
+      button:disabled {
+        opacity: 0.6;
+      }
+    }
+    .page-number-button {
+      &:hover {
+        background-color: var(--color-blue);
+      }
+      &:disabled {
+        background-color: var(--color-blue-light);
+      }
     }
   }
 }

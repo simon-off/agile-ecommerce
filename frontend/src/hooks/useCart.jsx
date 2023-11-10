@@ -1,12 +1,21 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import CartItem from "../models/CartItem";
 import { useToast } from "./useToast";
 
 const CartContext = createContext(null);
 
+const GetInitialState = () => {
+  const localCart = localStorage.getItem("cart");
+  return localCart ? JSON.parse(localCart) : [];
+};
+
 export function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(GetInitialState);
   const toast = useToast();
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const findCartItem = (itemId) => cart.find((item) => item.itemId === itemId);
 

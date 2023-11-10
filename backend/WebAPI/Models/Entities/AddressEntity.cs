@@ -16,16 +16,16 @@ public class AddressEntity
     public int? CustomerId { get; set; }
     public CustomerEntity? Customer { get; set; }
     public string? UserId { get; set; }
-    public AppUser? User { get; set; } 
+    public AppUser? User { get; set; }
 
     public static implicit operator AddressDto(AddressEntity entity)
     {
-        return new AddressDto 
-        { 
+        return new AddressDto
+        {
             Id = entity.Id,
-            City = entity.City, 
-            PostalCode = entity.PostalCode, 
-            StreetName = entity.StreetName 
+            City = entity.City,
+            PostalCode = entity.PostalCode,
+            StreetName = entity.StreetName
         };
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 using WebAPI.Models.Dtos;
+using WebAPI.Models.Entities;
 
 namespace WebAPI.Models.Identity;
 
@@ -12,7 +13,9 @@ public class AppUser : IdentityUser
     [Column(TypeName = "nvarchar(100)")]
     public string LastName { get; set; } = null!;
 
-    public static implicit operator UserDto (AppUser model)
+    public List<OrderEntity> Orders { get; set; } = new();
+
+    public static implicit operator UserDto(AppUser model)
     {
         return new UserDto
         {

@@ -43,7 +43,7 @@ public class AddressService_Integration
         var customerEntity = await _customerService.CreateCustomerAsync(customerSchema);
 
         // Act
-        await _addressService.CreateCustomerAddressAsync(addressSchema, customerEntity.Id);
+        await _addressService.CreateAddressAsync(addressSchema, customerEntity.Id, null);
         var actualAddress = await _addressRepo.GetAsync(x => x.StreetName == addressSchema.StreetAddress);
 
         // Assert

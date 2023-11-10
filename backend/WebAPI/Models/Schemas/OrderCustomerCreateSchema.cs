@@ -1,4 +1,4 @@
-﻿namespace WebAPI.Models.Schemas;
+namespace WebAPI.Models.Schemas;
 
 public class OrderCustomerCreateSchema
 {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { apiDomain } from "../helpers/api-domain";
+import { apiDomain } from "../helpers/apiDomain";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ImageSlider({ imagePaths, altText }) {

@@ -29,7 +29,7 @@ export function WishlistContextProvider({ children }) {
       setWishlist([...wishlist, newWishlistItem]);
     }
 
-    toast.add(`Added ${incomingProduct.name} to cart!`);
+    toast.add(`Added ${incomingProduct.name} to wishlist!`);
     return wishlist;
   };
 
@@ -40,7 +40,6 @@ export function WishlistContextProvider({ children }) {
   const isInWishlist = (productId) => {
     return wishlist.some((item) => item.id === productId);
   };
-
 
   return (
     <WishlistContext.Provider

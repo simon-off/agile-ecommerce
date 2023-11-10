@@ -3,10 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Helpers.Extensions;
-using WebAPI.Helpers.Services;
-using WebAPI.Interface.Repositories;
 using WebAPI.Interface.Services;
-using WebAPI.Models.Dtos;
 using WebAPI.Models.Identity;
 using WebAPI.Models.Schemas;
 
@@ -28,7 +25,7 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PlaceCustomerOrder(OrderCustomerCreateSchema schema)
+    public async Task<IActionResult> PlaceCustomerOrder(OrderCreateSchema schema)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
@@ -36,7 +33,7 @@ public class OrdersController : ControllerBase
         if (!await _orderService.AllProductItemsValidAsync(schema.Products))
             return BadRequest("One or more of the products requested could not be found in the database.");
 
-        var orderDto = await _orderService.PlaceCustomerOrderAsync(schema);
+        var orderDto = await _orderService.PlaceOrderAsync(schema, null);
 
         // Return created status code
         return StatusCode(201, orderDto);
@@ -44,9 +41,9 @@ public class OrdersController : ControllerBase
 
     [Authorize]
     [HttpPost("User")]
-    public async Task<IActionResult> PlaceUserOrder(OrderUserCreateSchema schema)
+    public async Task<IActionResult> PlaceUserOrder(OrderCreateSchema schema)
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
 
         if (userId == null)
             return StatusCode(403, "Jwt token did not contain user id.");
@@ -61,8 +58,7 @@ public class OrdersController : ControllerBase
         if (!await _orderService.AllProductItemsValidAsync(schema.Products))
             return BadRequest("One or more of the products requested could not be found in the database.");
 
-
-        var orderDto = await _orderService.PlaceUserOrderAsync(schema, userId);
+        var orderDto = await _orderService.PlaceOrderAsync(schema, userId);
 
         // Return created status code
         return StatusCode(201, orderDto);
@@ -72,7 +68,7 @@ public class OrdersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetUserOrders()
     {
-        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString());
 
         if (userId == null)
             return StatusCode(403, "Jwt token did not contain user id.");

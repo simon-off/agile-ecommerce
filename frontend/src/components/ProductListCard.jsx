@@ -1,5 +1,5 @@
 import { Heart, ShoppingBag, Star } from "lucide-react";
-import { apiDomain } from "../helpers/api-domain";
+import { apiDomain } from "../helpers/apiDomain";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { useWishlist } from "../hooks/useWishlist";

@@ -3,15 +3,34 @@ import PaymentCard from "../../components/PaymentCard";
 import ThemedInput from "../../components/ThemedInput";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/useOrder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ThemedDropdown from "../../components/ThemedDropdown";
+import { apiDomain } from "../../helpers/apiDomain";
+import useFetch from "../../hooks/useFetch";
 
 function AddPaymentCard() {
   const { setPaymentCard, paymentCard } = useOrder();
   const navigate = useNavigate();
+  const savedCards = useFetch(`${apiDomain.https}/api/bankcards`);
 
-  // State variables to store the name and card number entered by the user.
+  const [chosenCardNumber, setChosenCardNumber] = useState(null);
+
   const [nameOnCard, setNameOnCard] = useState(paymentCard?.nameOnCard || "");
   const [cardNumber, setCardNumber] = useState(paymentCard?.cardNumber || "");
+  const [expirationDate, setExpirationDate] = useState(paymentCard?.expirationDate || "");
+  const [cvvNumber, setCvvNumber] = useState(paymentCard?.cvvNumber || "");
+
+  const chosenCard = savedCards.data?.find((card) => card.creditCardNumber === chosenCardNumber);
+  console.log(nameOnCard, cardNumber, expirationDate, cvvNumber);
+
+  useEffect(() => {
+    if (chosenCard === undefined) return;
+
+    setNameOnCard(chosenCard?.cardholderName);
+    setCardNumber(chosenCard?.creditCardNumber);
+    setExpirationDate(chosenCard?.expirationDate);
+    setCvvNumber(chosenCard?.cvc);
+  }, [chosenCardNumber, chosenCard]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,12 +48,19 @@ function AddPaymentCard() {
         <PaymentCard nameOnCard={nameOnCard} cardNumber={cardNumber} />
       </div>
       <form method="post" onSubmit={handleSubmit}>
+        {savedCards.data?.length > 0 && (
+          <ThemedDropdown
+            value={chosenCard ? chosenCard.creditCardNumber : "Use saved card"}
+            options={savedCards.data?.map((card) => card.creditCardNumber)}
+            onChange={(option) => setChosenCardNumber(option)}
+          />
+        )}
         <ThemedInput
           label="Name"
           type="text"
           name="nameOnCard"
           placeholder="John Doe"
-          defaultValue={paymentCard?.nameOnCard}
+          value={nameOnCard}
           onChange={(e) => setNameOnCard(e.target.value)}
           required
           minLength={2}
@@ -46,7 +72,7 @@ function AddPaymentCard() {
           name="cardNumber"
           className="form-control"
           placeholder="xxxx xxxx xxxx xxxx"
-          defaultValue={paymentCard?.cardNumber}
+          value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
           required
           minLength={4}
@@ -60,7 +86,8 @@ function AddPaymentCard() {
             name="expirationDate"
             className="row-control"
             placeholder="--/--"
-            defaultValue={paymentCard?.expirationDate}
+            value={expirationDate}
+            onChange={(e) => setExpirationDate(e.target.value)}
             required
             minLength={5}
             maxLength={5}
@@ -70,14 +97,15 @@ function AddPaymentCard() {
             name="cvvNumber"
             className="row-control"
             placeholder="---"
-            defaultValue={paymentCard?.cvvNumber}
+            value={cvvNumber}
+            onChange={(e) => setCvvNumber(e.target.value)}
             required
             minLength={3}
             maxLength={3}
           />
         </div>
         <div className="form-actions">
-          <button className="button button-black">Save card</button>
+          <button className="button button-black">Use card</button>
         </div>
       </form>
     </div>

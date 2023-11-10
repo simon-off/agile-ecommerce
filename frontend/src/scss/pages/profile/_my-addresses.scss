@@ -1,0 +1,106 @@
+@use "../../core/breakpoints" as *;
+
+.my-addresses-page {
+  margin-inline: auto;
+
+  .heading {
+    display: none;
+    margin-block: 2rem;
+    justify-content: center;
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  ul {
+    padding: 0;
+
+    @include lg {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    li {
+      list-style: none;
+      border-bottom: 1px solid var(--color-blue);
+
+      @include lg {
+        border-right: 1px solid var(--color-blue);
+
+        &:first-child,    &:nth-child(2) {
+          border-top:  1px solid var(--color-blue);
+        }
+
+        &:nth-child(odd) {
+          border-left: 1px solid var(--color-blue);
+        }
+      }
+
+      a {
+        padding-block: 0.5rem;
+        padding-inline: var(--section-padding-inline);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+          background-color: var(--color-blue);
+        }
+
+        .text-container {
+          width: 100px;
+          padding-inline: 1rem;
+          flex-grow: 1;
+
+          h2, p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          
+          h2 {
+            font-weight: 600;
+      
+          }
+
+          p {
+            color: var(--color-text-light);
+          }
+        }
+
+        svg {
+          color: var(--color-text-light) !important;
+
+          @include lg {
+            width: 4rem;
+          }
+        }
+      }
+    }
+  }
+
+  .add-container {
+    a {
+      padding-block: 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      &:hover {
+        background-color: var(--color-blue);
+      }
+
+      svg,
+      span {
+        width: 100%;
+        text-align: center;
+      }
+
+      span {
+        color: var(--color-text-light);
+      }
+    }
+  }
+}

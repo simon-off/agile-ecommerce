@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Helpers.Extensions;
+using WebAPI.Helpers.Services;
 using WebAPI.Interface.Services;
 using WebAPI.Models.Dtos;
 using WebAPI.Models.Identity;
@@ -118,5 +120,28 @@ public class AccountController : ControllerBase
         {
             return StatusCode(502, "Something went wrong when signing in. Please try again.");
         }
+    }
+
+    [Authorize]
+    [HttpPut("ChangePassword")]
+    public async Task<IActionResult> PlaceUserOrder(UpdatePasswordSchema schema)
+    {
+        var userId = _accountService.GetIdFromToken(Request.GetAuthString()!);
+
+        if (userId == null)
+            return StatusCode(403, "Jwt token did not contain user id.");
+
+        var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+        // It is not possible to enter this if statement unless the account has been deleted and therefore the token is invalid.
+        if (user == null)
+            return BadRequest("The token you tried to use is no longer valid.");
+
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        if (!(await _userManager.ChangePasswordAsync(user, schema.OldPassword, schema.NewPassword)).Succeeded)
+            return BadRequest("Old password is invalid. Please try again");
+
+        return Ok((UserDto)user);
     }
 }

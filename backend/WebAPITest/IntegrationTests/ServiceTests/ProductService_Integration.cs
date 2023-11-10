@@ -82,4 +82,26 @@ public class ProductService_Integration
         // Assert
         Assert.Equal(expectedFirstProductId, result.First().Id);
     }
+
+    [Theory]
+    // Test orderBy
+    [InlineData(1, 1, 1)]
+    [InlineData(1, 4, 4)]
+    [InlineData(2, 2, 3)]
+    [InlineData(20, 100, null)]
+    public async Task GetAllAsync_ShouldReturnPaginatedProducts(int amount, int page, int? expectedFirstProductId)
+    {
+        // Arrange
+        var queryParameters = new GetProductsQueryParameters()
+        {
+            PageAmount = amount,
+            Page = page,
+        };
+
+        // Act
+        var result = await _productService.GetAllAsync(queryParameters);
+
+        // Assert
+        Assert.Equal(expectedFirstProductId, result.FirstOrDefault()?.Id);
+    }
 }

@@ -1,0 +1,36 @@
+@use "../../core/breakpoints" as *;
+
+.add-address-page {
+  max-width: 600px;
+  margin-inline: auto;
+
+  .heading {
+    display: none;
+    margin-top: 2rem;
+    justify-content: center;
+
+    @include lg {
+      display: flex;
+    }
+  }
+
+  form {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-inline: var(--section-padding-inline);
+    gap: 1rem;
+
+    .button {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .error {
+      color: var(--color-danger);
+      font-size: var(--font-size-xs);
+      padding-left: 2rem;
+    }
+  }
+}

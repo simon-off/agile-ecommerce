@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using WebAPI.Data;
+﻿using System.Linq.Expressions;
 using WebAPI.Interface.Repositories;
 using WebAPI.Interface.Services;
 using WebAPI.Models.Dtos;
@@ -29,28 +27,24 @@ public class AddressService : IAddressService
         return address.UserId == userId;
     }
 
-    public async Task<AddressDto> CreateCustomerAddressAsync(AddressCreateSchema schema, int customerId)
+    public async Task<AddressDto> CreateAddressAsync(AddressCreateSchema schema, int? customerId, string? userId)
     {
+        var existingAddress = await _addressRepo.GetAsync(
+            x => x.City == schema.City
+              && x.StreetName == schema.StreetAddress
+              && x.PostalCode == schema.PostalCode
+              && x.CustomerId == customerId
+              && x.UserId == userId);
+
+        if (existingAddress != null)
+            return existingAddress;
+
         var addressEntity = new AddressEntity
         {
             City = schema.City,
             StreetName = schema.StreetAddress,
             PostalCode = schema.PostalCode,
             CustomerId = customerId,
-        };
-
-        addressEntity = await _addressRepo.CreateAsync(addressEntity);
-
-        return addressEntity;
-    }
-
-    public async Task<AddressDto> CreateUserAddressAsync(AddressCreateSchema schema, string userId)
-    {
-        var addressEntity = new AddressEntity
-        {
-            City = schema.City,
-            StreetName = schema.StreetAddress,
-            PostalCode = schema.PostalCode,
             UserId = userId
         };
 

@@ -11,6 +11,7 @@
 @use "components/footer";
 @use "components/nav";
 @use "components/themed-input";
+@use "components/themed-dropdown";
 @use "components/contact-sidebar";
 @use "components/page-icon-circle";
 @use "components/discount-card";
@@ -19,7 +20,7 @@
 @use "components/product-grid-card";
 @use "components/product-list";
 @use "components/image-slider";
-@use "components/filter-sidebar";
+@use "components/filter-menu";
 @use "components/payment-card";
 // Pages
 @use "pages/not-found";
@@ -33,7 +34,14 @@
 @use "pages/order/order-confirmation";
 @use "pages/order/shipping-details";
 @use "pages/order/add-payment-card";
+@use "pages/order/order-history";
 @use "pages/profile/sign-in";
 @use "pages/profile/sign-up";
 @use "pages/profile/forgot-password";
 @use "pages/profile/reset-password";
+@use "pages/profile/profile-page";
+@use "pages/profile/edit-profile";
+@use "pages/profile/add-address";
+@use "pages/profile/my-addresses";
+@use "pages/profile/update-address";
+@use "pages/profile/user-payment-methods";

@@ -2,7 +2,9 @@
 
 .shipping-details-page {
   padding-inline: var(--section-padding-inline);
-  padding-block: 1rem;
+  padding-block: 2rem;
+  max-width: 600px;
+  margin-inline: auto;
   p {
     color: var(--color-text-light);
   }
@@ -12,10 +14,6 @@
     flex-direction: column;
     gap: 1.25rem;
     background-color: var(--color-bg);
-    @include md {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
     h3 {
       font-size: var(--font-size-m);
       font-weight: 600;
@@ -36,5 +34,22 @@
     .button {
       padding-block: 0.825rem;
     }
+  }
+  .themed-dropdown {
+    width: 100%;
+    .selected {
+      span {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+    }
+  }
+  .dropdown {
+    margin-top: 0.5rem;
+    position: relative;
   }
 }

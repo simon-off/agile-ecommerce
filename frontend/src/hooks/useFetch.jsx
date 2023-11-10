@@ -1,15 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import getCookieByName from "../helpers/getCookieByName";
 
 export default function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const authToken = getCookieByName("Authorization");
+
+  const headers = useMemo(() => new Headers(), []);
+  headers.append("Content-Type", "application/json");
+
+  if (authToken) {
+    headers.append("Authorization", `Bearer ${authToken}`);
+  }
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          method: "GET",
+          headers: headers,
+        });
+
         if (!response.ok) {
           throw Error(`${response.status}: ${await response.text()}`);
         }
@@ -22,7 +35,7 @@ export default function useFetch(url) {
       }
     };
     getData();
-  }, [url]);
+  }, [url, headers]);
 
   return { data, error, isLoading };
 }

@@ -3,14 +3,16 @@ import { useCart } from "./useCart";
 import Customer from "../models/Customer";
 import Address from "../models/Address";
 import PaymentCard from "../models/PaymentCard";
-import { apiDomain } from "../helpers/api-domain";
+import { apiDomain } from "../helpers/apiDomain";
+import getCookieByName from "../helpers/getCookieByName";
 
 const OrderContext = createContext(null);
 
 export function OrderContextProvider({ children }) {
   const [customer, _setCustomer] = useState(null);
   const [address, _setAddress] = useState(null);
-  const [paymentCard, _setPaymentCard] = useState();
+  const [paymentCard, _setPaymentCard] = useState(null);
+  const [orderComment, setOrderComment] = useState(null);
   const [isOrderSuccessful, _setIsOrderSuccessful] = useState(false);
   const { cart } = useCart();
 
@@ -55,10 +57,16 @@ export function OrderContextProvider({ children }) {
         size: item.size,
         amount: item.amount,
       })),
+      orderComment: orderComment,
     };
 
+    // Is this sufficient for checking if user is logged in?
+    const fetchUrl = getCookieByName("Authorization")
+      ? `${apiDomain.https}/api/orders/user`
+      : `${apiDomain.https}/api/orders`;
+
     // Send data to the backend via POST
-    const response = await fetch(`${apiDomain.https}/api/orders`, {
+    const response = await fetch(fetchUrl, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -85,6 +93,8 @@ export function OrderContextProvider({ children }) {
         setAddress,
         paymentCard,
         setPaymentCard,
+        orderComment,
+        setOrderComment,
       }}
     >
       {children}

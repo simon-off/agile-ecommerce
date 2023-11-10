@@ -46,10 +46,13 @@ public class AccountService : IAccountService
 
     public string? GetIdFromToken(string? tokenString)
     {
+        if (tokenString == null)
+            return null;
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var token = tokenHandler.ReadJwtToken(tokenString);
         var id = token.Claims.FirstOrDefault(x => x.Type == "unique_id")?.Value;
-        
+
         return id;
     }
 
