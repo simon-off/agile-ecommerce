@@ -1,9 +1,10 @@
 ﻿namespace MinimalAPI.Models.Entities;
 
-public class ProductImageEntity
+public class ProductImage
 {
     public int Id { get; set; }
     public required string Path { get; set; }
-    public int ProductId { get; set; }
-    public ProductEntity? Product { get; set; }
+
+    public required int ProductId { get; set; }
+    public Product? Product { get; set; }
 }

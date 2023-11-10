@@ -1,8 +1,7 @@
 using FluentValidation;
 
-namespace MinimalAPI.Helpers.Validators;
+namespace MinimalAPI.Validation;
 
-// TODO: UNDERSTAND THIS STUFF...
 public class ValidationFilter<T> : IEndpointFilter
 {
     public async ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)

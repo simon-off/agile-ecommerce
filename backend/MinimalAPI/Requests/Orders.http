@@ -4,19 +4,14 @@ GET {{host}}/api/orders
 ### Post order
 POST {{host}}/api/orders
 Content-Type: application/json
-
 {
-  "customer": {
-    "firstName": "Simon",
-    "lastName": "Bäckström",
-    "email": "simon@mail.com",
-    "phoneNumber": "123 456 78 90"
-  },
-  "address": {
-    "streetAddress": "Gata 100",
-    "city": "Staden",
-    "postalCode": "12345"
-  },
+  "firstName": "Simon",
+  "lastName": "Bäckström",
+  "email": "simon@mail.com",
+  "phoneNumber": "123 456 78 90",
+  "streetAddress": "Gata 100",
+  "city": "Staden",
+  "postalCode": "12345",
   "items": [
     {
       "productId": 1,

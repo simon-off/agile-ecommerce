@@ -2,23 +2,33 @@ using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI.Models.Dtos;
 
-public record OrderDto(
+public record OrderDTO(
     int Id,
-    DateTime OrderDate,
-    string? OrderStatus,
+    DateTime CreatedAt,
     decimal TotalPrice,
-    CustomerDto? Customer,
-    AddressDto? Address,
-    List<OrderItemDto> Items
+    string? Status,
+    string FirstName,
+    string LastName,
+    string Email,
+    string PhoneNumber,
+    string StreetAddress,
+    string PostalCode,
+    string City,
+    List<OrderItemDTO> Items
 )
 {
-    public static OrderDto Create(OrderEntity entity) => new(
+    public static OrderDTO Create(Order entity) => new(
         entity.Id,
-        entity.OrderDate,
-        entity.Status?.Name,
+        entity.CreatedAt,
         entity.TotalPrice,
-        entity.Customer == null ? null : CustomerDto.Create(entity.Customer),
-        entity.Address == null ? null : AddressDto.Create(entity.Address),
-        entity.Items.Select(x => OrderItemDto.Create(x)).ToList()
+        entity.Status?.Name,
+        entity.FirstName,
+        entity.LastName,
+        entity.Email,
+        entity.PhoneNumber,
+        entity.StreetAddress,
+        entity.PostalCode,
+        entity.City,
+        entity.Items.Select(OrderItemDTO.Create).ToList()
     );
 }

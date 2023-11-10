@@ -2,22 +2,22 @@ using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI.Models.Dtos;
 
-public record OrderItemDto(
+public record OrderItemDTO(
     int ProductId,
     int SizeId,
     int Quantity
 )
 {
-    public static OrderItemDto Create(OrderItemEntity entity) => new(
+    public static OrderItemDTO Create(OrderItem entity) => new(
         entity.ProductId,
         entity.SizeId,
         entity.Quantity
     );
 }
 
-public static class OrderItemExtensions
+public static class OrderItemDTOExtensions
 {
-    public static OrderItemEntity CreateEntity(this OrderItemDto dto, int orderId) => new()
+    public static OrderItem ConvertToEntity(this OrderItemDTO dto, int orderId) => new()
     {
         OrderId = orderId,
         ProductId = dto.ProductId,

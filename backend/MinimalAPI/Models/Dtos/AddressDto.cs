@@ -2,22 +2,22 @@ using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI.Models.Dtos;
 
-public record AddressDto(
+public record AddressDTO(
     string StreetAddress,
     string City,
     string PostalCode
 )
 {
-    public static AddressDto Create(AddressEntity entity) => new(
+    public static AddressDTO Create(Address entity) => new(
         entity.StreetAddress,
         entity.City,
         entity.PostalCode
     );
 }
 
-public static class AddressExtensions
+public static class AddressDTOExtensions
 {
-    public static AddressEntity CreateEntity(this AddressDto dto) => new()
+    public static Address ConvertToEntity(this AddressDTO dto) => new()
     {
         StreetAddress = dto.StreetAddress,
         City = dto.City,

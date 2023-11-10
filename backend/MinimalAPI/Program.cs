@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using MinimalAPI.Validation.Validators;
 using MinimalAPI.Data;
 using MinimalAPI;
-using MinimalAPI.Helpers.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 {

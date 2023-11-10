@@ -11,8 +11,8 @@ using MinimalAPI.Data;
 namespace MinimalAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231020170513_Orders")]
-    partial class Orders
+    [Migration("20231110222204_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,7 +212,7 @@ namespace MinimalAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.AddressEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -220,22 +220,22 @@ namespace MinimalAPI.Migrations
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PostalCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("StreetAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.CategoryEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -243,7 +243,7 @@ namespace MinimalAPI.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -300,66 +300,57 @@ namespace MinimalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.CustomerEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(320)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("money");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("StatusId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderItemEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderItem", b =>
                 {
                     b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
@@ -382,7 +373,7 @@ namespace MinimalAPI.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderStatusEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -414,7 +405,7 @@ namespace MinimalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -507,7 +498,7 @@ namespace MinimalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductImageEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductImage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -673,7 +664,7 @@ namespace MinimalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.SizeEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Size", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -681,7 +672,7 @@ namespace MinimalAPI.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -723,7 +714,7 @@ namespace MinimalAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.TagEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -731,7 +722,7 @@ namespace MinimalAPI.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -1233,46 +1224,32 @@ namespace MinimalAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Order", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.AddressEntity", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MinimalAPI.Models.Entities.CustomerEntity", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("MinimalAPI.Models.Entities.OrderStatusEntity", "Status")
+                    b.HasOne("MinimalAPI.Models.Entities.OrderStatus", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Address");
-
-                    b.Navigation("Customer");
-
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderItemEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderItem", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.OrderEntity", "Order")
+                    b.HasOne("MinimalAPI.Models.Entities.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MinimalAPI.Models.Entities.ProductEntity", "Product")
+                    b.HasOne("MinimalAPI.Models.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MinimalAPI.Models.Entities.SizeEntity", "Size")
+                    b.HasOne("MinimalAPI.Models.Entities.Size", "Size")
                         .WithMany()
                         .HasForeignKey("SizeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1285,9 +1262,9 @@ namespace MinimalAPI.Migrations
                     b.Navigation("Size");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Product", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.CategoryEntity", "Category")
+                    b.HasOne("MinimalAPI.Models.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1296,9 +1273,9 @@ namespace MinimalAPI.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductImageEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductImage", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.ProductEntity", "Product")
+                    b.HasOne("MinimalAPI.Models.Entities.Product", "Product")
                         .WithMany("Images")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1309,13 +1286,13 @@ namespace MinimalAPI.Migrations
 
             modelBuilder.Entity("ProductSizes", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.SizeEntity", null)
+                    b.HasOne("MinimalAPI.Models.Entities.Size", null)
                         .WithMany()
                         .HasForeignKey("AvailableSizesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MinimalAPI.Models.Entities.ProductEntity", null)
+                    b.HasOne("MinimalAPI.Models.Entities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1324,30 +1301,30 @@ namespace MinimalAPI.Migrations
 
             modelBuilder.Entity("ProductTags", b =>
                 {
-                    b.HasOne("MinimalAPI.Models.Entities.ProductEntity", null)
+                    b.HasOne("MinimalAPI.Models.Entities.Product", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MinimalAPI.Models.Entities.TagEntity", null)
+                    b.HasOne("MinimalAPI.Models.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.CategoryEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.OrderEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Order", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("MinimalAPI.Models.Entities.ProductEntity", b =>
+            modelBuilder.Entity("MinimalAPI.Models.Entities.Product", b =>
                 {
                     b.Navigation("Images");
                 });

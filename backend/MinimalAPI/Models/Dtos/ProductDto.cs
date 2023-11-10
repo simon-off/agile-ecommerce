@@ -2,7 +2,7 @@ using MinimalAPI.Models.Entities;
 
 namespace MinimalAPI.Models.Dtos;
 
-public record ProductDto(
+public record ProductDTO(
     int Id,
     string Name,
     string Description,
@@ -13,7 +13,7 @@ public record ProductDto(
     List<string> AvailableSizes
 )
 {
-    public static ProductDto Create(ProductEntity entity) => new(
+    public static ProductDTO Create(Product entity) => new(
         entity.Id,
         entity.Name,
         entity.Description,
