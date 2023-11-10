@@ -5,7 +5,7 @@ using MinimalAPI.Models.Dtos;
 
 namespace MinimalAPI.Handlers;
 
-static class OrdersHandler
+public static class OrdersHandler
 {
     public static async Task<IResult> GetAll(DataContext db) =>
         TypedResults.Ok(await db.Orders.AllAsDtos());

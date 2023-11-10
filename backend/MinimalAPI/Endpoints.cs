@@ -11,6 +11,7 @@ public static class Endpoints
         var api = app.MapGroup("/api");
         api.MapGet("/products", ProductsHandler.GetAll);
         api.MapGet("/products/{id}", ProductsHandler.GetById);
+        api.MapGet("/products/count", ProductsHandler.Count);
         api.MapGet("/categories", CategoriesHandler.GetAll);
         api.MapGet("/tags", TagsHandler.GetAll);
         api.MapGet("/orders", OrdersHandler.GetAll);
