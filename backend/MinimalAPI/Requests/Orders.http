@@ -1,0 +1,32 @@
+### Get all orders
+GET {{host}}/api/orders
+
+### Post order
+POST {{host}}/api/orders
+Content-Type: application/json
+
+{
+  "customer": {
+    "firstName": "Simon",
+    "lastName": "Bäckström",
+    "email": "simon@mail.com",
+    "phoneNumber": "123 456 78 90"
+  },
+  "address": {
+    "streetAddress": "Gata 100",
+    "city": "Staden",
+    "postalCode": "12345"
+  },
+  "items": [
+    {
+      "productId": 1,
+      "sizeId": 1,
+      "quantity": 1
+    },
+    {
+      "productId": 2,
+      "sizeId": 2,
+      "quantity": 2
+    }
+  ]
+}
