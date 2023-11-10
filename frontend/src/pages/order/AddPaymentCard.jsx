@@ -45,7 +45,7 @@ function AddPaymentCard() {
   return (
     <div className="add-payment-card-page">
       <div className="card-container">
-        <PaymentCard nameOnCard={nameOnCard} cardNumber={cardNumber} />
+        <PaymentCard nameOnCard={nameOnCard} cardNumber={cardNumber} expDate={expirationDate} />
       </div>
       <form method="post" onSubmit={handleSubmit}>
         {savedCards.data?.length > 0 && (

@@ -64,7 +64,11 @@ function UserAddPaymentMethods() {
   return (
     <div className="add-payment-card-page">
       <div className="card-container">
-        <PaymentCard nameOnCard={cardholderName} cardNumber={creditCardNumber} />
+        <PaymentCard
+          nameOnCard={cardholderName}
+          cardNumber={creditCardNumber}
+          expDate={expirationDate}
+        />
       </div>
       <form method="post" onSubmit={handleSubmit}>
         <ThemedInput
@@ -91,8 +95,8 @@ function UserAddPaymentMethods() {
             const creditCardRegex = /^(\d{4}\s?){3}\d{4}$/;
             const hasWhitespace = /\s/;
             // Don't add the formatting if string is invalid or already is formatted
-            if (creditCardRegex.test(creditCardNumber) && !hasWhitespace.test(creditCardNumber)) {  
-              setcreditCardNumber(e.target.value.replace(/(.{4})/g, "$1 "))
+            if (creditCardRegex.test(creditCardNumber) && !hasWhitespace.test(creditCardNumber)) {
+              setcreditCardNumber(e.target.value.replace(/(.{4})/g, "$1 "));
             }
           }}
           required
