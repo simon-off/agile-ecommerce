@@ -5,10 +5,10 @@ namespace MinimalAPI.Tests.Helpers;
 
 
 [CollectionDefinition("Database collection")]
-public class DatbaseCollection : ICollectionFixture<DatabaseFixture>
+public class DatabaseCollection : ICollectionFixture<DatabaseFixture>
 {
-    // This class has no code, and is never created.
-    // Its purpose is simply to be the place to apply [CollectionDefinition] and all the interfaces
+    // This class has no code, and is never created. Its purpose is simply
+    // to be the place to apply [CollectionDefinition] and all the interfaces
 }
 
 public class DatabaseFixture : IDisposable
@@ -17,19 +17,18 @@ public class DatabaseFixture : IDisposable
 
     public DatabaseFixture()
     {
-        var options = new DbContextOptionsBuilder<DataContext>()
+        _context = new DataContext(new DbContextOptionsBuilder<DataContext>()
             .UseInMemoryDatabase(databaseName: "InMemoryDatabase")
-            .Options;
-
-        _context = new DataContext(options);
+            .Options);
 
         TestSeeder.Seed(_context);
     }
 
-    public DataContext CreateContext() => _context;
+    public DataContext GetContext() => _context;
 
     public void Dispose()
     {
         _context.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

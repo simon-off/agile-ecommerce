@@ -7,6 +7,13 @@ public class TestSeeder
 {
     public static void Seed(DataContext _context)
     {
+        var sizes = new List<Size>()
+        {
+            new() { Id = 1, Name = "S" },
+            new() { Id = 2, Name = "M" },
+            new() { Id = 3, Name = "L" }
+        };
+
         var categories = new List<Category>()
         {
             new() { Id = 1, Name = "Pants"},
@@ -16,12 +23,9 @@ public class TestSeeder
 
         var tags = new List<Tag>()
         {
-            new() { Id = 1, Name = "Featured" },
-            new() { Id = 2, Name = "Popular" },
-            new() { Id = 3, Name = "New" },
-            new() { Id = 4, Name = "Kids" },
-            new() { Id = 5, Name = "Unisex" },
-            new() { Id = 6, Name = "Sport" }
+            new() { Id = 1, Name = "Popular" },
+            new() { Id = 2, Name = "Unisex" },
+            new() { Id = 3, Name = "Sport" }
         };
 
         var products = new List<Product>()
@@ -31,46 +35,36 @@ public class TestSeeder
                 Name = "Red Pants",
                 Description = "A pair of red pants.",
                 CategoryId = 1,
-                Price = 59.99m
+                Price = 59.99m,
+                AvailableSizes = sizes
             },
             new() {
                 Id = 2,
                 Name = "Blue Pants",
                 Description = "A pair of blue pants.",
                 CategoryId = 1,
-                Price = 19.99m
+                Price = 19.99m,
+                AvailableSizes = sizes
             },
             new() {
                 Id = 3,
                 Name = "Blue shirt",
                 Description = "A blue shirt.",
                 CategoryId = 2,
-                Price = 69.99m
-            },
-            new() {
-                Id = 4,
-                Name = "Red Shirt",
-                Description = "A red shirt.",
-                CategoryId = 2,
-                Price = 59.99m
+                Price = 69.99m,
+                AvailableSizes = sizes
             }
         };
 
-        // Add Featured, popular and new tags to all products
-        foreach (var product in products)
-        {
-            for (var i = 0; i < 3; i++)
-            {
-                product.Tags.Add(tags[i]);
-            }
-        }
+        // First 2 items gets "Popular"
+        // Second item gets "unisex"
+        // Third item gets "sport"
+        products[0].Tags.Add(tags[0]);
+        products[1].Tags.Add(tags[0]);
+        products[1].Tags.Add(tags[1]);
+        products[2].Tags.Add(tags[2]);
 
-        // First item gets kids, second item gets unisex and third item gets sport tag.
-        for (var i = 0; i < 3; i++)
-        {
-            products[i].Tags.Add(tags[i + 3]);
-        }
-
+        _context.Sizes.AddRange(sizes);
         _context.Tags.AddRange(tags);
         _context.Categories.AddRange(categories);
         _context.Products.AddRange(products);

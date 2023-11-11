@@ -3,5 +3,6 @@
     "$shared": {
       "host": "https://localhost:7270"
     }
-  }
+  },
+  "dotnet-test-explorer.testProjectPath": "backend/MinimalAPI.Tests/MinimalAPI.Tests.csproj"
 }
