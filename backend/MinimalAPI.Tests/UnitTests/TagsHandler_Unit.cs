@@ -18,8 +18,10 @@ public class TagsHandler_Unit
     [Fact]
     public async void GetAll_ShouldReturnAll()
     {
+        // Act
         var result = (Ok<string[]>)await TagsHandler.GetAll(_context);
 
+        // Assert
         Assert.Equal(3, result.Value?.Length);
         Assert.Equal("Popular", result.Value?[0]);
     }

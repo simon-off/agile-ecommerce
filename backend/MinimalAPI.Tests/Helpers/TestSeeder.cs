@@ -56,13 +56,11 @@ public class TestSeeder
             }
         };
 
-        // First 2 items gets "Popular"
-        // Second item gets "unisex"
-        // Third item gets "sport"
-        products[0].Tags.Add(tags[0]);
-        products[1].Tags.Add(tags[0]);
-        products[1].Tags.Add(tags[1]);
-        products[2].Tags.Add(tags[2]);
+
+        products[0].Tags.Add(tags[0]); // First item gets "Popular"
+        products[1].Tags.Add(tags[0]); // Second item gets "Popular"
+        products[1].Tags.Add(tags[1]); // Second item gets "Unisex"
+        products[2].Tags.Add(tags[2]); // Third item gets "Sport"
 
         _context.Sizes.AddRange(sizes);
         _context.Tags.AddRange(tags);

@@ -16,9 +16,53 @@ public class OrdersHandler_Unit
         _context = fixture.GetContext();
     }
 
-    [Fact]
-    public async void Create_ShouldReturnCreated()
+    [Theory]
+    [InlineData(typeof(Created<OrderDTO>), 1, 1)]
+    [InlineData(typeof(BadRequest<string>), 1, 1, 2)]
+    [InlineData(typeof(BadRequest<string>), 0, 1)]
+    [InlineData(typeof(BadRequest<string>), 1, 0)]
+    public async void Create_ReturnsCreatedOrBadRequest(Type expectedType, int productId, int sizeId, int itemCopies = 1)
     {
+        // Arrange
+        var orderItems = Enumerable
+            .Range(0, itemCopies)
+            .Select(_ => new OrderItemDTO(productId, sizeId, 1))
+            .ToList();
+
+        var dto = new OrderCreateDTO(
+            "John",
+            "Doe",
+            "john@domain.com",
+            "1234567890",
+            "123 Main St",
+            "12345",
+            "New York",
+            orderItems
+        );
+
+        // Act
+        var result = await OrdersHandler.Create(_context, dto);
+
+        // Assert
+        Assert.IsAssignableFrom(expectedType, result);
+
+        if (result is Created<OrderDTO> created)
+        {
+            Assert.Equal(dto.FirstName, created.Value?.FirstName);
+            Assert.Equal(dto.LastName, created.Value?.LastName);
+            Assert.Equal(dto.Email, created.Value?.Email);
+            Assert.Equal(dto.PhoneNumber, created.Value?.PhoneNumber);
+            Assert.Equal(dto.StreetAddress, created.Value?.StreetAddress);
+            Assert.Equal(dto.PostalCode, created.Value?.PostalCode);
+            Assert.Equal(dto.City, created.Value?.City);
+            Assert.Equal(1, created.Value?.Items.Count);
+        }
+    }
+
+    [Fact]
+    public async void Create_CalculatesPriceCorrectly()
+    {
+        // Arrange
         var dto = new OrderCreateDTO(
             "John",
             "Doe",
@@ -30,48 +74,16 @@ public class OrdersHandler_Unit
             new List<OrderItemDTO>
             {
                 new(1, 1, 1),
-                new(2, 2, 2),
-                new(3, 3, 3),
+                new(2, 1, 2),
+                new(3, 1, 3),
             }
         );
+        var expectedPrice = 59.99m + (19.99m * 2) + (69.99m * 3);
 
-        var created = (Created<OrderDTO>)await OrdersHandler.Create(_context, dto);
+        // Act
+        var result = (Created<OrderDTO>)await OrdersHandler.Create(_context, dto);
 
-        Assert.True(created.Value is
-        {
-            FirstName: "John",
-            LastName: "Doe",
-            Email: "john@domain.com",
-            PhoneNumber: "1234567890",
-            StreetAddress: "123 Main St",
-            PostalCode: "12345",
-            City: "New York",
-            Items.Count: 3
-        });
-    }
-
-    [Theory]
-    [InlineData(typeof(Created<OrderDTO>), 1, 1)]
-    [InlineData(typeof(NotFound<string>), 0, 1)]
-    [InlineData(typeof(NotFound<string>), 1, 0)]
-    public async void Create_ShouldReturnNotFound(Type expected, int productId, int sizeId)
-    {
-        var dto = new OrderCreateDTO(
-            "John",
-            "Doe",
-            "john@domain.com",
-            "1234567890",
-            "123 Main St",
-            "12345",
-            "New York",
-            new List<OrderItemDTO>
-            {
-                new(productId, sizeId, 1),
-            }
-        );
-
-        var result = await OrdersHandler.Create(_context, dto);
-
-        Assert.IsAssignableFrom(expected, result);
+        // Assert
+        Assert.Equal(expectedPrice, result.Value?.TotalPrice);
     }
 }

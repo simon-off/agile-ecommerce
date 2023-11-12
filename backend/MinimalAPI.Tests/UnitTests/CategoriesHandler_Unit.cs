@@ -18,8 +18,10 @@ public class CategoriesHandler_Unit
     [Fact]
     public async void GetAll_ShouldReturnAll()
     {
+        // Act
         var result = (Ok<string[]>)await CategoriesHandler.GetAll(_context);
 
+        // Assert
         Assert.Equal(3, result.Value?.Length);
         Assert.Equal("Pants", result.Value?[0]);
     }
