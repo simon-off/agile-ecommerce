@@ -22,9 +22,15 @@ public static class OrdersHandler
 
             if (productEntity is null)
             {
-                return TypedResults.NotFound($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
+                return TypedResults.BadRequest($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
             }
-            totalPrice = productEntity.Price * item.Quantity;
+
+            var copies = newOrderDto.Items.Where(x => x.ProductId == item.ProductId && x.SizeId == item.SizeId);
+
+            if (copies.Count() > 1)
+                return TypedResults.BadRequest($"Product with id: {item.ProductId} and size id: {item.SizeId} is duplicated in the order");
+
+            totalPrice += productEntity.Price * item.Quantity;
         }
 
         var newOrderEntity = newOrderDto.ConvertToEntity(totalPrice);
