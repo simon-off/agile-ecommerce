@@ -15,5 +15,11 @@ public class NewOrderValidator : AbstractValidator<OrderCreateDTO>
         RuleFor(x => x.PostalCode).NotEmpty().Length(4, 20);
         RuleFor(x => x.City).NotEmpty().Length(1, 255);
         RuleFor(x => x.Items).NotEmpty();
+        RuleForEach(x => x.Items).ChildRules(item =>
+        {
+            item.RuleFor(x => x.ProductId).NotEmpty();
+            item.RuleFor(x => x.SizeId).NotEmpty();
+            item.RuleFor(x => x.Quantity).NotEmpty().GreaterThan(0);
+        });
     }
 }
