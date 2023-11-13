@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using MinimalAPI.Extensions;
 using MinimalAPI.Models.Dtos;
 using MinimalAPI.Models.Identity;
 
@@ -30,6 +31,15 @@ public static class AccountHandler
             : TypedResults.BadRequest("Invalid email or password");
     }
 
+    public static async Task<IResult> GetDetails(HttpRequest request, UserManager<User> userManager)
+    {
+        var user = await userManager.Users.FirstOrDefaultAsync(x => x.Id == request.GetUserId());
+
+        return user is null
+            ? TypedResults.NotFound($"Could not find user through supplied auth token")
+            : TypedResults.Ok(UserDTO.Create(user));
+    }
+
     private static async Task<string?> CreateJwtToken(UserManager<User> userManager, IConfiguration config, string email)
     {
         var user = await userManager.Users.FirstOrDefaultAsync(x => x.Email == email);
@@ -43,7 +53,7 @@ public static class AccountHandler
         {
             Subject = new ClaimsIdentity(new[]
             {
-                new Claim("userid", user.Id)
+                new Claim("user_id", user.Id)
             }),
             Expires = DateTime.UtcNow.AddHours(12),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
