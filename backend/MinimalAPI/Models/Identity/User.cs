@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
+using MinimalAPI.Models.Entities;
 
-namespace MinimalAPI.Models.Entities;
+namespace MinimalAPI.Models.Identity;
 
 public class User : IdentityUser
 {

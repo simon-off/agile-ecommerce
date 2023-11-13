@@ -1,3 +1,5 @@
+using MinimalAPI.Models.Identity;
+
 namespace MinimalAPI.Models.Entities;
 
 public class PaymentCard

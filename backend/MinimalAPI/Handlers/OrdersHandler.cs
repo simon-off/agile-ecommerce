@@ -10,11 +10,11 @@ public static class OrdersHandler
     public static async Task<IResult> GetAll(DataContext db) =>
         TypedResults.Ok(await db.Orders.AllAsDtos());
 
-    public static async Task<IResult> Create(DataContext db, OrderCreateDTO newOrderDto)
+    public static async Task<IResult> Create(DataContext db, OrderCreateDTO dto)
     {
         decimal totalPrice = 0m;
 
-        foreach (var item in newOrderDto.Items)
+        foreach (var item in dto.Items)
         {
             var productEntity = await db.Products
                 .Include(x => x.AvailableSizes)
@@ -25,7 +25,7 @@ public static class OrdersHandler
                 return TypedResults.BadRequest($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
             }
 
-            var copies = newOrderDto.Items.Where(x => x.ProductId == item.ProductId && x.SizeId == item.SizeId);
+            var copies = dto.Items.Where(x => x.ProductId == item.ProductId && x.SizeId == item.SizeId);
 
             if (copies.Count() > 1)
                 return TypedResults.BadRequest($"Product with id: {item.ProductId} and size id: {item.SizeId} is duplicated in the order");
@@ -33,11 +33,11 @@ public static class OrdersHandler
             totalPrice += productEntity.Price * item.Quantity;
         }
 
-        var newOrderEntity = newOrderDto.ConvertToEntity(totalPrice);
+        var newOrderEntity = dto.ConvertToEntity(totalPrice);
         await db.Orders.AddAsync(newOrderEntity);
         await db.SaveChangesAsync();
 
-        foreach (var item in newOrderDto.Items)
+        foreach (var item in dto.Items)
         {
             await db.OrderItems.AddAsync(item.ConvertToEntity(newOrderEntity.Id));
         }

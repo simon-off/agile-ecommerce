@@ -1,0 +1,19 @@
+### Sign up
+POST {{host}}/api/account/signup
+Content-Type: application/json
+
+{
+    "firstName": "Bob",
+    "lastName": "Bobson",
+    "email": "bob4@domain.com",
+    "password": "bob"
+}
+
+### Sign in
+POST {{host}}/api/account/signin
+Content-Type: application/json
+
+{
+    "email": "bob@domain.com",
+    "password": "bob"
+}

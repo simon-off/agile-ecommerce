@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Models.Entities;
+using MinimalAPI.Models.Identity;
 
 namespace MinimalAPI.Data;
 
-public class DataContext : IdentityDbContext<IdentityUser>
+public class DataContext : IdentityDbContext<User>
 {
     public DataContext(DbContextOptions options)
         : base(options) { }

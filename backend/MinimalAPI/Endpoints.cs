@@ -14,7 +14,9 @@ public static class Endpoints
         api.MapGet("/products/count", ProductsHandler.Count);
         api.MapGet("/categories", CategoriesHandler.GetAll);
         api.MapGet("/tags", TagsHandler.GetAll);
-        api.MapGet("/orders", OrdersHandler.GetAll);
+        api.MapGet("/orders", OrdersHandler.GetAll).RequireAuthorization();
         api.MapPost("/orders", OrdersHandler.Create).AddEndpointFilter<ValidationFilter<OrderCreateDTO>>();
+        api.MapPost("/account/signup", AccountHandler.SignUp).AddEndpointFilter<ValidationFilter<SignUpDTO>>();
+        api.MapPost("/account/signin", AccountHandler.SignIn).AddEndpointFilter<ValidationFilter<SignInDTO>>();
     }
 }
