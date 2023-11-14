@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using MinimalAPI.Models.Dtos;
+using MinimalAPI.Models.Identity;
 
 namespace MinimalAPI.Models.Entities;
 
@@ -13,6 +14,9 @@ public class Order
 
     public int StatusId { get; set; } = 1;
     public OrderStatus? Status { get; set; }
+
+    public string? UserId { get; set; }
+    public User? User { get; set; }
 
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
