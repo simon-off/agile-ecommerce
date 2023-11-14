@@ -29,10 +29,11 @@ static class DbSetExtensions
             .Select(x => ProductDTO.Create(x))
             .ToArrayAsync();
 
-    public static async Task<OrderDTO[]> AllAsDtos(this DbSet<Order> orders) =>
+    public static async Task<OrderDTO[]> AllAsDtos(this DbSet<Order> orders, string userId) =>
         await orders
             .Include(x => x.Status)
             .Include(x => x.Items)
+            .Where(x => x.UserId == userId)
             .Select(x => OrderDTO.Create(x))
             .ToArrayAsync();
 }

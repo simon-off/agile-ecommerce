@@ -9,8 +9,17 @@ namespace MinimalAPI.Handlers;
 
 public static class OrdersHandler
 {
-    public static async Task<IResult> GetAll(DataContext db) =>
-        TypedResults.Ok(await db.Orders.AllAsDtos());
+    public static async Task<IResult> GetAll(HttpRequest request, DataContext db, UserManager<User> userManager)
+    {
+        var userId = await userManager.Users
+            .Where(x => x.Id == request.GetUserId())
+            .Select(x => x.Id)
+            .FirstOrDefaultAsync();
+
+        return userId is null
+            ? TypedResults.Unauthorized()
+            : TypedResults.Ok(await db.Orders.AllAsDtos(userId));
+    }
 
     public static async Task<IResult> Create(HttpRequest request, DataContext db, UserManager<User> userManager, OrderCreateDTO dto)
     {
@@ -33,14 +42,14 @@ public static class OrdersHandler
             totalPrice += productEntity.Price * item.Quantity;
         }
 
-        // Check if user and then check if signed in
+        // Check if there's a user logged in
         string? userId = null;
         if (request.Headers.Authorization.FirstOrDefault() is not null)
         {
             userId = (await userManager.Users.FirstOrDefaultAsync(x => x.Id == request.GetUserId()))?.Id;
 
             if (userId is null)
-                return TypedResults.Unauthorized();
+                return TypedResults.BadRequest("Invalid auth token");
         }
 
         var newOrderEntity = dto.ConvertToEntity(totalPrice);

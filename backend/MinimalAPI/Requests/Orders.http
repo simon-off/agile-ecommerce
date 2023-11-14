@@ -1,16 +1,17 @@
 ### Get all orders
 GET {{host}}/api/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJmM2ZmNTI4My02ZjQ0LTQxYzgtYTliMy03ZTUyYzJkNDEyZjAiLCJuYmYiOjE2OTk4ODcyNTcsImV4cCI6MTcyMDg4MjQ1NywiaWF0IjoxNjk5ODg3MjU3LCJpc3MiOiJodHRwczovL21hbmVyby5jb20iLCJhdWQiOiJodHRwczovL21hbmVyby5jb20ifQ.lFVXFMvOkARrEg9nt-pQMtZTBd8Pcv-JAfUQiJVqNaM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjNmZjUyODMtNmY0NC00MWM4LWE5YjMtN2U1MmMyZDQxMmYwIiwibmJmIjoxNjk5OTY3MDc5LCJleHAiOjE3MDAwMTAyNzksImlhdCI6MTY5OTk2NzA3OSwiaXNzIjoiaHR0cHM6Ly9tYW5lcm8uY29tIiwiYXVkIjoiaHR0cHM6Ly9tYW5lcm8uY29tIn0.w1IahqEi7WKUDiFvqBaNfCJlV06vewwQIQyaWzEjBp0
 
 ### Post order
 POST {{host}}/api/orders
 Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjNmZjUyODMtNmY0NC00MWM4LWE5YjMtN2U1MmMyZDQxMmYwIiwibmJmIjoxNjk5OTY3MDc5LCJleHAiOjE3MDAwMTAyNzksImlhdCI6MTY5OTk2NzA3OSwiaXNzIjoiaHR0cHM6Ly9tYW5lcm8uY29tIiwiYXVkIjoiaHR0cHM6Ly9tYW5lcm8uY29tIn0.w1IahqEi7WKUDiFvqBaNfCJlV06vewwQIQyaWzEjBp0
 
 {
-    "firstName": "Simon",
-    "lastName": "Bäckström",
-    "email": "simon@mail.com",
-    "phoneNumber": "123 456 78 90",
+    "firstName": "Bob",
+    "lastName": "Bobson",
+    "email": "bob@domain.com",
+    "phoneNumber": "1234567890",
     "streetAddress": "Gata 100",
     "city": "Staden",
     "postalCode": "12345",

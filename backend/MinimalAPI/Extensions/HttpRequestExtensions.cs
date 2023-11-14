@@ -8,7 +8,15 @@ public static class HttpRequestExtensions
     {
         var tokenString = request.Headers.Authorization.FirstOrDefault()?.Split(" ").Last();
         var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.ReadJwtToken(tokenString);
-        return token.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+
+        try
+        {
+            var token = tokenHandler.ReadJwtToken(tokenString);
+            return token.Claims.FirstOrDefault(x => x.Type == "user_id")?.Value;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
     }
 }
