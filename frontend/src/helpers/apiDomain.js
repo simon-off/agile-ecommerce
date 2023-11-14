@@ -1,4 +1,4 @@
 export const apiDomain = {
-  http: "http://localhost:5289",
-  https: "https://localhost:7166",
+  http: "http://localhost:5036",
+  https: "https://localhost:7270",
 };

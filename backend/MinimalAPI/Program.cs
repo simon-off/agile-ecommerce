@@ -12,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddDbContext<DataContext>(x => x.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
     builder.Services.AddValidatorsFromAssemblyContaining(typeof(NewOrderValidator));
+    builder.Services.AddCors();
     builder.Services.AddIdentityServices();
     builder.Services.AddAuthServices(builder.Configuration);
 }
@@ -19,6 +20,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 {
     app.UseHttpsRedirection();
+    app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
     app.UseAuthentication();
     app.UseAuthorization();
 
