@@ -21,9 +21,7 @@ public static class OrdersHandler
                 .FirstOrDefaultAsync(x => x.Id == item.ProductId && x.AvailableSizes.Any(s => s.Id == item.SizeId));
 
             if (productEntity is null)
-            {
                 return TypedResults.BadRequest($"Product with id: {item.ProductId} and size id: {item.SizeId} could not be found in the database");
-            }
 
             var copies = dto.Items.Where(x => x.ProductId == item.ProductId && x.SizeId == item.SizeId);
 
