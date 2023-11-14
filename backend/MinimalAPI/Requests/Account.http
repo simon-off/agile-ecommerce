@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "firstName": "Bob",
     "lastName": "Bobson",
-    "email": "bob1@domain.com",
+    "email": "bob5@domain.com",
     "password": "bob"
 }
 
@@ -14,10 +14,10 @@ POST {{host}}/api/account/signin
 Content-Type: application/json
 
 {
-    "email": "bob1@domain.com",
+    "email": "bob5@domain.com",
     "password": "bob"
 }
 
 ### Get account details
 POST {{host}}/api/account
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZmI4NmRmMWYtY2E0Zi00YjU4LWFlN2EtNDhiOGNjNGFiZmZhIiwibmJmIjoxNjk5ODg5MzQ1LCJleHAiOjE2OTk5MzI1NDUsImlhdCI6MTY5OTg4OTM0NSwiaXNzIjoiaHR0cHM6Ly9tYW5lcm8uY29tIiwiYXVkIjoiaHR0cHM6Ly9tYW5lcm8uY29tIn0.Tazpzi1TAb4ARfFRhyR477VjQVQ9iafWKFY0gW1mL30
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZDI2ZDk4ZmUtYTlhZi00YjFiLWE1YTktZjU5NGVhMTQ4MmZhIiwibmJmIjoxNjk5OTUzOTQ2LCJleHAiOjE2OTk5OTcxNDYsImlhdCI6MTY5OTk1Mzk0NiwiaXNzIjoiaHR0cHM6Ly9tYW5lcm8uY29tIiwiYXVkIjoiaHR0cHM6Ly9tYW5lcm8uY29tIn0.P1OHbkef_3k6cvCZGEHNQmrnOmUhRoFC7W6HO2xAG1M

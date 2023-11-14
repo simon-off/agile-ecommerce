@@ -48,7 +48,7 @@ public static class AccountHandler
             return null;
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(config["JwtSettings:Key"]!);
+        var key = Encoding.ASCII.GetBytes(config["JWT_KEY"]!);
         var token = tokenHandler.CreateToken(new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
