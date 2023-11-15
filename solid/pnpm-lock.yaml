@@ -11,9 +11,9 @@ dependencies:
   '@solidjs/router':
     specifier: ^0.9.1
     version: 0.9.1(solid-js@1.8.5)
-  lucide-solid:
-    specifier: ^0.292.0
-    version: 0.292.0(solid-js@1.8.5)
+  solid-icons:
+    specifier: ^1.1.0
+    version: 1.1.0(solid-js@1.8.5)
   solid-js:
     specifier: ^1.7.8
     version: 1.8.5
@@ -888,14 +888,6 @@ packages:
       yallist: 3.1.1
     dev: true
 
-  /lucide-solid@0.292.0(solid-js@1.8.5):
-    resolution: {integrity: sha512-tSniJ64AW2PgPyWJvFtEIYpZu3mNjoRRLs7qXmn+vJp12A9NOgkA0njytkcjn0wWk56ReS9opuy/0onp0XmUaA==}
-    peerDependencies:
-      solid-js: ^1.4.7
-    dependencies:
-      solid-js: 1.8.5
-    dev: false
-
   /merge-anything@5.1.7:
     resolution: {integrity: sha512-eRtbOb1N5iyH0tkQDAoQ4Ipsp/5qSR79Dzrz8hEPxRX10RWWR/iQXdoKmBSRCThY1Fh5EhISDtpSc93fpxUniQ==}
     engines: {node: '>=12.13'}
@@ -973,6 +965,14 @@ packages:
   /seroval@0.12.4:
     resolution: {integrity: sha512-JIsZHp98o+okpYN8HEPyI9Blr0gxAUPIGvg3waXrEMFjPz9obiLYMz0uFiUGezKiCK8loosYbn8WsqO8WtAJUA==}
     engines: {node: '>=10'}
+
+  /solid-icons@1.1.0(solid-js@1.8.5):
+    resolution: {integrity: sha512-IesTfr/F1ElVwH2E1110s2RPXH4pujKfSs+koT8rwuTAdleO5s26lNSpqJV7D1+QHooJj18mcOiz2PIKs0ic+A==}
+    peerDependencies:
+      solid-js: '*'
+    dependencies:
+      solid-js: 1.8.5
+    dev: false
 
   /solid-js@1.8.5:
     resolution: {integrity: sha512-xvtJvzJzWbsn35oKFhW9kNwaxG1Z/YLMsDp4tLVcYZTMPzvzQ8vEZuyDQ6nt7xDArVgZJ7TUFrJUwrui/oq53A==}
