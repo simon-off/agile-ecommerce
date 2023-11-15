@@ -2,7 +2,7 @@ import styles from "./LoadingSpinner.module.scss";
 
 export default function LoadingSpinner({
   diameter = "4rem",
-  thickness = "1rem",
+  thickness = "1.25rem",
   color = "black",
   speed = "2s",
   delay = "200ms",

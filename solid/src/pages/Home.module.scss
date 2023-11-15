@@ -1,0 +1,12 @@
+.page {
+  h1 {
+    padding-bottom: 1rem;
+    font-size: var(--font-size-xl);
+  }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1rem;
+}

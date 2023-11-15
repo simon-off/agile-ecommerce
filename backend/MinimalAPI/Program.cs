@@ -21,6 +21,7 @@ var app = builder.Build();
 {
     app.UseHttpsRedirection();
     app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+    app.UseStaticFiles();
     app.UseAuthentication();
     app.UseAuthorization();
 

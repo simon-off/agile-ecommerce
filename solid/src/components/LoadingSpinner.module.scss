@@ -13,7 +13,7 @@
     position: absolute;
     inset: var(--thickness);
     border-radius: inherit;
-    background-color: white;
+    background-color: var(--color-bg, var(--color-background, white));
   }
   &::after {
     position: absolute;
@@ -23,7 +23,6 @@
     height: var(--thickness);
     content: "";
     display: block;
-    // aspect-ratio: inherit;
     border-radius: inherit;
 
     background-color: var(--color);

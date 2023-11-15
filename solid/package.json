@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.15",
+    "@solidjs/router": "^0.9.1",
     "lucide-solid": "^0.292.0",
     "solid-js": "^1.7.8"
   },
