@@ -1,0 +1,43 @@
+.spinner {
+  // Custom properties are set by the component
+  width: var(--diameter);
+  height: var(--diameter);
+  border-radius: var(--diameter);
+  background-image: conic-gradient(transparent 5%, var(--color) 95%);
+  opacity: 0;
+  animation: var(--speed) linear infinite spin,
+    200ms ease var(--delay) forwards fade-in;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: var(--thickness);
+    border-radius: inherit;
+    background-color: white;
+  }
+  &::after {
+    position: absolute;
+    top: 0px;
+    left: calc(var(--diameter) / 2 - var(--thickness) / 2);
+    width: var(--thickness);
+    height: var(--thickness);
+    content: "";
+    display: block;
+    // aspect-ratio: inherit;
+    border-radius: inherit;
+
+    background-color: var(--color);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}

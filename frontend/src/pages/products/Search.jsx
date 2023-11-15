@@ -11,8 +11,8 @@ export default function Search() {
     <div className="search-page">
       <ul className="tags-container">
         {tags?.data?.map((tag) => (
-          <li key={tag.name}>
-            <Link to={`/products?tagName=${tag.name.toLowerCase()}`}>{tag.name}</Link>
+          <li key={tag}>
+            <Link to={`/products?tagName=${tag.toLowerCase()}`}>{tag}</Link>
           </li>
         ))}
       </ul>

@@ -1,0 +1,33 @@
+:root {
+  // Status colors
+  --color-danger: #f4303c;
+  --color-warning: #ffbe00;
+  --color-success: #389e73;
+  // Theme colors
+  --color-bg: #ffffff;
+  --color-bg-grey: #8d93a7;
+  --color-text: #111111;
+  --color-text-light: #626262;
+  --color-blue: #dbe3f5;
+  --color-blue-light: #f5f8fd;
+  --color-olive: #69864d;
+  --color-text-faded: #9da2af;
+  --color-text-facebook: #3b5998;
+  --color-text-twitter: #1da1f2;
+  // Use when style needs red or yellow but it's NOT a warning or error.
+  --color-red: var(--color-danger);
+  --color-yellow: var(--color-warning);
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
+
+  // Sizes
+  --max-width: 1280px;
+  --padding-inline: 1.25rem;
+
+  // Font sizes
+  --font-size-xs: 0.75rem; // 12px
+  --font-size-s: 0.875rem; // 14px
+  --font-size-m: 1rem; // 16px
+  --font-size-l: 1.25rem; // 20px
+  --font-size-xl: 2rem; // 32px
+  --font-size-xxl: 3rem; // 48px
+}

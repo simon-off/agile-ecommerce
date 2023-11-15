@@ -1,0 +1,14 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: calc(var(--max-width) + var(--padding-inline) * 2);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}

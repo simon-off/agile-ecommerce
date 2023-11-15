@@ -14,11 +14,11 @@ export default function Home() {
     <>
       <ul className="tags-container">
         {tags?.data?.map((tag) => (
-          <li key={tag.name}>
-            <Link to={`/products?tag=${tag.name.toLowerCase()}`}>
+          <li key={tag}>
+            <Link to={`/products?tag=${tag.toLowerCase()}`}>
               <div className="tag-wrapper">
                 <div className="tag-circle"></div>
-                <p>{tag.name}</p>
+                <p>{tag}</p>
               </div>
             </Link>
           </li>

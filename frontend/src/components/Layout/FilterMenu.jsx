@@ -32,7 +32,7 @@ function FilterMenu({ menuExpanded }) {
             <h2>Category</h2>
             <ThemedDropdown
               value={query.get("category") ?? "All"}
-              options={["All", ...(categories.data?.map((category) => category.name) ?? [])]}
+              options={["All", ...(categories.data?.map((category) => category) ?? [])]}
               onChange={(selected) => setCategoryQuery(cleanQueryValue(selected))}
             />
           </div>
@@ -41,11 +41,11 @@ function FilterMenu({ menuExpanded }) {
             <div className="buttons">
               {tags.data?.map((tag) => (
                 <button
-                  key={tag.name}
-                  onClick={() => setTagQuery(cleanQueryValue(tag.name))}
-                  className={query.has("tag", cleanQueryValue(tag.name)) ? "active" : ""}
+                  key={tag}
+                  onClick={() => setTagQuery(cleanQueryValue(tag))}
+                  className={query.has("tag", cleanQueryValue(tag)) ? "active" : ""}
                 >
-                  {tag.name}
+                  {tag}
                 </button>
               ))}
             </div>
