@@ -1,6 +1,7 @@
 import styles from "./LoadingSpinner.module.scss";
 
 export default function LoadingSpinner({
+  margin = "auto",
   diameter = "4rem",
   thickness = "1.25rem",
   color = "black",
@@ -11,6 +12,7 @@ export default function LoadingSpinner({
     <div
       class={styles.spinner}
       style={{
+        "--margin": margin,
         "--diameter": diameter,
         "--thickness": thickness,
         "--color": color,

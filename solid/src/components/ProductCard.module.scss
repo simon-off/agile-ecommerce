@@ -1,8 +1,11 @@
 .card {
   position: relative;
-  box-shadow: var(--shadow-m);
-  border-radius: 8px 0 16px 0;
-  overflow: hidden;
+  a {
+    box-shadow: var(--shadow-m);
+    border-radius: 8px 0 16px 0;
+    overflow: hidden;
+    display: block;
+  }
   div {
     position: absolute;
     bottom: 12px;
@@ -29,12 +32,24 @@
   }
   span {
     font-weight: 600;
-    background-color: rgb(88, 174, 224);
+    background-color: var(--color-blue);
     color: var(--color-bg);
     border-radius: 0 0 8px 0;
     padding: 0.075rem 0.5rem;
     height: 100%;
     display: flex;
     align-items: center;
+  }
+  button {
+    font-size: var(--font-size-l);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    box-sizing: content-box;
+    border-radius: 0.25rem;
+    &.active {
+      color: var(--color-red);
+    }
   }
 }

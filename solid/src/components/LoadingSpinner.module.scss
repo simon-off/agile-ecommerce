@@ -1,5 +1,6 @@
 .spinner {
   // Custom properties are set by the component
+  margin: var(--margin);
   width: var(--diameter);
   height: var(--diameter);
   border-radius: var(--diameter);

@@ -1,0 +1,54 @@
+.header {
+  --items-height: 3rem;
+
+  padding-block: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-m);
+  & > div {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 0.5rem;
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr auto auto;
+    }
+    & > button {
+      border: 1px solid var(--color-border);
+    }
+  }
+  button {
+    font-size: var(--font-size-l);
+    padding-inline: 1rem;
+    border-radius: 0.25rem;
+    min-height: var(--items-height);
+  }
+}
+
+.logo {
+  padding-right: 0.5rem;
+  img {
+    height: calc(var(--items-height) * 0.75);
+  }
+}
+
+form {
+  position: relative;
+  @media (max-width: 600px) {
+    grid-row: 2;
+    grid-column: 1/-1;
+  }
+  input {
+    width: 100%;
+    min-width: none;
+    border-radius: 0.25rem;
+    padding-left: 1rem;
+    padding-right: 2.5rem;
+    height: var(--items-height);
+    border: 1px solid var(--color-border);
+  }
+  button {
+    position: absolute;
+    right: 0;
+  }
+}
