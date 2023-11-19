@@ -22,17 +22,17 @@ export default function Header() {
           <input
             type="text"
             value={searchValue()}
-            onInput={(e) => setSearchValue(e.currentTarget.value)}
+            onInput={e => setSearchValue(e.currentTarget.value)}
             placeholder="Search for products..."
           />
-          <button type="submit">
+          <button type="submit" title="Search">
             <FiSearch />
           </button>
         </form>
-        <button>
+        <button title="Wishlist">
           <FiHeart />
         </button>
-        <button>
+        <button title="Shopping cart">
           <FiShoppingBag />
         </button>
       </div>

@@ -3,8 +3,7 @@ GET {{host}}/api/products
 
 ### Get all filtered by category and tag
 GET {{host}}/api/products
-    ?category=shirts
-    &tag=kids
+    ?category=pants
 
 ### Get by id
 GET {{host}}/api/products/{{$randomInt 1 8}}

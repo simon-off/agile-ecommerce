@@ -2,6 +2,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Models.Dtos;
 using MinimalAPI.Models.Entities;
+using WebAPI.Models.QueryParameters;
 
 namespace MinimalAPI.Extensions;
 
@@ -18,16 +19,31 @@ static class DbSetExtensions
             ? ProductDTO.Create(entity)
             : null;
 
-    public static async Task<ProductDTO[]> AllAsDtos(this DbSet<Product> products, string? category, string? tag) =>
-        await products
+    public static async Task<ProductDTO[]> AllAsDtos(this DbSet<Product> products, GetProductsQueryParameters qp)
+    {
+        var query = products
             .Include(x => x.Tags)
-            .Include(x => x.AvailableSizes)
-            .Include(x => x.Images)
             .Include(x => x.Category)
-            .Where(x => category == null || x.Category == null || x.Category.Name.ToLower() == category.ToLower())
-            .Where(x => tag == null || x.Tags.Any(t => t.Name.ToLower() == tag.ToLower()))
-            .Select(x => ProductDTO.Create(x))
-            .ToArrayAsync();
+            .Include(x => x.Images)
+            .Include(x => x.AvailableSizes)
+            .Where(x => string.IsNullOrWhiteSpace(qp.Tag) || x.Tags.Any(t => t.Name.ToLower() == qp.Tag.ToLower()))
+            .Where(x => string.IsNullOrWhiteSpace(qp.Category) || x.Category != null && x.Category.Name.ToLower() == qp.Category.ToLower())
+            .AsQueryable();
+
+        query = qp.Sort?.ToLower() switch
+        {
+            "lowestprice" => query.OrderBy(x => (double)x.Price),
+            "highestprice" => query.OrderByDescending(x => (double)x.Price),
+            _ => query.Select(x => x)
+        };
+
+        // This makes sure the pagination happens after products are ordered
+        query = query
+            .Skip(qp.Page - 1 * qp.Amount)
+            .Take(qp.Amount);
+
+        return await query.Select(x => ProductDTO.Create(x)).ToArrayAsync();
+    }
 
     public static async Task<OrderDTO[]> AllAsDtos(this DbSet<Order> orders, string userId) =>
         await orders

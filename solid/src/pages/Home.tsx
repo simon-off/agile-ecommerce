@@ -18,12 +18,10 @@ export default function Home() {
         <Suspense fallback={<LoadingSpinner />}>
           <header>
             <h2>Featured</h2>
-            <A href="products?tag=featured">View all</A>
+            <A href="products?tag=Featured">View all</A>
           </header>
           <div class={styles.gallery}>
-            <For each={featured()}>
-              {(product) => <ProductCard product={product} />}
-            </For>
+            <For each={featured()}>{product => <ProductCard product={product} />}</For>
           </div>
         </Suspense>
       </section>
@@ -31,12 +29,10 @@ export default function Home() {
         <Suspense fallback={<LoadingSpinner />}>
           <header>
             <h2>Popular</h2>
-            <A href="products?tag=popular">View all</A>
+            <A href="products?tag=Popular">View all</A>
           </header>
           <div class={styles.gallery}>
-            <For each={popular()}>
-              {(product) => <ProductCard product={product} />}
-            </For>
+            <For each={popular()}>{product => <ProductCard product={product} />}</For>
           </div>
         </Suspense>
       </section>
